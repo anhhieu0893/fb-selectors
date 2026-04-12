@@ -1,0 +1,1238 @@
+{
+  "version": "2025.04.12",
+  "note": "Host file này lên GitHub raw. Đổi RemoteUrl trong SelectorStore.cs",
+
+  "selectors": {
+
+    "compose_box": [
+      "div[role='button']:has(span:has-text('Bạn đang nghĩ gì'))",
+      "div[role='button']:has(span:has-text(\"What's on your mind\"))",
+      "div[aria-label*='Bạn đang nghĩ gì']",
+      "div[aria-label*=\"What's on your mind\"]",
+      "span:has-text('Bạn đang nghĩ gì')",
+      "span:has-text(\"What's on your mind\")"
+    ],
+    "compose_editor": [
+      "div[contenteditable='true'][aria-label*='Bạn đang nghĩ gì']",
+      "div[contenteditable='true'][aria-label*=\"What's on your mind\"]",
+      "div[contenteditable='true'][role='textbox']",
+      "div[contenteditable='true'][data-lexical-editor='true']"
+    ],
+    "post_button": [
+      "div[aria-label='Post'][role='button']",
+      "div[aria-label='Đăng'][role='button']",
+      "div[data-testid='react-composer-post-button']",
+      "span:has-text('Đăng')",
+      "span:has-text('Post')"
+    ],
+
+    "like_button": [
+      "div[aria-label='Like'][role='button']",
+      "div[aria-label='Thích'][role='button']",
+      "div[data-testid='fb-ufi-likelink']",
+      "span[data-sigil='ufi-inline-like']",
+      "a[data-testid='like_def']"
+    ],
+    "love_button": [
+      "div[aria-label='Love'][role='button']",
+      "div[aria-label='Yêu thích'][role='button']"
+    ],
+    "haha_button": [
+      "div[aria-label='Haha'][role='button']"
+    ],
+    "wow_button": [
+      "div[aria-label='Wow'][role='button']"
+    ],
+    "sad_button": [
+      "div[aria-label='Sad'][role='button']",
+      "div[aria-label='Buồn'][role='button']"
+    ],
+    "angry_button": [
+      "div[aria-label='Angry'][role='button']",
+      "div[aria-label='Phẫn nộ'][role='button']"
+    ],
+    "like_reaction_panel": [
+      "div[data-testid='UFI2ReactionBar/root']",
+      "div[role='toolbar'][aria-label*='reaction']"
+    ],
+
+    "notification_bell": [
+      "a[aria-label*='Thông báo']",
+      "a[aria-label*='Notifications']",
+      "[data-testid='jewel-notifications-trigger']",
+      "a[href='/notifications/']",
+      "div[aria-label='Thông báo'][role='button']"
+    ],
+    "notification_mark_all_read": [
+      "span:has-text('Đánh dấu tất cả là đã đọc')",
+      "span:has-text('Mark all as read')"
+    ],
+    "notification_item": [
+      "div[role='article'][aria-label*='thông báo']",
+      "div[data-testid='notification']",
+      "a[href*='/notification/']"
+    ],
+
+    "story_container": [
+      "div[data-pagelet='Stories'] div[role='button']",
+      "div[aria-label*='tory'] div[role='button']",
+      "a[href*='/stories/']",
+      "div[data-pagelet='StoriesSection']"
+    ],
+    "story_next_button": [
+      "div[aria-label='Tiếp theo'][role='button']",
+      "div[aria-label='Next'][role='button']",
+      "div[data-testid='story-viewer-nav-right']"
+    ],
+    "story_close_button": [
+      "div[aria-label='Đóng'][role='button']",
+      "div[aria-label='Close'][role='button']"
+    ],
+    "story_create_button": [
+      "div[aria-label='Tạo story'][role='button']",
+      "div[aria-label='Create story'][role='button']",
+      "span:has-text('Tạo story')",
+      "span:has-text('Create story')"
+    ],
+    "story_text_option": [
+      "div[aria-label*='Văn bản'][role='button']",
+      "span:has-text('Tạo story văn bản')",
+      "span:has-text('Text story')"
+    ],
+    "story_publish_button": [
+      "div[aria-label='Chia sẻ với tin'][role='button']",
+      "div[aria-label='Share to story'][role='button']",
+      "span:has-text('Chia sẻ với tin')",
+      "span:has-text('Share to story')"
+    ],
+    "story_like_button": [
+      "div[aria-label='Thích tin'][role='button']",
+      "div[aria-label='Like story'][role='button']"
+    ],
+    "story_reply_input": [
+      "div[contenteditable='true'][aria-label*='Trả lời tin']",
+      "div[contenteditable='true'][aria-label*='Reply to story']",
+      "div[contenteditable='true'][placeholder*='Trả lời']"
+    ],
+    "story_viewer_list": [
+      "div[aria-label*='người xem'][role='button']",
+      "span:has-text('người xem')",
+      "span:has-text('viewers')"
+    ],
+
+    "watch_feed": [
+      "div[data-pagelet='WatchFeed'] a[href*='/watch/']",
+      "div[role='feed'] a[href*='/videos/']",
+      "a[href*='/watch/']",
+      "div[data-pagelet='VideosHomeFeed']"
+    ],
+    "watch_video_play": [
+      "div[aria-label='Phát video'][role='button']",
+      "div[aria-label='Play video'][role='button']",
+      "div[data-testid='video-play-button']"
+    ],
+    "watch_like": [
+      "div[aria-label='Like'][role='button']",
+      "div[aria-label='Thích'][role='button']"
+    ],
+    "watch_comment_input": [
+      "div[contenteditable='true'][aria-label*='Viết bình luận']",
+      "div[contenteditable='true'][aria-label*='Write a comment']"
+    ],
+
+    "reel_create_tab": [
+      "a[href*='/reel/create']",
+      "span:has-text('Đăng reel')",
+      "span:has-text('Create reel')"
+    ],
+    "reel_upload_area": [
+      "div[aria-label='Tải video lên'][role='button']",
+      "div[aria-label='Upload video'][role='button']",
+      "div[role='button']:has(span:has-text('Tải video lên'))",
+      "div[role='button']:has(span:has-text('Upload video'))"
+    ],
+    "reel_file_input": [
+      "input[type='file'][accept*='video']",
+      "input[type='file']"
+    ],
+    "reel_next_button": [
+      "div[aria-label='Tiếp theo'][role='button']",
+      "div[aria-label='Next'][role='button']",
+      "span:has-text('Tiếp theo')",
+      "span:has-text('Next')"
+    ],
+    "reel_caption_input": [
+      "div[contenteditable='true'][aria-label*='Mô tả']",
+      "div[contenteditable='true'][aria-label*='caption']",
+      "div[contenteditable='true'][aria-label*='Description']",
+      "div[contenteditable='true'][placeholder*='Mô tả']",
+      "div[contenteditable='true']"
+    ],
+    "reel_audience_selector": [
+      "div[aria-label*='Bạn bè'][role='button'][aria-haspopup]",
+      "div[aria-label*='Công khai'][role='button'][aria-haspopup]",
+      "div[data-testid='audience-selector']"
+    ],
+    "reel_add_music": [
+      "span:has-text('Thêm nhạc')",
+      "span:has-text('Add music')",
+      "div[aria-label='Thêm nhạc'][role='button']"
+    ],
+    "reel_add_location": [
+      "span:has-text('Thêm vị trí')",
+      "span:has-text('Add location')"
+    ],
+    "reel_share_button": [
+      "div[aria-label='Chia sẻ'][role='button']",
+      "div[aria-label='Share'][role='button']",
+      "div[aria-label='Đăng'][role='button']",
+      "span:has-text('Chia sẻ')",
+      "span:has-text('Share')"
+    ],
+    "reel_like_button": [
+      "div[aria-label='Like'][role='button']",
+      "div[aria-label='Thích'][role='button']"
+    ],
+    "reel_comment_input": [
+      "div[contenteditable='true'][aria-label*='Bình luận']",
+      "div[contenteditable='true'][aria-label*='Comment']"
+    ],
+    "reel_share_link": [
+      "span:has-text('Chia sẻ reel')",
+      "span:has-text('Share reel')"
+    ],
+
+    "add_friend_button": [
+      "div[aria-label='Thêm bạn bè'][role='button']",
+      "div[aria-label='Add friend'][role='button']",
+      "span:has-text('Thêm bạn bè')",
+      "span:has-text('Add friend')",
+      "div[data-testid='FriendButton/add']"
+    ],
+    "confirm_friend_button": [
+      "div[aria-label='Xác nhận'][role='button']",
+      "span:has-text('Xác nhận')",
+      "span:has-text('Confirm')",
+      "div[data-testid='FriendRequestsButton/confirm']"
+    ],
+    "delete_friend_request": [
+      "span:has-text('Xóa')",
+      "span:has-text('Delete')"
+    ],
+    "cancel_friend_request": [
+      "span:has-text('Hủy yêu cầu')",
+      "span:has-text('Cancel request')",
+      "div[aria-label='Hủy yêu cầu kết bạn'][role='button']"
+    ],
+    "unfriend_button": [
+      "span:has-text('Hủy kết bạn')",
+      "span:has-text('Unfriend')"
+    ],
+    "unfriend_confirm": [
+      "div[aria-label='Xác nhận'][role='button']",
+      "span:has-text('Xác nhận')",
+      "span:has-text('Confirm')"
+    ],
+    "follow_button": [
+      "div[aria-label='Theo dõi'][role='button']",
+      "div[aria-label='Follow'][role='button']",
+      "span:has-text('Theo dõi')",
+      "span:has-text('Follow')"
+    ],
+    "unfollow_button": [
+      "div[aria-label='Đang theo dõi'][role='button']",
+      "span:has-text('Bỏ theo dõi')",
+      "span:has-text('Unfollow')"
+    ],
+    "friends_button_on_profile": [
+      "div[aria-label='Bạn bè'][role='button']",
+      "div[aria-label='Friends'][role='button']"
+    ],
+    "friend_requests_page_url": [
+      "https://www.facebook.com/friends/requests/"
+    ],
+    "friend_suggestions_page_url": [
+      "https://www.facebook.com/friends/suggestions/"
+    ],
+    "friend_sent_page_url": [
+      "https://www.facebook.com/friends/sent/"
+    ],
+
+    "like_page_button": [
+      "div[aria-label='Thích trang'][role='button']",
+      "div[aria-label='Like Page'][role='button']",
+      "span:has-text('Thích trang')",
+      "span:has-text('Like Page')"
+    ],
+    "liked_page_button": [
+      "div[aria-label='Đã thích'][role='button']",
+      "div[aria-label='Liked'][role='button']",
+      "span:has-text('Đã thích')",
+      "span:has-text('Liked')"
+    ],
+    "unlike_page_option": [
+      "span:has-text('Bỏ thích trang')",
+      "span:has-text('Unlike page')",
+      "span:has-text('Unlike Page')"
+    ],
+    "follow_page_button": [
+      "div[aria-label='Theo dõi trang'][role='button']",
+      "span:has-text('Theo dõi trang')"
+    ],
+    "page_invite_option": [
+      "span:has-text('Mời bạn bè thích trang')",
+      "span:has-text('Invite friends to like Page')"
+    ],
+    "page_share_button": [
+      "span:has-text('Chia sẻ trang')",
+      "span:has-text('Share Page')"
+    ],
+    "page_review_tab": [
+      "a[href*='/reviews']",
+      "span:has-text('Đánh giá')",
+      "span:has-text('Reviews')"
+    ],
+    "page_about_tab": [
+      "a[href*='/about']",
+      "span:has-text('Giới thiệu')"
+    ],
+    "page_posts_tab": [
+      "span:has-text('Bài viết')",
+      "a[href*='?sk=posts']"
+    ],
+    "page_services_tab": [
+      "span:has-text('Dịch vụ')",
+      "span:has-text('Services')"
+    ],
+    "page_shop_tab": [
+      "span:has-text('Cửa hàng')",
+      "span:has-text('Shop')"
+    ],
+    "page_create_name_input": [
+      "input[placeholder*='Tên Page']",
+      "input[placeholder*='Page name']",
+      "input[aria-label*='Tên']"
+    ],
+    "page_create_button": [
+      "div[aria-label='Tạo Page'][role='button']",
+      "span:has-text('Tạo Page')",
+      "span:has-text('Create Page')"
+    ],
+    "page_category_input": [
+      "input[placeholder*='Danh mục']",
+      "input[placeholder*='Category']"
+    ],
+    "page_edit_button": [
+      "div[aria-label='Chỉnh sửa trang'][role='button']",
+      "span:has-text('Chỉnh sửa trang')",
+      "span:has-text('Edit Page')"
+    ],
+    "page_settings_button": [
+      "div[aria-label='Cài đặt trang'][role='button']",
+      "span:has-text('Cài đặt trang')",
+      "span:has-text('Page settings')"
+    ],
+
+    "share_button": [
+      "div[aria-label='Chia sẻ'][role='button']",
+      "div[aria-label='Share'][role='button']",
+      "span:has-text('Chia sẻ')"
+    ],
+    "share_now_button": [
+      "span:has-text('Chia sẻ ngay')",
+      "span:has-text('Share now')"
+    ],
+    "share_to_feed": [
+      "span:has-text('Chia sẻ lên trang cá nhân')",
+      "span:has-text('Share to your timeline')",
+      "span:has-text('Share to Feed')"
+    ],
+    "share_to_group": [
+      "span:has-text('Chia sẻ vào nhóm')",
+      "span:has-text('Share to a Group')"
+    ],
+    "share_to_page": [
+      "span:has-text('Chia sẻ lên trang')",
+      "span:has-text('Share to a Page')"
+    ],
+    "share_to_message": [
+      "span:has-text('Gửi trong Messenger')",
+      "span:has-text('Send in Messenger')"
+    ],
+
+    "comment_button": [
+      "div[aria-label='Bình luận'][role='button']",
+      "div[aria-label='Comment'][role='button']",
+      "span:has-text('Bình luận')"
+    ],
+    "comment_box": [
+      "div[contenteditable='true'][aria-label*='Viết bình luận']",
+      "div[contenteditable='true'][aria-label*='Write a comment']",
+      "div[data-testid='UFI2ComposerInputV2']"
+    ],
+    "reply_button": [
+      "span:has-text('Phản hồi')",
+      "span:has-text('Reply')"
+    ],
+    "reply_box": [
+      "div[contenteditable='true'][aria-label*='Phản hồi']",
+      "div[contenteditable='true'][aria-label*='Reply']"
+    ],
+    "send_comment_button": [
+      "div[aria-label='Đăng bình luận'][role='button']",
+      "div[aria-label='Post comment'][role='button']"
+    ],
+    "comment_like_button": [
+      "span:has-text('Thích')",
+      "span:has-text('Like')"
+    ],
+    "comment_more_options": [
+      "div[aria-label='Thêm tùy chọn'][role='button']",
+      "div[aria-label='More'][role='button']"
+    ],
+    "delete_comment_option": [
+      "span:has-text('Xóa bình luận')",
+      "span:has-text('Delete comment')"
+    ],
+    "edit_comment_option": [
+      "span:has-text('Chỉnh sửa bình luận')",
+      "span:has-text('Edit comment')"
+    ],
+
+    "message_button": [
+      "div[aria-label='Nhắn tin'][role='button']",
+      "div[aria-label='Message'][role='button']",
+      "a[href*='/messages/']",
+      "span:has-text('Nhắn tin')"
+    ],
+    "message_input": [
+      "div[contenteditable='true'][aria-label*='nhắn']",
+      "div[contenteditable='true'][aria-label*='message']",
+      "div[contenteditable='true'][aria-label*='Aa']",
+      "div[role='textbox'][contenteditable='true']"
+    ],
+    "send_message_button": [
+      "div[aria-label='Gửi'][role='button']",
+      "div[aria-label='Send'][role='button']"
+    ],
+    "message_emoji_button": [
+      "div[aria-label='Chọn biểu tượng cảm xúc'][role='button']",
+      "div[aria-label='Choose an emoji'][role='button']"
+    ],
+    "message_attach_button": [
+      "div[aria-label='Đính kèm'][role='button']",
+      "div[aria-label='Attach'][role='button']"
+    ],
+    "message_image_button": [
+      "div[aria-label='Đính kèm ảnh hoặc video'][role='button']",
+      "div[aria-label='Attach a photo or video'][role='button']"
+    ],
+    "message_search": [
+      "input[placeholder*='Tìm kiếm Messenger']",
+      "input[placeholder*='Search Messenger']"
+    ],
+    "message_new_thread": [
+      "div[aria-label='Soạn tin nhắn mới'][role='button']",
+      "div[aria-label='New message'][role='button']"
+    ],
+    "message_recipient_input": [
+      "input[placeholder*='Tìm kiếm người hoặc nhóm']",
+      "input[placeholder*='Search for people or groups']",
+      "input[aria-label*='Người nhận']"
+    ],
+    "message_seen_indicator": [
+      "span[aria-label*='Đã xem']",
+      "span[aria-label*='Seen']"
+    ],
+
+    "join_group_button": [
+      "div[aria-label='Tham gia nhóm'][role='button']",
+      "div[aria-label='Join group'][role='button']",
+      "span:has-text('Tham gia nhóm')",
+      "span:has-text('Join group')"
+    ],
+    "leave_group_button": [
+      "span:has-text('Rời nhóm')",
+      "span:has-text('Leave group')"
+    ],
+    "leave_group_confirm": [
+      "div[aria-label='Rời nhóm'][role='button']",
+      "span:has-text('Xác nhận')"
+    ],
+    "group_post_composer": [
+      "div[aria-label*='Viết gì đó'][role='button']",
+      "span:has-text('Viết gì đó')",
+      "span:has-text('Write something')"
+    ],
+    "group_member_count": [
+      "span[aria-label*='thành viên']",
+      "span[aria-label*='member']"
+    ],
+    "group_members_tab": [
+      "a[href*='/members']",
+      "span:has-text('Thành viên')",
+      "span:has-text('Members')"
+    ],
+    "group_about_tab": [
+      "a[href*='?multi_permalinks']",
+      "span:has-text('Giới thiệu nhóm')"
+    ],
+    "group_files_tab": [
+      "a[href*='/files']",
+      "span:has-text('Tệp')",
+      "span:has-text('Files')"
+    ],
+    "group_media_tab": [
+      "a[href*='/media']",
+      "span:has-text('Ảnh & Video')"
+    ],
+    "group_invite_button": [
+      "div[aria-label='Mời thành viên'][role='button']",
+      "span:has-text('Mời')",
+      "span:has-text('Invite')"
+    ],
+    "group_approve_member": [
+      "span:has-text('Chấp thuận')",
+      "span:has-text('Approve')"
+    ],
+    "group_decline_member": [
+      "span:has-text('Từ chối')",
+      "span:has-text('Decline')"
+    ],
+
+    "invite_friends_button": [
+      "span:has-text('Mời bạn bè')",
+      "span:has-text('Invite friends')"
+    ],
+    "invite_send_button": [
+      "span:has-text('Gửi lời mời')",
+      "span:has-text('Send invites')"
+    ],
+    "select_all_friends": [
+      "span:has-text('Chọn tất cả')",
+      "span:has-text('Select all')"
+    ],
+
+    "more_menu": [
+      "div[aria-label='Xem thêm'][role='button']",
+      "div[aria-label='More'][role='button']",
+      "div[aria-haspopup='menu'][role='button']"
+    ],
+    "post_more_options": [
+      "div[aria-label='Tùy chọn khác'][role='button']",
+      "div[aria-label='More options'][role='button']"
+    ],
+    "poke_button": [
+      "span:has-text('Chọc')",
+      "span:has-text('Poke')"
+    ],
+    "birthday_link": [
+      "a[href*='birthday']",
+      "span:has-text('Chúc mừng sinh nhật')",
+      "span:has-text('Say happy birthday')"
+    ],
+
+    "delete_post_option": [
+      "span:has-text('Xóa bài viết')",
+      "span:has-text('Delete post')"
+    ],
+    "delete_post_confirm": [
+      "div[aria-label='Xóa'][role='button']",
+      "span:has-text('Xóa')"
+    ],
+    "edit_post_option": [
+      "span:has-text('Chỉnh sửa bài viết')",
+      "span:has-text('Edit post')"
+    ],
+    "hide_post_option": [
+      "span:has-text('Ẩn bài viết')",
+      "span:has-text('Hide post')"
+    ],
+    "save_post_option": [
+      "span:has-text('Lưu bài viết')",
+      "span:has-text('Save post')"
+    ],
+    "pin_post_option": [
+      "span:has-text('Ghim bài viết')",
+      "span:has-text('Pin post')"
+    ],
+    "turn_off_notifications_post": [
+      "span:has-text('Tắt thông báo cho bài viết này')",
+      "span:has-text('Turn off notifications for this post')"
+    ],
+    "report_post_option": [
+      "span:has-text('Báo cáo bài viết')",
+      "span:has-text('Report post')"
+    ],
+
+    "search_bar": [
+      "input[aria-label='Tìm kiếm trên Facebook']",
+      "input[aria-label='Search Facebook']",
+      "input[type='search']",
+      "input[placeholder*='Tìm kiếm']"
+    ],
+    "search_result_people": [
+      "div[data-testid='browse-result-content'] a",
+      "a[data-testid='search-result']"
+    ],
+    "search_result_groups": [
+      "a[href*='/groups/']"
+    ],
+    "search_people_filter": [
+      "span:has-text('Mọi người')",
+      "span:has-text('People')"
+    ],
+    "search_groups_filter": [
+      "span:has-text('Nhóm')",
+      "span:has-text('Groups')"
+    ],
+    "search_posts_filter": [
+      "span:has-text('Bài viết')",
+      "span:has-text('Posts')"
+    ],
+    "search_pages_filter": [
+      "span:has-text('Trang')",
+      "span:has-text('Pages')"
+    ],
+    "search_videos_filter": [
+      "span:has-text('Video')",
+      "span:has-text('Videos')"
+    ],
+    "search_marketplace_filter": [
+      "span:has-text('Marketplace')"
+    ],
+    "search_events_filter": [
+      "span:has-text('Sự kiện')",
+      "span:has-text('Events')"
+    ],
+
+    "edit_profile_button": [
+      "div[aria-label='Chỉnh sửa trang cá nhân'][role='button']",
+      "div[aria-label='Edit profile'][role='button']",
+      "span:has-text('Chỉnh sửa trang cá nhân')"
+    ],
+    "update_avatar_button": [
+      "div[aria-label='Cập nhật ảnh đại diện'][role='button']",
+      "span:has-text('Cập nhật ảnh đại diện')"
+    ],
+    "update_cover_button": [
+      "div[aria-label='Cập nhật ảnh bìa'][role='button']",
+      "span:has-text('Cập nhật ảnh bìa')"
+    ],
+    "upload_photo_option": [
+      "span:has-text('Tải ảnh lên')",
+      "span:has-text('Upload photo')"
+    ],
+    "save_avatar_button": [
+      "div[aria-label='Lưu'][role='button']",
+      "span:has-text('Lưu')"
+    ],
+    "file_input": [
+      "input[type='file']",
+      "input[accept*='image']",
+      "input[accept*='video']"
+    ],
+    "add_photo_to_post": [
+      "div[aria-label='Ảnh/video'][role='button']",
+      "span:has-text('Ảnh/video')"
+    ],
+    "add_background_to_post": [
+      "div[aria-label='Màu nền'][role='button']",
+      "span:has-text('Màu nền')"
+    ],
+    "feeling_button": [
+      "div[aria-label='Cảm xúc/Hoạt động'][role='button']",
+      "span:has-text('Cảm xúc/Hoạt động')"
+    ],
+    "check_in_button": [
+      "div[aria-label='Check in'][role='button']",
+      "span:has-text('Check in')"
+    ],
+    "tag_people_button": [
+      "div[aria-label='Gắn thẻ bạn bè'][role='button']",
+      "span:has-text('Gắn thẻ bạn bè')"
+    ],
+    "audience_selector": [
+      "div[aria-label*='Bạn bè'][role='button'][aria-haspopup]",
+      "div[aria-label*='Công khai'][role='button'][aria-haspopup]"
+    ],
+    "audience_public": [
+      "span:has-text('Công khai')",
+      "span:has-text('Public')"
+    ],
+    "audience_friends": [
+      "span:has-text('Bạn bè')",
+      "span:has-text('Friends')"
+    ],
+    "audience_only_me": [
+      "span:has-text('Chỉ mình tôi')",
+      "span:has-text('Only me')"
+    ],
+
+    "profile_about_section": [
+      "a[href*='about']",
+      "span:has-text('Giới thiệu')"
+    ],
+    "profile_friends_section": [
+      "a[href*='/friends']",
+      "span:has-text('Bạn bè')"
+    ],
+    "profile_photos_section": [
+      "a[href*='/photos']",
+      "span:has-text('Ảnh')"
+    ],
+    "profile_videos_section": [
+      "a[href*='/videos']",
+      "span:has-text('Video')"
+    ],
+    "profile_reels_section": [
+      "a[href*='/reels']",
+      "span:has-text('Reels')"
+    ],
+    "profile_saved_section": [
+      "a[href*='/saved']",
+      "span:has-text('Đã lưu')"
+    ],
+    "profile_groups_section": [
+      "a[href*='?sk=groups']",
+      "span:has-text('Nhóm')"
+    ],
+    "professional_dashboard_url": [
+      "https://www.facebook.com/profile.php?sk=professional_dashboard"
+    ],
+    "pro_mode_enable": [
+      "span:has-text('Bật')",
+      "span:has-text('Turn on')",
+      "span:has-text('Enable')"
+    ],
+    "pro_mode_disable": [
+      "span:has-text('Tắt')",
+      "span:has-text('Turn off')"
+    ],
+    "about_work_edit": [
+      "span:has-text('Thêm nơi làm việc')",
+      "span:has-text('Add a workplace')"
+    ],
+    "about_education_edit": [
+      "span:has-text('Thêm trường học')",
+      "span:has-text('Add a school')"
+    ],
+    "about_hometown_edit": [
+      "span:has-text('Thêm quê hương')",
+      "span:has-text('Add a hometown')"
+    ],
+    "about_relationship_edit": [
+      "span:has-text('Thêm tình trạng mối quan hệ')",
+      "span:has-text('Add relationship status')"
+    ],
+    "about_bio_edit": [
+      "span:has-text('Thêm tiểu sử')",
+      "span:has-text('Add a bio')"
+    ],
+
+    "settings_security_tab": [
+      "a[href*='?tab=security']",
+      "span:has-text('Bảo mật và đăng nhập')"
+    ],
+    "settings_account_tab": [
+      "a[href*='?tab=account']",
+      "span:has-text('Thông tin chung')"
+    ],
+    "change_password_edit": [
+      "span:has-text('Chỉnh sửa mật khẩu')",
+      "div[aria-label='Chỉnh sửa'][role='button']"
+    ],
+    "current_password_input": [
+      "input[name='password_old']",
+      "input[placeholder*='mật khẩu hiện tại']",
+      "input[placeholder*='current password']"
+    ],
+    "new_password_input": [
+      "input[name='password_new']",
+      "input[placeholder*='mật khẩu mới']"
+    ],
+    "confirm_password_input": [
+      "input[name='password_confirm']",
+      "input[placeholder*='nhập lại']",
+      "input[placeholder*='confirm']"
+    ],
+    "save_password_button": [
+      "span:has-text('Lưu thay đổi')",
+      "span:has-text('Save changes')"
+    ],
+    "two_fa_section": [
+      "span:has-text('Xác thực hai yếu tố')",
+      "span:has-text('Two-factor authentication')"
+    ],
+    "two_fa_edit_button": [
+      "span:has-text('Chỉnh sửa')",
+      "span:has-text('Edit')"
+    ],
+    "trusted_devices_section": [
+      "span:has-text('Trình duyệt được ủy quyền')",
+      "span:has-text('Authorized logins')"
+    ],
+    "remove_trusted_devices": [
+      "span:has-text('Xóa tất cả')",
+      "span:has-text('Remove all')"
+    ],
+    "active_sessions_section": [
+      "span:has-text('Vị trí bạn đã đăng nhập')",
+      "span:has-text('Where you're logged in')"
+    ],
+    "logout_all_sessions": [
+      "span:has-text('Đăng xuất khỏi tất cả các phiên')",
+      "span:has-text('Log out of all sessions')"
+    ],
+    "remove_phone_button": [
+      "span:has-text('Xóa')",
+      "span:has-text('Remove')"
+    ],
+    "add_email_button": [
+      "span:has-text('Thêm địa chỉ email')",
+      "span:has-text('Add email address')"
+    ],
+    "email_input": [
+      "input[name='email']",
+      "input[type='email']",
+      "input[placeholder*='Email']"
+    ],
+    "change_name_edit": [
+      "span:has-text('Chỉnh sửa tên')",
+      "span:has-text('Edit name')"
+    ],
+    "first_name_input": [
+      "input[name='firstname']",
+      "input[placeholder*='Tên']",
+      "input[aria-label='Tên']"
+    ],
+    "last_name_input": [
+      "input[name='lastname']",
+      "input[placeholder*='Họ']"
+    ],
+    "review_name_change": [
+      "span:has-text('Xem lại sự thay đổi')",
+      "span:has-text('Review change')"
+    ],
+    "linked_accounts_tab": [
+      "a[href*='linked_accounts']",
+      "span:has-text('Tài khoản được liên kết')"
+    ],
+    "link_instagram_button": [
+      "span:has-text('Liên kết tài khoản')",
+      "span:has-text('Link account')"
+    ],
+    "unlink_instagram_button": [
+      "span:has-text('Hủy liên kết')",
+      "span:has-text('Unlink')"
+    ],
+    "mobile_tab": [
+      "a[href*='?tab=mobile']"
+    ],
+
+    "bm_overview_url": [
+      "https://business.facebook.com/overview"
+    ],
+    "bm_create_button": [
+      "div[aria-label='Tạo tài khoản'][role='button']",
+      "span:has-text('Tạo tài khoản')",
+      "span:has-text('Create account')",
+      "a[href*='/business/create']"
+    ],
+    "bm_name_input": [
+      "input[placeholder*='Tên doanh nghiệp']",
+      "input[placeholder*='Business name']",
+      "input[aria-label*='Tên doanh nghiệp']",
+      "input[name='name']"
+    ],
+    "bm_email_input": [
+      "input[placeholder*='Email doanh nghiệp']",
+      "input[placeholder*='Business email']",
+      "input[type='email']"
+    ],
+    "bm_submit_button": [
+      "div[aria-label='Gửi'][role='button']",
+      "span:has-text('Gửi')",
+      "span:has-text('Submit')",
+      "button[type='submit']"
+    ],
+    "bm_add_page": [
+      "span:has-text('Thêm trang')",
+      "span:has-text('Add Page')",
+      "a[href*='/business/add/page']"
+    ],
+    "bm_add_ad_account": [
+      "span:has-text('Thêm tài khoản quảng cáo')",
+      "span:has-text('Add ad account')",
+      "a[href*='/business/add/ad-account']"
+    ],
+    "bm_add_people": [
+      "span:has-text('Thêm người')",
+      "span:has-text('Add people')"
+    ],
+    "bm_people_email_input": [
+      "input[placeholder*='email']",
+      "input[type='email']"
+    ],
+    "bm_assign_role": [
+      "div[aria-label='Quản trị viên'][role='radio']",
+      "div[aria-label='Admin'][role='radio']",
+      "span:has-text('Quản trị viên')"
+    ],
+    "bm_partner_section": [
+      "span:has-text('Đối tác')",
+      "span:has-text('Partners')",
+      "a[href*='/business/partners']"
+    ],
+    "bm_request_access": [
+      "span:has-text('Yêu cầu quyền truy cập')",
+      "span:has-text('Request access')"
+    ],
+    "bm_share_asset": [
+      "span:has-text('Chia sẻ nội dung')",
+      "span:has-text('Share asset')"
+    ],
+    "bm_pixel_section": [
+      "span:has-text('Pixel')",
+      "a[href*='/business/pixels']"
+    ],
+    "bm_pixel_create": [
+      "span:has-text('Tạo pixel')",
+      "span:has-text('Create pixel')"
+    ],
+    "bm_catalog_section": [
+      "span:has-text('Danh mục')",
+      "span:has-text('Catalogs')",
+      "a[href*='/business/catalogs']"
+    ],
+    "bm_app_section": [
+      "span:has-text('Ứng dụng')",
+      "span:has-text('Apps')",
+      "a[href*='/business/apps']"
+    ],
+    "bm_custom_audience": [
+      "span:has-text('Đối tượng tùy chỉnh')",
+      "span:has-text('Custom audiences')"
+    ],
+    "bm_verify_domain": [
+      "span:has-text('Xác minh tên miền')",
+      "span:has-text('Domain verification')"
+    ],
+
+    "ad_manager_url": [
+      "https://www.facebook.com/adsmanager/"
+    ],
+    "ad_create_button": [
+      "span:has-text('Tạo')",
+      "span:has-text('Create')",
+      "div[aria-label='Tạo quảng cáo'][role='button']"
+    ],
+    "ad_campaign_objective": [
+      "span:has-text('Nhận thức')",
+      "span:has-text('Lưu lượng truy cập')",
+      "span:has-text('Chuyển đổi')",
+      "span:has-text('Awareness')"
+    ],
+    "ad_budget_input": [
+      "input[aria-label*='Ngân sách']",
+      "input[aria-label*='Budget']",
+      "input[placeholder*='ngân sách']"
+    ],
+    "ad_publish_button": [
+      "div[aria-label='Xuất bản'][role='button']",
+      "div[aria-label='Publish'][role='button']",
+      "span:has-text('Xuất bản')"
+    ],
+
+    "marketplace_sell_button": [
+      "div[aria-label='Tạo bài đăng mới'][role='button']",
+      "span:has-text('Tạo bài đăng mới')",
+      "span:has-text('Create new listing')"
+    ],
+    "marketplace_category_select": [
+      "span:has-text('Mặt hàng để bán')",
+      "span:has-text('Item for sale')"
+    ],
+    "marketplace_price_input": [
+      "input[aria-label*='Giá']",
+      "input[placeholder*='Giá']",
+      "input[aria-label*='Price']"
+    ],
+    "marketplace_title_input": [
+      "input[aria-label*='Tiêu đề']",
+      "input[placeholder*='Tiêu đề']",
+      "input[aria-label*='Title']"
+    ],
+    "marketplace_description_input": [
+      "div[contenteditable='true'][aria-label*='Mô tả']",
+      "textarea[aria-label*='Mô tả']",
+      "textarea[placeholder*='Mô tả']"
+    ],
+    "marketplace_add_photos": [
+      "div[aria-label='Thêm ảnh'][role='button']",
+      "span:has-text('Thêm ảnh')"
+    ],
+    "marketplace_next_button": [
+      "div[aria-label='Tiếp theo'][role='button']",
+      "span:has-text('Tiếp theo')"
+    ],
+    "marketplace_publish_button": [
+      "div[aria-label='Đăng'][role='button']",
+      "span:has-text('Đăng')",
+      "span:has-text('Publish')"
+    ],
+
+    "events_create_button": [
+      "div[aria-label='Tạo sự kiện'][role='button']",
+      "span:has-text('Tạo sự kiện')",
+      "span:has-text('Create event')"
+    ],
+    "events_name_input": [
+      "input[aria-label*='Tên sự kiện']",
+      "input[placeholder*='Tên sự kiện']",
+      "input[aria-label*='Event name']"
+    ],
+    "events_date_input": [
+      "input[aria-label*='Ngày bắt đầu']",
+      "input[placeholder*='Ngày']",
+      "input[type='date']"
+    ],
+    "events_location_input": [
+      "input[aria-label*='Địa điểm']",
+      "input[placeholder*='Địa điểm']",
+      "input[aria-label*='Location']"
+    ],
+    "events_description_input": [
+      "div[contenteditable='true'][aria-label*='Mô tả']",
+      "textarea[aria-label*='Mô tả sự kiện']"
+    ],
+    "events_create_confirm": [
+      "div[aria-label='Tạo sự kiện'][role='button']",
+      "span:has-text('Tạo sự kiện')"
+    ],
+    "events_going_button": [
+      "div[aria-label='Tham gia'][role='button']",
+      "span:has-text('Tham gia')",
+      "span:has-text('Going')"
+    ],
+    "events_interested_button": [
+      "div[aria-label='Quan tâm'][role='button']",
+      "span:has-text('Quan tâm')",
+      "span:has-text('Interested')"
+    ],
+
+    "fundraiser_create": [
+      "span:has-text('Tạo chiến dịch gây quỹ')",
+      "span:has-text('Create fundraiser')"
+    ],
+    "fundraiser_goal_input": [
+      "input[aria-label*='Mục tiêu']",
+      "input[placeholder*='Số tiền']"
+    ],
+
+    "live_start_button": [
+      "div[aria-label='Video trực tiếp'][role='button']",
+      "div[aria-label='Live video'][role='button']",
+      "span:has-text('Video trực tiếp')"
+    ],
+    "live_go_live_button": [
+      "div[aria-label='Phát trực tiếp'][role='button']",
+      "span:has-text('Phát trực tiếp')",
+      "span:has-text('Go Live')"
+    ],
+    "live_end_button": [
+      "div[aria-label='Kết thúc phát sóng'][role='button']",
+      "span:has-text('Kết thúc phát sóng')",
+      "span:has-text('End live video')"
+    ],
+    "live_comment_box": [
+      "div[contenteditable='true'][aria-label*='Bình luận']",
+      "div[contenteditable='true'][placeholder*='Bình luận']"
+    ],
+
+    "login_input": [
+      "input[name='email']",
+      "input[id='email']",
+      "input[placeholder*='Email']",
+      "input[placeholder*='Số điện thoại']"
+    ],
+    "password_input": [
+      "input[name='pass']",
+      "input[id='pass']",
+      "input[type='password']"
+    ],
+    "login_button": [
+      "button[name='login']",
+      "button[type='submit'][name='login']",
+      "div[aria-label='Đăng nhập'][role='button']"
+    ],
+    "otp_input": [
+      "input[autocomplete='one-time-code']",
+      "input[name='approvals_code']",
+      "input[name='code']",
+      "input[name='n']",
+      "input[type='tel']",
+      "input[inputmode='numeric']"
+    ],
+    "otp_submit_button": [
+      "button[type='submit']",
+      "div[aria-label='Tiếp tục'][role='button']",
+      "span:has-text('Tiếp tục')"
+    ],
+    "trust_device_button": [
+      "span:has-text('Đây là tôi')",
+      "span:has-text('This was me')",
+      "span:has-text('Save browser')",
+      "span:has-text('Lưu trình duyệt')"
+    ],
+    "dont_save_browser": [
+      "span:has-text('Không lưu')",
+      "span:has-text(\"Don't save\")"
+    ],
+    "captcha_frame": [
+      "iframe[src*='captcha']",
+      "iframe[title*='recaptcha']",
+      "iframe[src*='recaptcha']",
+      "div.g-recaptcha"
+    ],
+    "cookie_accept_button": [
+      "span:has-text('Từ chối hết')",
+      "span:has-text('Decline optional cookies')",
+      "span:has-text('Allow all cookies')",
+      "span:has-text('Accept all')",
+      "div[data-testid='cookie-policy-manage-dialog-accept-button']"
+    ],
+    "not_now_button": [
+      "span:has-text('Không phải bây giờ')",
+      "span:has-text('Not now')"
+    ],
+    "close_button": [
+      "div[aria-label='Đóng'][role='button']",
+      "div[aria-label='Close'][role='button']"
+    ],
+    "popup_dismiss": [
+      "div[aria-label='Đóng'][role='button']",
+      "span:has-text('Không phải bây giờ')",
+      "span:has-text('Bỏ qua')",
+      "span:has-text('Skip')"
+    ],
+    "is_logged_in": [
+      "a[aria-label='Trang chủ']",
+      "a[aria-label='Home']",
+      "div[aria-label='Tài khoản của bạn']",
+      "div[aria-label='Your profile']",
+      "div[role='feed']",
+      "a[href*='/notifications/']"
+    ],
+    "login_form": [
+      "input[name='email']",
+      "form[action*='login']"
+    ],
+    "checkpoint_form": [
+      "form[action*='checkpoint']",
+      "span:has-text('Xác nhận danh tính')"
+    ],
+
+    "save_changes_button": [
+      "span:has-text('Lưu thay đổi')",
+      "span:has-text('Save changes')"
+    ],
+    "save_button": [
+      "div[aria-label='Lưu'][role='button']",
+      "span:has-text('Lưu')"
+    ],
+    "confirm_button": [
+      "div[aria-label='Xác nhận'][role='button']",
+      "span:has-text('Xác nhận')"
+    ],
+    "cancel_button": [
+      "div[aria-label='Hủy'][role='button']",
+      "span:has-text('Hủy')"
+    ],
+    "done_button": [
+      "div[aria-label='Xong'][role='button']",
+      "span:has-text('Xong')"
+    ],
+    "next_button": [
+      "div[aria-label='Tiếp theo'][role='button']",
+      "span:has-text('Tiếp theo')"
+    ],
+    "see_more_button": [
+      "span:has-text('Xem thêm')",
+      "span:has-text('See more')"
+    ],
+    "publish_button": [
+      "div[aria-label='Chia sẻ'][role='button']",
+      "span:has-text('Chia sẻ')"
+    ],
+
+    "star_5": [
+      "div[aria-label='5 out of 5 stars'][role='button']",
+      "div[aria-label='5 ngôi sao trên 5'][role='button']",
+      "div[aria-label='5 sao'][role='button']"
+    ],
+    "star_4": [
+      "div[aria-label='4 out of 5 stars'][role='button']",
+      "div[aria-label='4 sao'][role='button']"
+    ],
+    "review_text_input": [
+      "div[contenteditable='true'][aria-label*='đánh giá']",
+      "div[contenteditable='true']",
+      "textarea"
+    ],
+
+    "home_link": [
+      "a[aria-label='Trang chủ']",
+      "a[aria-label='Home']",
+      "a[href='https://www.facebook.com/']"
+    ],
+    "friends_nav": [
+      "a[aria-label='Bạn bè']",
+      "a[href='/friends/']"
+    ],
+    "groups_nav": [
+      "a[aria-label='Nhóm']",
+      "a[href='/groups/']"
+    ],
+    "marketplace_nav": [
+      "a[aria-label='Marketplace']",
+      "a[href='/marketplace/']"
+    ],
+    "watch_nav": [
+      "a[aria-label='Watch']",
+      "a[href='/watch/']"
+    ],
+    "profile_nav": [
+      "div[aria-label='Tài khoản của bạn'][role='button']",
+      "div[aria-label='Your profile'][role='button']"
+    ],
+    "newsfeed_container": [
+      "div[role='feed']",
+      "div[data-pagelet='MainFeed']"
+    ],
+    "post_container": [
+      "div[role='article']",
+      "div[data-testid='post_message']"
+    ],
+
+    "facebook_login_url": ["https://www.facebook.com/login/"],
+    "facebook_home_url": ["https://www.facebook.com/"],
+    "friends_request_url": ["https://www.facebook.com/friends/requests/"],
+    "friends_suggestion_url": ["https://www.facebook.com/friends/suggestions/"],
+    "friends_sent_url": ["https://www.facebook.com/friends/sent/"],
+    "groups_feed_url": ["https://www.facebook.com/groups/feed/"],
+    "settings_security_url": ["https://www.facebook.com/settings?tab=security"],
+    "settings_account_url": ["https://www.facebook.com/settings?tab=account"],
+    "settings_mobile_url": ["https://www.facebook.com/settings?tab=mobile"],
+    "settings_linked_accounts_url": ["https://www.facebook.com/settings?tab=linked_accounts"],
+    "page_creation_url": ["https://www.facebook.com/pages/creation/"],
+    "meta_business_url": ["https://business.facebook.com/overview"],
+    "reel_create_url": ["https://www.facebook.com/reel/create/"],
+    "ad_manager_url": ["https://www.facebook.com/adsmanager/"],
+    "marketplace_url": ["https://www.facebook.com/marketplace/"],
+    "events_url": ["https://www.facebook.com/events/"],
+    "watch_url": ["https://www.facebook.com/watch/"],
+    "gaming_url": ["https://www.facebook.com/gaming/"],
+    "saved_url": ["https://www.facebook.com/saved/"]
+  }
+}
