@@ -24,6 +24,7 @@
   "twoFactor": {
     "inputCode": [
       "input[autocomplete='one-time-code']",
+      "#r_3",
       "input[name='approvals_code']",
       "input[data-testid*='mfa_code']",
       "input[aria-label*='mã']",
