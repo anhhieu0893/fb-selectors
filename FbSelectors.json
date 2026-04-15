@@ -27,6 +27,7 @@
   "twoFactor": {
     "inputCode": [
       "input[autocomplete='one-time-code']",
+      "xpath=//*[@id='_r_3_']",
       "#r_3",
       "input[name='approvals_code']",
       "input[data-testid*='mfa_code']",
@@ -41,7 +42,6 @@
       "input[name='n']",
       "input[maxlength='6']",
       "input[maxlength='8']",
-      "xpath=//*[@id='_r_3_']",
       "xpath=//input[starts-with(@id,'_r_')]"
     ],
     "submitButton": [
@@ -97,6 +97,7 @@
   ],
   "captchaIndicators": [
     "iframe[src*='captcha']",
+    "xpath=//*[@id='recaptcha-anchor']",
     "iframe[title*='recaptcha']",
     "iframe[src*='recaptcha']",
     "iframe[src*='api2/anchor']",
@@ -104,7 +105,6 @@
     "textarea[name='g-recaptcha-response']",
     "div.g-recaptcha",
     "#recaptcha-anchor",
-    "xpath=//*[@id='recaptcha-anchor']",
     "text=I'm not a robot",
     "text=Tôi không phải là người máy"
   ],
