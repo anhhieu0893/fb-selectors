@@ -66,6 +66,7 @@
   ],
   "trustDeviceTexts": [
     "This was me",
+    "Percayai perangkat ini"
     "Confirm this was me",
     "Trust this device",
     "Trust this browser",
@@ -80,6 +81,7 @@
     "Xác nhận",
     "Continue",
     "Confirm"
+    "
   ],
   "safeCheckpointButtons": [
     "Continue",
