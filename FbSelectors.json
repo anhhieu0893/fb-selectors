@@ -7,6 +7,7 @@
     "submitButton": "button[name='login'], button[type='submit'], button:has-text('Đăng nhập'), button:has-text('Log in')"
   },
   "otpInputs": [
+    "xpath=//input[starts-with(@id,'_r_')]",
     "input[autocomplete='one-time-code']",
     "input[name='approvals_code']",
     "input[name='code']",
@@ -22,7 +23,6 @@
     "input[aria-label*='Xác thực']",
     "input[maxlength='6']",
     "input[maxlength='8']",
-    "xpath=//input[starts-with(@id,'_r_')]"
   ],
   "twoFactor": {
     "inputCode": [
@@ -65,37 +65,42 @@
     "a[aria-label*='Notifications']"
   ],
   "trustDeviceTexts": [
-    "This was me",
-    "Percayai perangkat ini"
-    "Confirm this was me",
-    "Trust this device",
-    "Trust this browser",
-    "Remember browser",
-    "Save browser",
-    "Đây là tôi",
-    "Xác nhận đây là tôi",
-    "Tin cậy thiết bị này",
-    "Ghi nhớ trình duyệt",
-    "Lưu trình duyệt",
-    "Tiếp tục",
-    "Xác nhận",
-    "Continue",
-    "Confirm"
-    "
-  ],
-  "safeCheckpointButtons": [
-    "Continue",
-    "Tiếp tục",
-    "Not now",
-    "Không phải bây giờ",
-    "Skip",
-    "Bỏ qua",
-    "Later",
-    "Để sau",
-    "Close",
-    "Đóng",
-    "Tôi đã hiểu",
-    "Got it"
+  "This was me",
+  "Confirm this was me",
+  "Trust this device",
+  "Trust this browser",
+  "Remember browser",
+  "Save browser",
+  "Đây là tôi",
+  "Xác nhận đây là tôi",
+  "Tin cậy thiết bị này",
+  "Ghi nhớ trình duyệt",
+  "Lưu trình duyệt",
+  "Percayai perangkat ini",
+  "Confiar neste dispositivo",
+  "Sempre confirmar que sou eu",
+  "Continue",
+  "Confirm",
+  "Tiếp tục",
+  "Xác nhận",
+  "Continuar",
+  "Confirmar"
+],
+"safeCheckpointButtons": [
+  "Continue",
+  "Confirm",
+  "Tiếp tục",
+  "Xác nhận",
+  "Skip",
+  "Bỏ qua",
+  "Not now",
+  "Không phải bây giờ",
+  "Close",
+  "Đóng",
+  "Continuar",
+  "Confirmar",
+  "Agora não",
+  "Fechar"
   ],
   "captchaIndicators": [
     "iframe[src*='captcha']",
