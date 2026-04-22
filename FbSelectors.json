@@ -186,6 +186,7 @@
     "POST_REEL": {
       "selector": "a[href*='/reel/create'], span:has-text('Đăng reel')",
       "actionType": "CLICK",
+      "//div[@aria-label='Thước phim']//div[@role='none']",
       "actionName": "Đăng reel",
       "note": ""
     },
