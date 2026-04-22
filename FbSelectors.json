@@ -461,11 +461,17 @@
           ],
           "createReelXpaths": [
             "//div[@role='button'][.//span[normalize-space()='Tạo thước phim']]",
-            "//div[@role='button'][.//span[normalize-space()='Create reel']]"
+            "//div[@role='button'][.//span[normalize-space()='Create reel']]",
+            "//div[@role='button'][.//span[normalize-space()='Buat reel']]",
+            "//div[@role='button'][.//span[normalize-space()='Buat Reel']]",
+            "//div[@role='button'][.//span[normalize-space()='Cipta reel']]",
+            "//div[@role='button'][.//span[normalize-space()='Cipta Reel']]"
           ],
           "createReelSelectors": [
             "[role='button']:has-text('Tạo thước phim')",
-            "[role='button']:has-text('Create reel')"
+            "[role='button']:has-text('Create reel')",
+            "[role='button']:has-text('Buat reel')",
+            "[role='button']:has-text('Cipta reel')"
           ],
           "uploadXpaths": [
             "//input[@type='file' and contains(@accept,'video/mp4')]",
@@ -486,40 +492,65 @@
           "captionXpaths": [
             "//div[@contenteditable='true' and @role='textbox' and contains(@aria-label,'chú thích')]",
             "//div[@contenteditable='true' and @role='textbox' and contains(@aria-label,'caption')]",
+            "//div[@contenteditable='true' and @role='textbox' and contains(@aria-label,'keterangan')]",
+            "//div[@contenteditable='true' and @role='textbox' and contains(@aria-label,'kapsyen')]",
             "//div[@contenteditable='true' and @role='textbox']"
           ],
           "captionSelectors": [
             "div[contenteditable='true'][role='textbox'][aria-label*='chú thích' i]",
             "div[contenteditable='true'][role='textbox'][aria-label*='caption' i]",
+            "div[contenteditable='true'][role='textbox'][aria-label*='keterangan' i]",
+            "div[contenteditable='true'][role='textbox'][aria-label*='kapsyen' i]",
             "div[contenteditable='true'][role='textbox']"
           ],
           "nextXpaths": [
             "//div[@role='button'][.//span[normalize-space()='Tiếp']]",
-            "//div[@role='button'][.//span[normalize-space()='Next']]"
+            "//div[@role='button'][.//span[normalize-space()='Next']]",
+            "//div[@role='button'][.//span[normalize-space()='Berikutnya']]",
+            "//div[@role='button'][.//span[normalize-space()='Lanjut']]",
+            "//div[@role='button'][.//span[normalize-space()='Seterusnya']]"
           ],
           "nextSelectors": [
             "[role='button']:has-text('Tiếp')",
-            "[role='button']:has-text('Next')"
+            "[role='button']:has-text('Next')",
+            "[role='button']:has-text('Berikutnya')",
+            "[role='button']:has-text('Lanjut')",
+            "[role='button']:has-text('Seterusnya')"
           ],
           "submitXpaths": [
             "//div[@role='button'][.//span[normalize-space()='Đăng']]",
             "//div[@role='button'][.//span[normalize-space()='Post']]",
             "//div[@role='button'][.//span[normalize-space()='Publish']]",
             "//div[@role='button'][.//span[normalize-space()='Chia sẻ']]",
-            "//div[@role='button'][.//span[normalize-space()='Share']]"
+            "//div[@role='button'][.//span[normalize-space()='Share']]",
+            "//div[@role='button'][.//span[normalize-space()='Posting']]",
+            "//div[@role='button'][.//span[normalize-space()='Bagikan']]",
+            "//div[@role='button'][.//span[normalize-space()='Hantar']]",
+            "//div[@role='button'][.//span[normalize-space()='Siar']]",
+            "//div[@role='button'][.//span[normalize-space()='Kongsi']]"
           ],
           "submitSelectors": [
             "[role='button']:has-text('Đăng')",
             "[role='button']:has-text('Post')",
             "[role='button']:has-text('Publish')",
             "[role='button']:has-text('Chia sẻ')",
-            "[role='button']:has-text('Share')"
+            "[role='button']:has-text('Share')",
+            "[role='button']:has-text('Posting')",
+            "[role='button']:has-text('Bagikan')",
+            "[role='button']:has-text('Hantar')",
+            "[role='button']:has-text('Siar')",
+            "[role='button']:has-text('Kongsi')"
           ],
           "verifyXpaths": [
             "//*[contains(normalize-space(.),'Reel của bạn đã được đăng')]",
             "//*[contains(normalize-space(.),'Your reel has been posted')]",
             "//*[contains(normalize-space(.),'Đã đăng')]",
-            "//*[contains(normalize-space(.),'Đã chia sẻ')]"
+            "//*[contains(normalize-space(.),'Đã chia sẻ')]",
+            "//*[contains(normalize-space(.),'Reel Anda telah diposting')]",
+            "//*[contains(normalize-space(.),'Reel anda telah dihantar')]",
+            "//*[contains(normalize-space(.),'Telah diposting')]",
+            "//*[contains(normalize-space(.),'Telah dibagikan')]",
+            "//*[contains(normalize-space(.),'Telah dikongsi')]"
           ]
         },
         {
@@ -547,19 +578,26 @@
           ],
           "photoVideoXpaths": [
             "//div[@role='button'][.//span[normalize-space()='Ảnh/video']]",
-            "//div[@role='button'][.//span[normalize-space()='Photo/video']]"
+            "//div[@role='button'][.//span[normalize-space()='Photo/video']]",
+            "//div[@role='button'][.//span[normalize-space()='Foto/video']]",
+            "//div[@role='button'][.//span[normalize-space()='Foto/Video']]"
           ],
           "photoVideoSelectors": [
             "[role='button']:has-text('Ảnh/video')",
-            "[role='button']:has-text('Photo/video')"
+            "[role='button']:has-text('Photo/video')",
+            "[role='button']:has-text('Foto/video')"
           ],
           "createReelXpaths": [
             "//div[@role='button'][.//span[normalize-space()='Tạo thước phim']]",
-            "//div[@role='button'][.//span[normalize-space()='Create reel']]"
+            "//div[@role='button'][.//span[normalize-space()='Create reel']]",
+            "//div[@role='button'][.//span[normalize-space()='Buat reel']]",
+            "//div[@role='button'][.//span[normalize-space()='Cipta reel']]"
           ],
           "createReelSelectors": [
             "[role='button']:has-text('Tạo thước phim')",
-            "[role='button']:has-text('Create reel')"
+            "[role='button']:has-text('Create reel')",
+            "[role='button']:has-text('Buat reel')",
+            "[role='button']:has-text('Cipta reel')"
           ],
           "uploadXpaths": [
             "//input[@type='file' and contains(@accept,'video')]",
@@ -583,27 +621,46 @@
           ],
           "nextXpaths": [
             "//div[@role='button'][.//span[normalize-space()='Tiếp']]",
-            "//div[@role='button'][.//span[normalize-space()='Next']]"
+            "//div[@role='button'][.//span[normalize-space()='Next']]",
+            "//div[@role='button'][.//span[normalize-space()='Berikutnya']]",
+            "//div[@role='button'][.//span[normalize-space()='Lanjut']]",
+            "//div[@role='button'][.//span[normalize-space()='Seterusnya']]"
           ],
           "nextSelectors": [
             "[role='button']:has-text('Tiếp')",
-            "[role='button']:has-text('Next')"
+            "[role='button']:has-text('Next')",
+            "[role='button']:has-text('Berikutnya')",
+            "[role='button']:has-text('Lanjut')",
+            "[role='button']:has-text('Seterusnya')"
           ],
           "submitXpaths": [
             "//div[@role='button'][.//span[normalize-space()='Đăng']]",
             "//div[@role='button'][.//span[normalize-space()='Post']]",
             "//div[@role='button'][.//span[normalize-space()='Chia sẻ']]",
-            "//div[@role='button'][.//span[normalize-space()='Share']]"
+            "//div[@role='button'][.//span[normalize-space()='Share']]",
+            "//div[@role='button'][.//span[normalize-space()='Posting']]",
+            "//div[@role='button'][.//span[normalize-space()='Bagikan']]",
+            "//div[@role='button'][.//span[normalize-space()='Hantar']]",
+            "//div[@role='button'][.//span[normalize-space()='Siar']]",
+            "//div[@role='button'][.//span[normalize-space()='Kongsi']]"
           ],
           "submitSelectors": [
             "[role='button']:has-text('Đăng')",
             "[role='button']:has-text('Post')",
             "[role='button']:has-text('Chia sẻ')",
-            "[role='button']:has-text('Share')"
+            "[role='button']:has-text('Share')",
+            "[role='button']:has-text('Posting')",
+            "[role='button']:has-text('Bagikan')",
+            "[role='button']:has-text('Hantar')",
+            "[role='button']:has-text('Siar')",
+            "[role='button']:has-text('Kongsi')"
           ],
           "verifyXpaths": [
             "//*[contains(normalize-space(.),'Đã đăng')]",
-            "//*[contains(normalize-space(.),'Đã chia sẻ')]"
+            "//*[contains(normalize-space(.),'Đã chia sẻ')]",
+            "//*[contains(normalize-space(.),'Telah diposting')]",
+            "//*[contains(normalize-space(.),'Telah dibagikan')]",
+            "//*[contains(normalize-space(.),'Telah dikongsi')]"
           ]
         }
       ]
