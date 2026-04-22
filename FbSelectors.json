@@ -1165,14 +1165,28 @@
         "video[src]"
       ],
       "nextXpaths": [
-        "//div[@role='button'][contains(@aria-label,'Video tiếp theo')]",
-        "//div[@role='button'][contains(@aria-label,'Next video')]"
+         "//*[@role='button'][contains(@aria-label,'Video tiếp theo')]",
+         "//*[@role='button'][contains(@aria-label,'Next video')]",
+         "//div[@aria-label='Thẻ tiếp theo']",
+         "//div[@aria-label='Next card']",
+         "//*[@aria-label='Thẻ tiếp theo']",
+         "//*[@aria-label='Next card']",
+         "//div[contains(@aria-label,'Thẻ tiếp theo')]",
+         "//div[contains(@aria-label,'Next card')]",
+         "//*[@role='button'][contains(@aria-label,'Thẻ tiếp theo')]",
+         "//*[@role='button'][contains(@aria-label,'Next card')]"
       ],
       "nextSelectors": [
-        "div[role='button'][aria-label*='Video tiếp theo' i]",
-        "button[aria-label*='Video tiếp theo' i]",
-        "div[role='button'][aria-label*='Next video' i]",
-        "button[aria-label*='Next video' i]"
+         "[role='button'][aria-label*='Video tiếp theo' i]",
+         "[role='button'][aria-label*='Next video' i]",
+         "div[aria-label='Thẻ tiếp theo']",
+         "div[aria-label='Next card']",
+         "[aria-label='Thẻ tiếp theo']",
+         "[aria-label='Next card']",
+         "[role='button'][aria-label*='Thẻ tiếp theo' i]",
+         "[role='button'][aria-label*='Next card' i]",
+         "[aria-label*='Thẻ tiếp theo' i]",
+         "[aria-label*='Next card' i]"
       ],
       "verifySelectors": [
         "div[role='main'] video"
