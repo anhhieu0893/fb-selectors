@@ -375,6 +375,7 @@
         { "type": "wait", "waitSelectors": ["div[role='main']"] },
         { "type": "click", "clickSelectors": [
             "[role='button'][aria-label*='Thêm ảnh bìa' i]",
+            "[role='button'][aria-label*='Add cover photo' i]",
             "[role='button'][aria-label*='Edit cover photo' i]",
             "[role='button'][aria-label*='Cập nhật ảnh bìa' i]",
             "div[aria-label*='ảnh bìa' i][role='button']",
@@ -420,7 +421,9 @@
             "[role='button']:has-text('Tạo tin ảnh')",
             "[role='button']:has-text('Create a photo story')",
             "[role='button']:has-text('Tạo tin')",
-            "[role='button']:has-text('Add to story')"
+            "[role='button']:has-text('Create story')",
+            "[role='button']:has-text('Add to story')",
+            "[role='button']:has-text('Thêm vào tin')"
           ] },
         { "type": "upload", "uploadSelectors": [
             "input[type='file'][accept*='image']",
@@ -545,7 +548,9 @@
             "//*[contains(normalize-space(.),'Reel của bạn đã được đăng')]",
             "//*[contains(normalize-space(.),'Your reel has been posted')]",
             "//*[contains(normalize-space(.),'Đã đăng')]",
+            "//*[contains(normalize-space(.),'Posted')]",
             "//*[contains(normalize-space(.),'Đã chia sẻ')]",
+            "//*[contains(normalize-space(.),'Shared')]",
             "//*[contains(normalize-space(.),'Reel Anda telah diposting')]",
             "//*[contains(normalize-space(.),'Reel anda telah dihantar')]",
             "//*[contains(normalize-space(.),'Telah diposting')]",
@@ -657,7 +662,10 @@
           ],
           "verifyXpaths": [
             "//*[contains(normalize-space(.),'Đã đăng')]",
+            "//*[contains(normalize-space(.),'Posted')]",
+            "//*[contains(normalize-space(.),'Your reel has been posted')]",
             "//*[contains(normalize-space(.),'Đã chia sẻ')]",
+            "//*[contains(normalize-space(.),'Shared')]",
             "//*[contains(normalize-space(.),'Telah diposting')]",
             "//*[contains(normalize-space(.),'Telah dibagikan')]",
             "//*[contains(normalize-space(.),'Telah dikongsi')]"
@@ -704,7 +712,8 @@
         { "type": "verify", "verifySelectors": [
             "text=Bài viết đã được đăng",
             "text=Your post is now live",
-            "text=Đã đăng"
+            "text=Đã đăng",
+            "text=Posted"
           ] }
       ]
     },
@@ -745,7 +754,9 @@
           ] },
         { "type": "verify", "verifySelectors": [
             "text=Bài viết đã được đăng",
-            "text=Your post is now live"
+            "text=Your post is now live",
+            "text=Đã đăng",
+            "text=Posted"
           ] }
       ]
     },
@@ -775,11 +786,14 @@
             "[role='button'][aria-label*='Bình luận' i]:not([aria-disabled='true'])",
             "[role='button'][aria-label*='Comment' i]:not([aria-disabled='true'])",
             "[role='button']:has-text('Gửi')",
+            "[role='button']:has-text('Send')",
+            "[role='button']:has-text('Đăng')",
             "[role='button']:has-text('Post')"
           ] },
         { "type": "verify", "verifySelectors": [
             "[role='article'] [role='article']",
-            "text=Bình luận của bạn"
+            "text=Bình luận của bạn",
+            "text=Your comment"
           ] }
       ]
     },
@@ -816,7 +830,10 @@
         { "type": "submit", "submitSelectors": [
             "[role='button'][aria-label*='Bình luận' i]:not([aria-disabled='true'])",
             "[role='button'][aria-label*='Comment' i]:not([aria-disabled='true'])",
-            "[role='button'][aria-label*='Đăng' i]:not([aria-disabled='true'])"
+            "[role='button'][aria-label*='Đăng' i]:not([aria-disabled='true'])",
+            "[role='button'][aria-label*='Post' i]:not([aria-disabled='true'])",
+            "[role='button']:has-text('Gửi')",
+            "[role='button']:has-text('Send')"
           ] },
         { "type": "verify", "verifySelectors": [
             "[role='article'] [role='article']"
@@ -2038,9 +2055,11 @@
     "accountMenuSelectors": [
       "div[aria-label='Tài khoản của bạn'][role='button']",
       "div[aria-label='Your profile'][role='button']",
+      "div[aria-label='Trình đơn tài khoản'][role='button']",
       "div[aria-label='Account menu'][role='button']",
       "div[role='banner'] [role='button'][aria-label*='Tài khoản' i]",
-      "div[role='banner'] [role='button'][aria-label*='Your profile' i]"
+      "div[role='banner'] [role='button'][aria-label*='Your profile' i]",
+      "div[role='banner'] [role='button'][aria-label*='Account' i]"
     ],
     "settingsPrivacyXpaths": [
       "//*[@role='menuitem' or @role='button'][.//span[normalize-space(.)='Cài đặt và quyền riêng tư']]",
