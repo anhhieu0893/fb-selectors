@@ -1,768 +1,2148 @@
 {
-  "version": "2026.04.22-full-core-group1",
-  "platform": "facebook",
-
+  "version": "2026.04.16",
+  "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
-    "loginUrls": [
-      "https://www.facebook.com/",
-      "https://www.facebook.com/login/"
-    ],
-    "emailSelectors": [
-      "input[name='email']",
-      "input#email",
-      "input[type='email']"
-    ],
-    "emailXpaths": [
-      "//input[@name='email']",
-      "//input[@id='email']",
-      "//input[@type='email']"
-    ],
-    "passwordSelectors": [
-      "input[name='pass']",
-      "input#pass",
-      "input[type='password']"
-    ],
-    "passwordXpaths": [
-      "//input[@name='pass']",
-      "//input[@id='pass']",
-      "//input[@type='password']"
-    ],
-    "submitSelectors": [
-      "button[name='login']",
-      "button[type='submit']",
-      "input[type='submit']"
-    ],
-    "submitXpaths": [
-      "//button[@name='login']",
-      "//button[@type='submit']",
-      "//input[@type='submit']"
-    ],
-    "loginFormSelectors": [
-      "form[action*='login']",
-      "input[name='email']",
-      "input[name='pass']"
-    ],
-    "loginFormXpaths": [
-      "//form[contains(@action,'login')]",
-      "//input[@name='email']",
-      "//input[@name='pass']"
-    ],
-    "loggedInSelectors": [
-      "div[role='navigation']",
-      "div[role='banner']",
-      "a[aria-label*='Home' i]",
-      "a[aria-label*='Trang chủ' i]",
-      "a[href*='/me']"
-    ],
-    "loggedInXpaths": [
-      "//*[@role='navigation']",
-      "//*[@role='banner']",
-      "//a[contains(@href,'/me')]"
-    ],
-    "loginErrorSelectors": [
-      "div[role='alert']",
-      "#error_box"
-    ],
-    "loginErrorXpaths": [
-      "//*[@role='alert']",
-      "//*[@id='error_box']"
+    "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
+    "passInput": "input[name='pass'], input[type='password'], input[autocomplete='current-password']",
+    "submitButton": "button[name='login'], button[type='submit'], button:has-text('Đăng nhập'), button:has-text('Log in')"
+  },
+  "uploadFallbackSelectors": [
+    "input[type='file']",
+    "form input[type='file']",
+    "div[role='dialog'] input[type='file']"
+  ],
+  "genericButtonProbeSelector": "button, [role='button']",
+  "otpInputs": [
+    "input[autocomplete='one-time-code']",
+    "input[name='approvals_code']",
+    "input[name='code']",
+    "input[name='n']",
+    "input[type='tel']",
+    "input[inputmode='numeric']",
+    "input[aria-label*='mã']",
+    "input[aria-label*='Mã']",
+    "input[placeholder*='mã']",
+    "input[placeholder*='Mã']",
+    "input[data-testid*='mfa']",
+    "input[aria-label*='xác thực']",
+    "input[aria-label*='Xác thực']"
+  ],
+  "loggedInIndicators": [
+    "a[aria-label='Trang chủ']",
+    "a[aria-label='Home']",
+    "div[aria-label='Tài khoản của bạn']",
+    "div[aria-label='Your profile']",
+    "div[role='feed']",
+    "a[href*='/notifications/']",
+    "a[aria-label*='Thông báo']",
+    "a[aria-label*='Notifications']"
+  ],
+  "trustDeviceTexts": [
+    "text=This was me",
+    "text=Confirm this was me",
+    "text=Trust this device",
+    "text=Trust this browser",
+    "text=Remember browser",
+    "text=Save browser",
+    "text=Đây là tôi",
+    "text=Xác nhận đây là tôi",
+    "text=Tin cậy thiết bị này",
+    "text=Ghi nhớ trình duyệt",
+    "text=Lưu trình duyệt"
+  ],
+  "trustDeviceButtons": [
+    "This was me",
+    "Confirm this was me",
+    "Yes, this was me",
+    "Trust this device",
+    "Trust this browser",
+    "Remember browser",
+    "Remember this browser",
+    "Save browser",
+    "Save this browser",
+    "Đây là tôi",
+    "Xác nhận đây là tôi",
+    "Đúng là tôi",
+    "Tin cậy thiết bị này",
+    "Tin cậy trình duyệt này",
+    "Ghi nhớ trình duyệt",
+    "Ghi nhớ trình duyệt này",
+    "Lưu trình duyệt",
+    "Lưu trình duyệt này"
+  ],
+  "safeCheckpointButtons": [
+    "This was me",
+    "Confirm this was me",
+    "Yes, this was me",
+    "Trust this device",
+    "Trust this browser",
+    "Remember browser",
+    "Remember this browser",
+    "Save browser",
+    "Save this browser",
+    "Đây là tôi",
+    "Xác nhận đây là tôi",
+    "Đúng là tôi",
+    "Tin cậy thiết bị này",
+    "Tin cậy trình duyệt này",
+    "Ghi nhớ trình duyệt",
+    "Ghi nhớ trình duyệt này",
+    "Lưu trình duyệt",
+    "Lưu trình duyệt này",
+    "Continue",
+    "Tiếp tục",
+    "Not now",
+    "Không phải bây giờ",
+    "Skip",
+    "Bỏ qua",
+    "Later",
+    "Để sau",
+    "Close",
+    "Đóng",
+    "Tôi đã hiểu",
+    "Got it"
+  ],
+  "captchaIndicators": [
+    "iframe[src*='captcha']",
+    "iframe[title*='recaptcha']",
+    "iframe[src*='recaptcha']",
+    "textarea[name='g-recaptcha-response']",
+    "div.g-recaptcha",
+    "text=I'm not a robot",
+    "text=Tôi không phải là người máy"
+  ],
+  "commonPopupDismiss": [
+    "text=Từ chối hết",
+    "text=Decline optional cookies",
+    "text=Đóng",
+    "text=Không phải bây giờ",
+    "text=Not now",
+    "text=Accept all",
+    "text=Allow all cookies",
+    "text=Close",
+    "text=Bỏ qua",
+    "text=Skip"
+  ],
+  "google": {
+    "searchBox": "textarea[name='q']",
+    "fbResultLinks": [
+      "a[href*='facebook.com/login']",
+      "a[href*='facebook.com/login.php']",
+      "a[href*='facebook.com'][href*='login']",
+      "a:has-text('Đăng nhập')",
+      "a:has-text('Log in')",
+      "a:has-text('Facebook - log in')",
+      "a:has-text('Facebook - Đăng nhập')",
+      "a[href*='facebook.com']",
+      "a:has-text('Facebook')"
     ]
   },
-
+  "postCreateBox": "div[role='button']:has(span:has-text('Bạn đang nghĩ gì')), div[role='button']:has(span:has-text(\"What's on your mind\"))",
   "twoFactor": {
-    "urlContains": [
-      "/two_step_verification/",
-      "/two_factor/",
-      "/checkpoint/",
-      "approvals_code",
-      "login/checkpoint"
-    ],
-    "codeInputSelectors": [
-      "input[name='approvals_code']",
-      "input[name='code']",
+    "inputCode": [
       "input[autocomplete='one-time-code']",
-      "input[inputmode='numeric']",
-      "input[type='tel']",
-      "input[type='text']"
-    ],
-    "codeInputXpaths": [
-      "//input[@name='approvals_code']",
-      "//input[@name='code']",
-      "//input[@autocomplete='one-time-code']",
-      "//input[@inputmode='numeric']",
-      "//input[@type='tel']",
-      "//input[@type='text']"
-    ],
-    "submitSelectors": [
-      "button[name='submit']",
-      "button[type='submit']",
-      "button[data-testid*='mfa_submit']",
-      "input[type='submit']"
-    ],
-    "submitXpaths": [
-      "//button[@name='submit']",
-      "//button[@type='submit']",
-      "//button[contains(@data-testid,'mfa_submit')]",
-      "//input[@type='submit']"
-    ],
-    "invalidCodeSelectors": [
-      "div[role='alert']",
-      "#error_box"
-    ],
-    "invalidCodeXpaths": [
-      "//*[@role='alert']",
-      "//*[@id='error_box']"
-    ],
-    "checkpointSelectors": [
-      "form[action*='checkpoint']",
+      "#r_3",
       "input[name='approvals_code']",
-      "input[autocomplete='one-time-code']"
+      "input[data-testid*='mfa_code']",
+      "input[aria-label*='mã']",
+      "input[placeholder*='mã']",
+      "input[type='tel'][maxlength='6']",
+      "input[type='tel'][maxlength='8']",
+      "input[inputmode='numeric'][maxlength='6']",
+      "input[inputmode='numeric'][maxlength='8']"
     ],
-    "checkpointXpaths": [
-      "//form[contains(@action,'checkpoint')]",
-      "//input[@name='approvals_code']",
-      "//input[@autocomplete='one-time-code']"
-    ]
-  },
-
-  "trustDevice": {
-    "urlContains": [
-      "/checkpoint/",
-      "/two_factor/",
-      "/two_step_verification/",
-      "remember_browser"
-    ],
-    "clickSelectors": [
-      "button[type='submit']",
+    "submitButton": [
       "button[name='submit']",
-      "div[role='button']",
-      "a[role='button']"
-    ],
-    "clickXpaths": [
-      "//button[@type='submit']",
-      "//button[@name='submit']",
-      "//*[@role='button']",
-      "//a[@role='button']"
-    ],
-    "primaryTexts": [
-      "Tiếp tục",
-      "Xác nhận",
-      "Đồng ý",
-      "Continue",
-      "Confirm",
-      "OK"
-    ],
-    "secondaryTexts": [
-      "Lúc khác",
-      "Bỏ qua",
-      "Không phải bây giờ",
-      "Skip",
-      "Not now"
-    ],
-    "selectorTemplates": [
-      "button:has-text('{text}')",
-      "div[role='button']:has-text('{text}')",
-      "a[role='button']:has-text('{text}')"
-    ]
-  },
-
-  "rememberBrowser": {
-    "urlContains": [
-      "/two_factor/remember_browser/",
-      "remember_browser"
-    ],
-    "clickSelectors": [
       "button[type='submit']",
-      "button[name='submit']",
-      "button",
-      "[role='button']",
-      "[tabindex]:not([tabindex='-1'])"
-    ],
-    "clickXpaths": [
-      "(//*[@role='button' or self::button or @tabindex][not(@aria-disabled='true')])[1]",
-      "//*[contains(normalize-space(.),'Tin cậy')]/ancestor::*[@role='button' or self::button][1]",
-      "//*[contains(normalize-space(.),'Trust')]/ancestor::*[@role='button' or self::button][1]",
-      "//*[contains(normalize-space(.),'Tiếp tục')]/ancestor::*[@role='button' or self::button][1]",
-      "//*[contains(normalize-space(.),'Continue')]/ancestor::*[@role='button' or self::button][1]"
-    ],
-    "primaryTexts": [
-      "Tin cậy thiết bị này",
-      "Tin cậy trình duyệt này",
-      "Trust this device",
-      "Trust this browser",
-      "Tiếp tục",
-      "Continue",
-      "Xác nhận",
-      "Confirm"
-    ],
-    "secondaryTexts": [
-      "Không phải bây giờ",
-      "Lúc khác",
-      "Bỏ qua",
-      "Not now",
-      "Skip"
-    ],
-    "selectorTemplates": [
-      "button:has-text('{text}')",
-      "div[role='button']:has-text('{text}')",
-      "a[role='button']:has-text('{text}')",
-      "[tabindex]:has-text('{text}')"
-    ],
-    "genericCandidates": [
-      "button",
-      "[role='button']",
-      "[tabindex]:not([tabindex='-1'])",
-      "a[href]",
-      "[onclick]"
-    ],
-    "negativeTexts": [
-      "đăng xuất",
-      "logout",
-      "remove",
-      "delete",
-      "xóa"
+      "button:has-text('Tiếp tục')",
+      "button:has-text('Xác nhận')",
+      "button:has-text('Continue')",
+      "button:has-text('Confirm')",
+      "button[data-testid*='mfa_submit']"
     ]
   },
-
-  "languageNormalize": {
-    "enabled": true,
-    "countryToLanguage": {
-      "VN": "vi_VN",
-      "US": "en_US",
-      "GB": "en_GB",
-      "TH": "th_TH",
-      "ID": "id_ID",
-      "PH": "en_US",
-      "BR": "pt_BR",
-      "IN": "en_US"
-    },
-    "languageLabels": {
-      "vi_VN": [
-        "Tiếng Việt",
-        "Vietnamese"
-      ],
-      "en_US": [
-        "English (US)",
-        "English"
-      ],
-      "en_GB": [
-        "English (UK)",
-        "English (United Kingdom)"
-      ],
-      "th_TH": [
-        "ภาษาไทย",
-        "Thai"
-      ],
-      "id_ID": [
-        "Bahasa Indonesia",
-        "Indonesian"
-      ],
-      "pt_BR": [
-        "Português (Brasil)",
-        "Portuguese (Brazil)"
-      ]
-    },
-    "settingsUrls": [
-      "https://www.facebook.com/settings/?tab=language",
-      "https://www.facebook.com/settings/language"
-    ],
-    "accountMenuXpaths": [
-      "//*[@role='banner']//*[@role='button'][last()]",
-      "//*[@aria-label='Tài khoản' or @aria-label='Account']",
-      "//*[contains(@aria-label,'Tài khoản') or contains(@aria-label,'Account')]"
-    ],
-    "settingsPrivacyXpaths": [
-      "//*[normalize-space()='Cài đặt và quyền riêng tư']/ancestor::*[@role='button' or @role='menuitem'][1]",
-      "//*[normalize-space()='Settings & privacy']/ancestor::*[@role='button' or @role='menuitem'][1]"
-    ],
-    "languageMenuXpaths": [
-      "//*[normalize-space()='Ngôn ngữ']/ancestor::*[@role='button' or @role='menuitem'][1]",
-      "//*[normalize-space()='Language']/ancestor::*[@role='button' or @role='menuitem'][1]"
-    ],
-    "facebookLanguageXpaths": [
-      "//*[contains(normalize-space(.),'Ngôn ngữ trên Facebook')]/ancestor::*[@role='button' or @role='menuitem'][1]",
-      "//*[contains(normalize-space(.),'Facebook language')]/ancestor::*[@role='button' or @role='menuitem'][1]"
-    ],
-    "languageOptionXpathsByCode": {
-      "vi_VN": [
-        "//*[normalize-space()='Tiếng Việt']/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
-      ],
-      "en_US": [
-        "//*[contains(normalize-space(.),'English (US)')]/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
-      ],
-      "en_GB": [
-        "//*[contains(normalize-space(.),'English (UK)')]/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
-      ],
-      "th_TH": [
-        "//*[normalize-space()='ภาษาไทย']/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
-      ],
-      "id_ID": [
-        "//*[contains(normalize-space(.),'Bahasa Indonesia')]/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
-      ],
-      "pt_BR": [
-        "//*[contains(normalize-space(.),'Português')]/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
-      ]
-    },
-    "saveXpaths": [
-      "//*[normalize-space()='Lưu thay đổi']/ancestor::*[@role='button' or self::button][1]",
-      "//*[normalize-space()='Save changes']/ancestor::*[@role='button' or self::button][1]",
-      "//*[normalize-space()='Lưu']/ancestor::*[@role='button' or self::button][1]",
-      "//*[normalize-space()='Save']/ancestor::*[@role='button' or self::button][1]"
-    ],
-    "verifyXpaths": [
-      "//*[contains(normalize-space(.),'Ngôn ngữ trên Facebook')]",
-      "//*[contains(normalize-space(.),'Facebook language')]"
-    ]
-  },
-
+  "actionSelectors": {},
   "businessSelectors": {
     "READ_NOTIFICATION": {
-      "selector": "",
-      "actionType": "CLICK",
-      "actionName": "Đọc thông báo",
       "displayName": "Đọc thông báo",
       "status": "DEDICATED_HANDLER",
       "requiresText": false,
       "requiresFile": "none",
       "requiresUrl": false,
       "requiresCount": true,
-      "businessFields": ["count"],
+      "businessFields": ["repeatCount"],
+      "urlPathHint": "notifications",
+      "fallbackUrl": "https://www.facebook.com/notifications/",
       "fallbackUrls": [
         "https://www.facebook.com/notifications/",
-        "https://www.facebook.com/notifications"
+        "https://m.facebook.com/notifications/"
+      ],
+      "timeoutMs": 12000,
+      "retryCount": 2,
+      "entry": [
+        "a[href='/notifications/']",
+        "a[href^='/notifications/']",
+        "a[href*='/notifications/']",
+        "div[role='button'][aria-label*='Notifications' i]",
+        "div[role='button'][aria-label*='Thông báo' i]",
+        "a[aria-label*='Notifications' i]",
+        "a[aria-label*='Thông báo' i]",
+        "[role='link'][aria-label*='Notifications' i]",
+        "[role='link'][aria-label*='Thông báo' i]"
       ],
       "entryXpaths": [
-        "//*[contains(@aria-label,'Thông báo') and (@role='button' or self::a)]",
-        "//*[contains(@aria-label,'Notifications') and (@role='button' or self::a)]",
-        "//a[contains(@href,'/notifications')]"
+        "//a[@href='/notifications/']",
+        "//*[@role='link' and (contains(@aria-label,'Notifications') or contains(@aria-label,'Thông báo'))]"
       ],
-      "entrySelectors": [
-        "div[role='button'][aria-label*='Thông báo' i]",
-        "div[role='button'][aria-label*='Notifications' i]",
-        "a[aria-label*='Thông báo' i]",
-        "a[aria-label*='Notifications' i]",
-        "a[href*='/notifications']"
+      "panelReady": [
+        "div[role='main']",
+        "div[aria-label*='Notifications' i]",
+        "div[aria-label*='Thông báo' i]",
+        "[role='feed']",
+        "[role='article']",
+        "div[data-pagelet*='Notifications' i]"
       ],
       "panelXpaths": [
-        "//*[contains(@aria-label,'Thông báo')]",
-        "//*[contains(@aria-label,'Notifications')]",
-        "//*[@role='main']"
+        "//div[@role='main']",
+        "//*[@data-pagelet[contains(.,'Notifications')]]"
       ],
-      "panelSelectors": [
-        "div[aria-label*='Thông báo' i]",
-        "div[aria-label*='Notifications' i]",
-        "div[role='main']"
+      "item": [
+        "div[role='main'] a[href*='permalink']",
+        "div[role='main'] a[role='link'][href*='/']",
+        "div[role='main'] [role='article'] a[role='link']",
+        "[role='feed'] [role='article']",
+        "div[aria-label*='Notifications' i] a[role='link']",
+        "div[aria-label*='Thông báo' i] a[role='link']"
       ],
       "itemXpaths": [
-        "//*[@role='main']//a[@role='link' and @href]",
-        "//*[contains(@aria-label,'Thông báo')]//a[@role='link' and @href]",
-        "//*[contains(@aria-label,'Notifications')]//a[@role='link' and @href]"
+        "//div[@role='main']//a[contains(@href,'permalink')]",
+        "//*[@role='feed']//*[@role='article']"
       ],
-      "itemSelectors": [
-        "div[aria-label*='Thông báo' i] a[role='link']",
-        "div[aria-label*='Notifications' i] a[role='link']",
-        "div[role='main'] a[role='link'][href*='/']"
-      ],
-      "verifyXpaths": [
-        "//*[@role='main']"
+      "waitSelectors": [
+        "div[role='main']",
+        "[role='feed']"
       ],
       "verifySelectors": [
-        "div[role='main']",
-        "a[role='link']"
+        "div[role='main'] a[href*='permalink']",
+        "[role='feed'] [role='article']"
       ]
     },
-
-    "VIEW_STORY": {
-      "selector": "",
-      "actionType": "CLICK",
-      "actionName": "Xem Story",
-      "displayName": "Xem Story",
-      "status": "DEDICATED_HANDLER",
+    "CLICK_ELEMENT": {
+      "displayName": "Click phần tử (nâng cao, không cần user nhập selector)",
+      "status": "LOW_LEVEL_CONFIG",
       "requiresText": false,
       "requiresFile": "none",
       "requiresUrl": false,
-      "requiresCount": true,
-      "businessFields": ["count"],
-      "fallbackUrls": [
-        "https://www.facebook.com/stories/"
+      "requiresCount": false,
+      "timeoutMs": 8000,
+      "retryCount": 2,
+      "clickXpaths": [],
+      "clickSelectors": [],
+      "selectorTemplates": [
+        "button:has-text('{text}')",
+        "div[role='button']:has-text('{text}')",
+        "a[role='button']:has-text('{text}')",
+        "[aria-label*='{text}' i]"
       ],
-      "entryXpaths": [
-        "//a[contains(@href,'/stories/')]",
-        "//*[contains(@aria-label,'Story') and @role='button']",
-        "//*[contains(@aria-label,'Tin') and @role='button']"
+      "genericCandidates": [
+        "button",
+        "[role='button']",
+        "[tabindex]:not([tabindex='-1'])",
+        "a[href]",
+        "[onclick]"
       ],
-      "entrySelectors": [
-        "div[data-pagelet='Stories'] div[role='button']",
-        "a[href*='/stories/']",
-        "div[role='button'][aria-label*='Story' i]",
-        "div[role='button'][aria-label*='Tin' i]"
-      ],
-      "viewerXpaths": [
-        "//*[@role='dialog']",
-        "//video",
-        "//img"
-      ],
-      "viewerSelectors": [
-        "div[role='dialog']",
-        "div[data-pagelet*='Stories']",
-        "video",
-        "img"
-      ],
-      "nextXpaths": [
-        "//*[contains(@aria-label,'Next') and @role='button']",
-        "//*[contains(@aria-label,'Tiếp') and @role='button']"
-      ],
-      "nextSelectors": [
-        "div[role='button'][aria-label*='Next' i]",
-        "div[role='button'][aria-label*='Tiếp' i]",
-        "div[role='button'][aria-label*='Xem tiếp' i]"
-      ],
-      "verifyXpaths": [
-        "//video",
-        "//*[@role='dialog']"
-      ],
-      "verifySelectors": [
-        "video",
-        "div[role='dialog']",
-        "div[data-pagelet*='Stories']"
+      "verifySelectors": []
+    },
+    "WAIT_ELEMENT": {
+      "displayName": "Chờ phần tử",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "timeoutMs": 15000,
+      "waitSelectors": [
+        "div[role='main']",
+        "[role='feed']",
+        "[role='dialog']",
+        "body"
       ]
     },
-
-    "VIEW_WATCH": {
-      "selector": "",
+    "INPUT_TEXT": {
+      "displayName": "Gõ vào phần tử (nhập nội dung)",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": true,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["text"],
+      "timeoutMs": 8000,
+      "inputSelectors": [
+        "[contenteditable='true']",
+        "textarea:not([disabled])",
+        "input[type='text']:not([disabled])",
+        "input:not([type='hidden']):not([disabled])"
+      ],
+      "inputXpaths": [
+        "//*[@contenteditable='true']",
+        "//textarea[not(@disabled)]"
+      ]
+    },
+    "OPEN_URL": {
+      "displayName": "Mở URL / Truy cập Website",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["url"],
+      "timeoutMs": 20000,
+      "fallbackUrls": []
+    },
+    "UPLOAD_FILE": {
+      "displayName": "Tải tệp lên",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": false,
+      "requiresFile": "required",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["filePath"],
+      "timeoutMs": 30000,
+      "uploadSelectors": [
+        "input[type='file']"
+      ],
+      "uploadXpaths": [
+        "//input[@type='file']"
+      ],
+      "inputSelectors": [
+        "input[type='file']:not([disabled])"
+      ]
+    },
+    "UPLOAD_AVATAR": {
+      "displayName": "Up Avatar",
+      "status": "FULL_WORKFLOW",
+      "requiresText": false,
+      "requiresFile": "required",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["imagePath"],
+      "timeoutMs": 45000,
+      "workflowSteps": [
+        { "type": "openUrl", "url": "https://www.facebook.com/me",
+          "fallbackUrls": ["https://www.facebook.com/profile.php"] },
+        { "type": "wait", "waitSelectors": ["div[role='main']"] },
+        { "type": "click", "clickSelectors": [
+            "div[aria-label*='ảnh đại diện' i]",
+            "div[aria-label*='profile picture' i]",
+            "[role='button'][aria-label*='Cập nhật ảnh đại diện' i]",
+            "[role='button'][aria-label*='Update profile picture' i]"
+          ] },
+        { "type": "click", "clickSelectors": [
+            "[role='menuitem']:has-text('Tải ảnh lên')",
+            "[role='menuitem']:has-text('Upload photo')",
+            "div[role='button']:has-text('Tải ảnh lên')",
+            "div[role='button']:has-text('Upload photo')"
+          ] },
+        { "type": "upload", "uploadSelectors": [
+            "input[type='file'][accept*='image']",
+            "input[type='file']"
+          ], "uploadXpaths": ["//input[@type='file']"] },
+        { "type": "delay", "delayMs": 2500 },
+        { "type": "submit", "submitSelectors": [
+            "div[role='dialog'] [role='button']:has-text('Lưu')",
+            "div[role='dialog'] [role='button']:has-text('Save')",
+            "[role='button']:has-text('Lưu')",
+            "[role='button']:has-text('Save')"
+          ] },
+        { "type": "verify", "verifySelectors": [
+            "div[role='main'] img[alt*='ảnh đại diện' i]",
+            "div[role='main'] img[alt*='profile picture' i]"
+          ] }
+      ]
+    },
+    "UPLOAD_COVER": {
+      "displayName": "Up Cover",
+      "status": "FULL_WORKFLOW",
+      "requiresText": false,
+      "requiresFile": "required",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["imagePath"],
+      "timeoutMs": 45000,
+      "workflowSteps": [
+        { "type": "openUrl", "url": "https://www.facebook.com/me",
+          "fallbackUrls": ["https://www.facebook.com/profile.php"] },
+        { "type": "wait", "waitSelectors": ["div[role='main']"] },
+        { "type": "click", "clickSelectors": [
+            "[role='button'][aria-label*='Thêm ảnh bìa' i]",
+            "[role='button'][aria-label*='Edit cover photo' i]",
+            "[role='button'][aria-label*='Cập nhật ảnh bìa' i]",
+            "div[aria-label*='ảnh bìa' i][role='button']",
+            "div[aria-label*='cover photo' i][role='button']"
+          ] },
+        { "type": "click", "clickSelectors": [
+            "[role='menuitem']:has-text('Tải ảnh lên')",
+            "[role='menuitem']:has-text('Upload photo')"
+          ] },
+        { "type": "upload", "uploadSelectors": [
+            "input[type='file'][accept*='image']",
+            "input[type='file']"
+          ] },
+        { "type": "delay", "delayMs": 2500 },
+        { "type": "submit", "submitSelectors": [
+            "div[role='dialog'] [role='button']:has-text('Lưu thay đổi')",
+            "div[role='dialog'] [role='button']:has-text('Save changes')",
+            "[role='button']:has-text('Lưu thay đổi')",
+            "[role='button']:has-text('Save changes')",
+            "[role='button']:has-text('Lưu')",
+            "[role='button']:has-text('Save')"
+          ] },
+        { "type": "verify", "verifySelectors": [
+            "div[role='main'] img[alt*='ảnh bìa' i]",
+            "div[role='main'] img[alt*='cover photo' i]"
+          ] }
+      ]
+    },
+    "POST_STORY": {
+      "displayName": "Đăng Story",
+      "status": "FULL_WORKFLOW",
+      "requiresText": false,
+      "requiresFile": "required",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["imagePath"],
+      "timeoutMs": 60000,
+      "workflowSteps": [
+        { "type": "openUrl", "url": "https://www.facebook.com/stories/create/",
+          "fallbackUrls": ["https://www.facebook.com/stories/create/photo/"] },
+        { "type": "wait", "waitSelectors": ["div[role='main']", "input[type='file']"] },
+        { "type": "click", "clickSelectors": [
+            "[role='button']:has-text('Tạo tin ảnh')",
+            "[role='button']:has-text('Create a photo story')",
+            "[role='button']:has-text('Tạo tin')",
+            "[role='button']:has-text('Add to story')"
+          ] },
+        { "type": "upload", "uploadSelectors": [
+            "input[type='file'][accept*='image']",
+            "input[type='file'][accept*='video']",
+            "input[type='file']"
+          ] },
+        { "type": "delay", "delayMs": 3000 },
+        { "type": "submit", "submitSelectors": [
+            "[role='button']:has-text('Chia sẻ vào tin')",
+            "[role='button']:has-text('Share to story')",
+            "[role='button']:has-text('Share to Story')",
+            "[role='button']:has-text('Chia sẻ')",
+            "[role='button']:has-text('Share')"
+          ] },
+        { "type": "verify", "verifySelectors": [
+            "[role='status']",
+            "text=Đã chia sẻ",
+            "text=Shared"
+          ] }
+      ]
+    },
+    "POST_REEL": {
+      "displayName": "Đăng Reel",
+      "status": "FULL_WORKFLOW",
       "actionType": "CLICK",
-      "actionName": "Xem Watch",
+      "actionName": "Đăng reel",
+      "requiresText": false,
+      "requiresFile": "required",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["videoPath", "caption"],
+      "variants": [
+        {
+          "variantName": "normalReelPage",
+          "openUrls": [
+            "https://www.facebook.com/reel/",
+            "https://www.facebook.com/reels/"
+          ],
+          "createReelXpaths": [
+            "//div[@role='button'][.//span[normalize-space()='Tạo thước phim']]",
+            "//div[@role='button'][.//span[normalize-space()='Create reel']]"
+          ],
+          "createReelSelectors": [
+            "[role='button']:has-text('Tạo thước phim')",
+            "[role='button']:has-text('Create reel')"
+          ],
+          "uploadXpaths": [
+            "//input[@type='file' and contains(@accept,'video/mp4')]",
+            "//input[@type='file' and contains(@accept,'video')]",
+            "//input[@type='file' and contains(@accept,'mp4')]",
+            "//div[@role='dialog']//input[@type='file']",
+            "//form//input[@type='file']",
+            "//input[@type='file']"
+          ],
+          "uploadSelectors": [
+            "input[type='file'][accept*='video/mp4']",
+            "input[type='file'][accept*='video']",
+            "input[type='file'][accept*='mp4']",
+            "form input[type='file']",
+            "div[role='dialog'] input[type='file']",
+            "input[type='file']"
+          ],
+          "captionXpaths": [
+            "//div[@contenteditable='true' and @role='textbox' and contains(@aria-label,'chú thích')]",
+            "//div[@contenteditable='true' and @role='textbox' and contains(@aria-label,'caption')]",
+            "//div[@contenteditable='true' and @role='textbox']"
+          ],
+          "captionSelectors": [
+            "div[contenteditable='true'][role='textbox'][aria-label*='chú thích' i]",
+            "div[contenteditable='true'][role='textbox'][aria-label*='caption' i]",
+            "div[contenteditable='true'][role='textbox']"
+          ],
+          "nextXpaths": [
+            "//div[@role='button'][.//span[normalize-space()='Tiếp']]",
+            "//div[@role='button'][.//span[normalize-space()='Next']]"
+          ],
+          "nextSelectors": [
+            "[role='button']:has-text('Tiếp')",
+            "[role='button']:has-text('Next')"
+          ],
+          "submitXpaths": [
+            "//div[@role='button'][.//span[normalize-space()='Đăng']]",
+            "//div[@role='button'][.//span[normalize-space()='Post']]",
+            "//div[@role='button'][.//span[normalize-space()='Publish']]",
+            "//div[@role='button'][.//span[normalize-space()='Chia sẻ']]",
+            "//div[@role='button'][.//span[normalize-space()='Share']]"
+          ],
+          "submitSelectors": [
+            "[role='button']:has-text('Đăng')",
+            "[role='button']:has-text('Post')",
+            "[role='button']:has-text('Publish')",
+            "[role='button']:has-text('Chia sẻ')",
+            "[role='button']:has-text('Share')"
+          ],
+          "verifyXpaths": [
+            "//*[contains(normalize-space(.),'Reel của bạn đã được đăng')]",
+            "//*[contains(normalize-space(.),'Your reel has been posted')]",
+            "//*[contains(normalize-space(.),'Đã đăng')]",
+            "//*[contains(normalize-space(.),'Đã chia sẻ')]"
+          ]
+        },
+        {
+          "variantName": "professionalProfileReelTab",
+          "openUrls": [
+            "https://www.facebook.com/me",
+            "https://www.facebook.com/",
+            "https://www.facebook.com/profile.php"
+          ],
+          "reelTabXpaths": [
+            "//div[@aria-label='Thước phim']//div[@role='none']",
+            "//*[@aria-label='Thước phim']",
+            "//*[contains(@aria-label,'Thước phim')]",
+            "//*[@aria-label='Reels']",
+            "//*[@aria-label='Reel']",
+            "//*[contains(@aria-label,'Reels')]"
+          ],
+          "reelTabSelectors": [
+            "div[aria-label='Thước phim'] div[role='none']",
+            "div[aria-label='Thước phim']",
+            "div[aria-label*='Thước phim' i]",
+            "div[aria-label='Reels'] div[role='none']",
+            "div[aria-label='Reels']",
+            "div[aria-label*='Reel' i][role='button']"
+          ],
+          "photoVideoXpaths": [
+            "//div[@role='button'][.//span[normalize-space()='Ảnh/video']]",
+            "//div[@role='button'][.//span[normalize-space()='Photo/video']]"
+          ],
+          "photoVideoSelectors": [
+            "[role='button']:has-text('Ảnh/video')",
+            "[role='button']:has-text('Photo/video')"
+          ],
+          "createReelXpaths": [
+            "//div[@role='button'][.//span[normalize-space()='Tạo thước phim']]",
+            "//div[@role='button'][.//span[normalize-space()='Create reel']]"
+          ],
+          "createReelSelectors": [
+            "[role='button']:has-text('Tạo thước phim')",
+            "[role='button']:has-text('Create reel')"
+          ],
+          "uploadXpaths": [
+            "//input[@type='file' and contains(@accept,'video')]",
+            "//input[@type='file' and contains(@accept,'mp4')]",
+            "//div[@role='dialog']//input[@type='file']",
+            "//input[@type='file']"
+          ],
+          "uploadSelectors": [
+            "input[type='file'][accept*='video/mp4']",
+            "input[type='file'][accept*='video']",
+            "input[type='file'][accept*='mp4']",
+            "form input[type='file']",
+            "div[role='dialog'] input[type='file']",
+            "input[type='file']"
+          ],
+          "captionXpaths": [
+            "//div[@contenteditable='true' and @role='textbox']"
+          ],
+          "captionSelectors": [
+            "div[contenteditable='true'][role='textbox']"
+          ],
+          "nextXpaths": [
+            "//div[@role='button'][.//span[normalize-space()='Tiếp']]",
+            "//div[@role='button'][.//span[normalize-space()='Next']]"
+          ],
+          "nextSelectors": [
+            "[role='button']:has-text('Tiếp')",
+            "[role='button']:has-text('Next')"
+          ],
+          "submitXpaths": [
+            "//div[@role='button'][.//span[normalize-space()='Đăng']]",
+            "//div[@role='button'][.//span[normalize-space()='Post']]",
+            "//div[@role='button'][.//span[normalize-space()='Chia sẻ']]",
+            "//div[@role='button'][.//span[normalize-space()='Share']]"
+          ],
+          "submitSelectors": [
+            "[role='button']:has-text('Đăng')",
+            "[role='button']:has-text('Post')",
+            "[role='button']:has-text('Chia sẻ')",
+            "[role='button']:has-text('Share')"
+          ],
+          "verifyXpaths": [
+            "//*[contains(normalize-space(.),'Đã đăng')]",
+            "//*[contains(normalize-space(.),'Đã chia sẻ')]"
+          ]
+        }
+      ]
+    },
+    "POST_STATUS": {
+      "displayName": "Đăng status",
+      "status": "FULL_WORKFLOW",
+      "requiresText": true,
+      "requiresFile": "optional",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["text", "imagePath"],
+      "timeoutMs": 60000,
+      "workflowSteps": [
+        { "type": "openUrl", "url": "https://www.facebook.com/",
+          "fallbackUrls": ["https://m.facebook.com/"] },
+        { "type": "wait", "waitSelectors": ["div[role='feed']", "div[role='main']"] },
+        { "type": "click", "clickSelectors": [
+            "div[role='button']:has-text('Bạn đang nghĩ gì')",
+            "div[role='button']:has-text(\"What's on your mind\")",
+            "div[role='button'][aria-label*='Viết bài viết' i]",
+            "div[role='button'][aria-label*='Create a post' i]",
+            "div[role='button'][aria-label*='Create post' i]"
+          ] },
+        { "type": "wait", "waitSelectors": [
+            "div[role='dialog'] div[contenteditable='true']",
+            "div[contenteditable='true'][role='textbox']"
+          ] },
+        { "type": "input", "source": "text", "inputSelectors": [
+            "div[role='dialog'] div[contenteditable='true'][role='textbox']",
+            "div[role='dialog'] div[contenteditable='true']",
+            "div[contenteditable='true'][role='textbox']"
+          ] },
+        { "type": "delay", "delayMs": 1500 },
+        { "type": "submit", "submitSelectors": [
+            "div[role='dialog'] [role='button'][aria-label='Đăng']",
+            "div[role='dialog'] [role='button'][aria-label='Post']",
+            "div[role='dialog'] [role='button']:has-text('Đăng')",
+            "div[role='dialog'] [role='button']:has-text('Post')"
+          ] },
+        { "type": "verify", "verifySelectors": [
+            "text=Bài viết đã được đăng",
+            "text=Your post is now live",
+            "text=Đã đăng"
+          ] }
+      ]
+    },
+    "CREATE_POST": {
+      "displayName": "Đăng bài (group/page/timeline)",
+      "status": "FULL_WORKFLOW",
+      "requiresText": true,
+      "requiresFile": "optional",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["text", "mediaPath"],
+      "timeoutMs": 60000,
+      "workflowSteps": [
+        { "type": "wait", "waitSelectors": ["div[role='main']"] },
+        { "type": "click", "clickSelectors": [
+            "div[role='button']:has-text('Bạn viết gì đi')",
+            "div[role='button']:has-text('Bạn đang nghĩ gì')",
+            "div[role='button']:has-text('Viết bài viết')",
+            "div[role='button']:has-text(\"What's on your mind\")",
+            "div[role='button']:has-text('Write something')",
+            "div[role='button'][aria-label*='Create a post' i]",
+            "div[role='button'][aria-label*='Viết bài viết' i]"
+          ] },
+        { "type": "wait", "waitSelectors": [
+            "div[role='dialog'] div[contenteditable='true']"
+          ] },
+        { "type": "input", "source": "text", "inputSelectors": [
+            "div[role='dialog'] div[contenteditable='true'][role='textbox']",
+            "div[role='dialog'] div[contenteditable='true']",
+            "div[contenteditable='true'][role='textbox']"
+          ] },
+        { "type": "delay", "delayMs": 1500 },
+        { "type": "submit", "submitSelectors": [
+            "div[role='dialog'] [role='button'][aria-label='Đăng']",
+            "div[role='dialog'] [role='button'][aria-label='Post']",
+            "div[role='dialog'] [role='button']:has-text('Đăng')",
+            "div[role='dialog'] [role='button']:has-text('Post')"
+          ] },
+        { "type": "verify", "verifySelectors": [
+            "text=Bài viết đã được đăng",
+            "text=Your post is now live"
+          ] }
+      ]
+    },
+    "COMMENT": {
+      "displayName": "Bình luận",
+      "status": "FULL_WORKFLOW",
+      "requiresText": true,
+      "requiresFile": "optional",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["url", "text"],
+      "timeoutMs": 30000,
+      "workflowSteps": [
+        { "type": "openUrl", "url": "{url}" },
+        { "type": "wait", "waitSelectors": ["[role='article']", "div[role='main']"] },
+        { "type": "input", "source": "text", "inputSelectors": [
+            "div[aria-label*='Viết bình luận' i][contenteditable='true']",
+            "div[aria-label*='Write a comment' i][contenteditable='true']",
+            "form[role='presentation'] div[contenteditable='true'][role='textbox']",
+            "div[contenteditable='true'][role='textbox']"
+          ], "inputXpaths": [
+            "//div[contains(@aria-label,'Viết bình luận') and @contenteditable='true']",
+            "//div[contains(@aria-label,'Write a comment') and @contenteditable='true']"
+          ] },
+        { "type": "delay", "delayMs": 800 },
+        { "type": "submit", "submitSelectors": [
+            "[role='button'][aria-label*='Bình luận' i]:not([aria-disabled='true'])",
+            "[role='button'][aria-label*='Comment' i]:not([aria-disabled='true'])",
+            "[role='button']:has-text('Gửi')",
+            "[role='button']:has-text('Post')"
+          ] },
+        { "type": "verify", "verifySelectors": [
+            "[role='article'] [role='article']",
+            "text=Bình luận của bạn"
+          ] }
+      ]
+    },
+    "REPLY_COMMENT": {
+      "displayName": "Phản hồi bình luận",
+      "status": "FULL_WORKFLOW",
+      "requiresText": true,
+      "requiresFile": "none",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["url", "text"],
+      "timeoutMs": 30000,
+      "workflowSteps": [
+        { "type": "openUrl", "url": "{url}" },
+        { "type": "wait", "waitSelectors": ["[role='article']", "div[role='main']"] },
+        { "type": "click", "clickSelectors": [
+            "[role='button']:has-text('Phản hồi')",
+            "[role='button']:has-text('Reply')",
+            "[role='link']:has-text('Phản hồi')",
+            "[role='link']:has-text('Reply')"
+          ] },
+        { "type": "wait", "waitSelectors": [
+            "div[aria-label*='Phản hồi' i][contenteditable='true']",
+            "div[aria-label*='Reply' i][contenteditable='true']",
+            "div[contenteditable='true'][role='textbox']"
+          ] },
+        { "type": "input", "source": "text", "inputSelectors": [
+            "div[aria-label*='Phản hồi' i][contenteditable='true']",
+            "div[aria-label*='Reply' i][contenteditable='true']",
+            "form[role='presentation'] div[contenteditable='true'][role='textbox']",
+            "div[contenteditable='true'][role='textbox']"
+          ] },
+        { "type": "delay", "delayMs": 800 },
+        { "type": "submit", "submitSelectors": [
+            "[role='button'][aria-label*='Bình luận' i]:not([aria-disabled='true'])",
+            "[role='button'][aria-label*='Comment' i]:not([aria-disabled='true'])",
+            "[role='button'][aria-label*='Đăng' i]:not([aria-disabled='true'])"
+          ] },
+        { "type": "verify", "verifySelectors": [
+            "[role='article'] [role='article']"
+          ] }
+      ]
+    },
+    "SEND_MESSAGE": {
+      "displayName": "Nhắn tin",
+      "status": "FULL_WORKFLOW",
+      "requiresText": true,
+      "requiresFile": "none",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["url", "text"],
+      "timeoutMs": 30000,
+      "workflowSteps": [
+        { "type": "openUrl", "url": "{url}",
+          "fallbackUrls": ["https://www.messenger.com/", "https://www.facebook.com/messages/"] },
+        { "type": "wait", "waitSelectors": [
+            "[aria-label*='Tin nhắn' i]",
+            "[aria-label*='Messages' i]",
+            "div[role='main']"
+          ] },
+        { "type": "click", "clickSelectors": [
+            "[role='button']:has-text('Nhắn tin')",
+            "[role='button']:has-text('Message')"
+          ] },
+        { "type": "input", "source": "text", "inputSelectors": [
+            "div[aria-label*='Tin nhắn' i][contenteditable='true']",
+            "div[aria-label*='Message' i][contenteditable='true']",
+            "div[aria-label*='Aa'][contenteditable='true']",
+            "div[contenteditable='true'][role='textbox']"
+          ], "inputXpaths": [
+            "//div[contains(@aria-label,'Tin nhắn') and @contenteditable='true']",
+            "//div[contains(@aria-label,'Message') and @contenteditable='true']"
+          ] },
+        { "type": "delay", "delayMs": 800 },
+        { "type": "submit", "submitSelectors": [
+            "[role='button'][aria-label*='Gửi' i]:not([aria-disabled='true'])",
+            "[role='button'][aria-label*='Send' i]:not([aria-disabled='true'])",
+            "[type='submit']"
+          ] },
+        { "type": "verify", "verifySelectors": [
+            "[role='row'] [data-testid='outgoing_message']",
+            "div[role='row'][data-scope*='outgoing' i]"
+          ] }
+      ]
+    },
+    "SEARCH_GOOGLE": {
+      "displayName": "Tìm kiếm Google",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": true,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["keyword"],
+      "timeoutMs": 25000,
+      "fallbackUrls": [
+        "https://www.google.com/search?q={text}"
+      ],
+      "inputSelectors": [
+        "textarea[name='q']",
+        "input[name='q']",
+        "textarea[aria-label='Tìm kiếm' i]",
+        "textarea[aria-label='Search' i]"
+      ],
+      "verifySelectors": [
+        "#search",
+        "#rso",
+        "div[data-async-context]"
+      ]
+    },
+    "OPEN_WEBSITE": {
+      "displayName": "Truy cập Website",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["url"],
+      "timeoutMs": 25000,
+      "waitSelectors": [
+        "body"
+      ]
+    },
+    "LIKE_PAGE": {
+      "displayName": "Like page",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["pageUrl"],
+      "timeoutMs": 20000,
+      "waitSelectors": [
+        "div[role='main']"
+      ],
+      "clickSelectors": [
+        "div[role='button'][aria-label='Thích' i]",
+        "div[role='button'][aria-label='Like' i]",
+        "[role='button']:has-text('Thích Trang')",
+        "[role='button']:has-text('Like Page')",
+        "[role='button']:has-text('Thích')",
+        "[role='button']:has-text('Like')"
+      ],
+      "clickXpaths": [
+        "//div[@role='button' and (@aria-label='Thích' or @aria-label='Like')]"
+      ],
+      "verifySelectors": [
+        "[role='button'][aria-label*='Đã thích' i]",
+        "[role='button'][aria-label*='Liked' i]",
+        "[role='button']:has-text('Đã thích')",
+        "[role='button']:has-text('Liked')"
+      ]
+    },
+    "FOLLOW_USER": {
+      "displayName": "Follow",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["profileUrl"],
+      "timeoutMs": 20000,
+      "waitSelectors": [
+        "div[role='main']"
+      ],
+      "clickSelectors": [
+        "[role='button'][aria-label*='Theo dõi' i]:not([aria-label*='Đang' i])",
+        "[role='button'][aria-label='Follow' i]",
+        "[role='button']:has-text('Theo dõi')",
+        "[role='button']:has-text('Follow')"
+      ],
+      "verifySelectors": [
+        "[role='button'][aria-label*='Đang theo dõi' i]",
+        "[role='button'][aria-label*='Following' i]",
+        "[role='button']:has-text('Đang theo dõi')",
+        "[role='button']:has-text('Following')"
+      ]
+    },
+    "JOIN_GROUP_TARGET": {
+      "displayName": "Tham gia nhóm chỉ định",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["groupUrl"],
+      "timeoutMs": 20000,
+      "waitSelectors": [
+        "div[role='main']"
+      ],
+      "clickSelectors": [
+        "[role='button'][aria-label*='Tham gia nhóm' i]",
+        "[role='button'][aria-label*='Join group' i]",
+        "[role='button']:has-text('Tham gia nhóm')",
+        "[role='button']:has-text('Join group')",
+        "[role='button']:has-text('Tham gia')",
+        "[role='button']:has-text('Join')"
+      ],
+      "verifySelectors": [
+        "[role='button'][aria-label*='Đã gửi yêu cầu' i]",
+        "[role='button']:has-text('Đã gửi yêu cầu')",
+        "[role='button']:has-text('Requested')",
+        "[role='button']:has-text('Đã tham gia')",
+        "[role='button']:has-text('Joined')"
+      ]
+    },
+    "INTERACT_TARGET_POST": {
+      "displayName": "Tương tác bài viết chỉ định",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["postUrl"],
+      "timeoutMs": 25000,
+      "waitSelectors": [
+        "[role='article']",
+        "div[role='main']"
+      ],
+      "clickSelectors": [
+        "[role='article'] [role='button'][aria-label*='Thích' i]:not([aria-label*='Đã' i])",
+        "[role='article'] [role='button'][aria-label*='Like' i]:not([aria-label*='Liked' i])",
+        "[role='article'] div[aria-label='Thích' i][role='button']",
+        "[role='article'] div[aria-label='Like' i][role='button']"
+      ],
+      "verifySelectors": [
+        "[role='article'] [role='button'][aria-label*='Bỏ thích' i]",
+        "[role='article'] [role='button'][aria-label*='Remove Like' i]",
+        "[role='article'] [role='button'][aria-label*='Đã thích' i]",
+        "[role='article'] [role='button'][aria-label*='Liked' i]"
+      ]
+    },
+    "TARGET_REEL": {
+      "displayName": "Tương tác reel chỉ định",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["reelUrl"],
+      "timeoutMs": 25000,
+      "waitSelectors": [
+        "video",
+        "[data-pagelet*='Reel' i]",
+        "div[role='main']"
+      ],
+      "viewerSelectors": [
+        "video",
+        "[data-pagelet*='Reel' i]",
+        "div[role='dialog'] video"
+      ],
+      "clickSelectors": [
+        "[aria-label*='Thích' i][role='button']:not([aria-label*='Đã' i])",
+        "[aria-label*='Like' i][role='button']:not([aria-label*='Liked' i])"
+      ],
+      "nextSelectors": [
+        "[aria-label*='Reel tiếp theo' i][role='button']",
+        "[aria-label*='Next reel' i][role='button']",
+        "[aria-label='Next' i][role='button']"
+      ]
+    },
+    "LINK_INSTAGRAM": {
+      "displayName": "Liên kết Instagram",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": true,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["igUsername", "igPassword"],
+      "timeoutMs": 45000,
+      "fallbackUrls": [
+        "https://accountscenter.facebook.com/accounts/details/",
+        "https://www.facebook.com/settings?tab=linked_accounts"
+      ],
+      "entrySelectors": [
+        "[role='link']:has-text('Instagram')",
+        "[role='button']:has-text('Thêm tài khoản')",
+        "[role='button']:has-text('Add account')"
+      ],
+      "inputSelectors": [
+        "input[name='username']",
+        "input[aria-label*='Tên người dùng' i]",
+        "input[aria-label*='Username' i]",
+        "input[name='password']",
+        "input[type='password']"
+      ],
+      "clickSelectors": [
+        "[role='button']:has-text('Tiếp tục')",
+        "[role='button']:has-text('Continue')",
+        "[role='button']:has-text('Đăng nhập')",
+        "[role='button']:has-text('Log in')",
+        "button[type='submit']"
+      ],
+      "verifySelectors": [
+        "text=Liên kết thành công",
+        "text=Linked successfully",
+        "[aria-label*='Đã liên kết' i]"
+      ]
+    },
+    "LINK_BM": {
+      "displayName": "Liên kết BM",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": true,
+      "requiresFile": "none",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["bmLink"],
+      "timeoutMs": 30000,
+      "waitSelectors": [
+        "div[role='main']"
+      ],
+      "clickSelectors": [
+        "[role='button']:has-text('Chấp nhận lời mời')",
+        "[role='button']:has-text('Accept invitation')",
+        "[role='button']:has-text('Chấp nhận')",
+        "[role='button']:has-text('Accept')"
+      ],
+      "verifySelectors": [
+        "text=Đã chấp nhận",
+        "text=Accepted"
+      ]
+    },
+    "VIEW_WATCH": {
       "displayName": "Xem Watch",
       "status": "LOW_LEVEL_CONFIG",
       "requiresText": false,
       "requiresFile": "none",
       "requiresUrl": false,
       "requiresCount": true,
-      "businessFields": ["count"],
+      "businessFields": ["repeatCount"],
+      "urlPathHint": "watch",
+      "fallbackUrl": "https://www.facebook.com/watch/",
       "openUrls": [
-        "https://www.facebook.com/watch/"
+        "https://www.facebook.com/watch/",
+        "https://m.facebook.com/watch/"
       ],
       "fallbackUrls": [
-        "https://www.facebook.com/watch/"
+        "https://www.facebook.com/watch/",
+        "https://m.facebook.com/watch/"
+      ],
+      "entry": [
+        "a[href='/watch/']",
+        "a[href^='/watch/']",
+        "a[aria-label*='Watch' i]",
+        "a[aria-label*='Video' i]"
+      ],
+      "entryXpaths": [
+        "//a[@href='/watch/']",
+        "//a[contains(@aria-label,'Watch') or contains(@aria-label,'Video')]"
+      ],
+      "viewer": [
+        "div[role='main'] video",
+        "div[data-pagelet*='Watch' i]",
+        "[aria-label*='Watch' i]"
+      ],
+      "viewerXpaths": [
+        "//div[@role='main']//video"
       ],
       "videoXpaths": [
-        "//video",
-        "//*[@role='main']//video"
+        "//div[@role='main']//video",
+        "//video[@autoplay]",
+        "//video[@src]"
       ],
       "videoSelectors": [
-        "video",
-        "div[data-pagelet='VideosHomeFeed']",
-        "div[role='main'] video"
+        "div[role='main'] video",
+        "video[autoplay]",
+        "video[src]"
       ],
       "nextXpaths": [
-        "//*[contains(@aria-label,'Next') and @role='button']",
-        "//*[contains(@aria-label,'Tiếp') and @role='button']"
+        "//div[@role='button'][contains(@aria-label,'Video tiếp theo')]",
+        "//div[@role='button'][contains(@aria-label,'Next video')]"
       ],
       "nextSelectors": [
-        "div[role='button'][aria-label*='Next' i]",
-        "div[role='button'][aria-label*='Tiếp' i]"
-      ],
-      "verifyXpaths": [
-        "//video",
-        "//*[@role='main']"
+        "div[role='button'][aria-label*='Video tiếp theo' i]",
+        "button[aria-label*='Video tiếp theo' i]",
+        "div[role='button'][aria-label*='Next video' i]",
+        "button[aria-label*='Next video' i]"
       ],
       "verifySelectors": [
-        "video",
-        "div[data-pagelet='VideosHomeFeed']",
-        "div[role='main']"
+        "div[role='main'] video"
+      ],
+      "verifyXpaths": [
+        "//div[@role='main']//video"
       ]
     },
-
     "VIEW_VIDEO": {
-      "selector": "",
-      "actionType": "CLICK",
-      "actionName": "Xem Video",
       "displayName": "Xem Video",
       "status": "LOW_LEVEL_CONFIG",
       "requiresText": false,
       "requiresFile": "none",
       "requiresUrl": false,
       "requiresCount": true,
-      "businessFields": ["count"],
+      "businessFields": ["repeatCount"],
+      "urlPathHint": "videos",
       "openUrls": [
-        "https://www.facebook.com/watch/"
+        "https://www.facebook.com/watch/",
+        "https://www.facebook.com/videos/"
       ],
       "fallbackUrls": [
-        "https://www.facebook.com/watch/"
+        "https://www.facebook.com/watch/",
+        "https://www.facebook.com/videos/"
+      ],
+      "waitSelectors": [
+        "video"
       ],
       "videoXpaths": [
         "//video",
-        "//*[@role='main']//video"
+        "//div[@role='main']//video",
+        "//div[@data-video-id]//video"
       ],
       "videoSelectors": [
         "video",
-        "div[role='main'] video"
+        "[role='main'] video",
+        "div[data-video-id] video"
       ],
       "nextXpaths": [
-        "//*[contains(@aria-label,'Next') and @role='button']",
-        "//*[contains(@aria-label,'Tiếp') and @role='button']"
+        "//*[@role='button'][contains(@aria-label,'Video tiếp theo')]",
+        "//*[@role='button'][contains(@aria-label,'Next video')]"
       ],
       "nextSelectors": [
-        "div[role='button'][aria-label*='Next' i]",
-        "div[role='button'][aria-label*='Tiếp' i]"
+        "[role='button'][aria-label*='Video tiếp theo' i]",
+        "[role='button'][aria-label*='Next video' i]"
       ],
       "verifyXpaths": [
-        "//video",
-        "//*[@role='main']"
+        "//video"
       ],
       "verifySelectors": [
-        "video",
-        "div[role='main']"
+        "video"
+      ]
+    },
+    "RANDOM_SCROLL": {
+      "displayName": "Cuộn random",
+      "status": "LOW_LEVEL_CONFIG",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": true,
+      "businessFields": ["scrollMinPixels", "scrollMaxPixels"]
+    },
+    "VIEW_STORY": {
+      "displayName": "Xem Story",
+      "status": "DEDICATED_HANDLER",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": true,
+      "businessFields": ["repeatCount"],
+      "urlPathHint": "stories",
+      "fallbackUrl": "https://www.facebook.com/stories/",
+      "entry": [
+        "div[data-pagelet*='Stories' i] a[href*='/stories/'][role='link']",
+        "div[data-pagelet*='Stories' i] div[role='button']",
+        "[aria-label*='Stories' i] a[href*='/stories/'][role='link']",
+        "[aria-label*='Tin' i] a[href*='/stories/'][role='link']",
+        "a[href*='/stories/'][role='link']:not([href*='create'])",
+        "a[href^='/stories/'][role='link']:not([href*='create'])"
+      ],
+      "viewer": [
+        "div[role='dialog'] [role='progressbar']",
+        "div[aria-label*='Story' i][role='dialog']",
+        "section[aria-label*='Story' i]",
+        "[data-pagelet*='Stories' i]",
+        "div[aria-label*='Story' i]",
+        "div[aria-label*='Tin' i][role='dialog']",
+        "video[autoplay]",
+        "[role='img'][aria-label*='Story' i]"
+      ],
+      "next": [
+        "div[role='button'][aria-label*='Next' i]",
+        "button[aria-label*='Next' i]",
+        "div[role='button'][aria-label*='Tiếp' i]",
+        "button[aria-label*='Tiếp' i]"
       ]
     },
 
     "POKE_FRIEND": {
-      "selector": "",
+      "displayName": "Chọc bạn bè",
+      "status": "FULL_WORKFLOW",
       "actionType": "CLICK",
       "actionName": "Chọc bạn bè",
-      "displayName": "Chọc bạn bè",
-      "status": "LOW_LEVEL_CONFIG",
-      "requiresText": false,
-      "requiresFile": "none",
-      "requiresUrl": false,
-      "requiresCount": true,
-      "businessFields": ["count"],
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["repeatCount"],
       "openUrls": [
-        "https://www.facebook.com/pokes"
+        "https://www.facebook.com/pokes/",
+        "https://m.facebook.com/pokes/"
       ],
-      "fallbackUrls": [
-        "https://www.facebook.com/pokes"
+      "itemXpaths": [
+        "//div[@role='main']//div[@role='article']",
+        "//div[@role='main']//div[contains(@data-pagelet,'Pokes')]//li"
+      ],
+      "itemSelectors": [
+        "div[role='main'] div[role='article']",
+        "div[role='main'] [data-pagelet*='Pokes' i] li"
       ],
       "pokeButtonXpaths": [
         "//div[@role='button'][.//span[normalize-space()='Chọc']]",
         "//div[@role='button'][.//span[normalize-space()='Poke']]",
-        "//*[normalize-space()='Chọc']/ancestor::*[@role='button'][1]",
-        "//*[normalize-space()='Poke']/ancestor::*[@role='button'][1]"
+        "//div[@role='button'][.//span[normalize-space()='Chọc lại']]",
+        "//div[@role='button'][.//span[normalize-space()='Poke back']]",
+        "//*[@role='button' and (contains(@aria-label,'Chọc') or contains(@aria-label,'Poke'))]"
       ],
       "pokeButtonSelectors": [
-        "div[role='button']:has-text('Chọc')",
-        "div[role='button']:has-text('Poke')",
-        "span:has-text('Chọc')",
-        "span:has-text('Poke')"
+        "[role='button']:has-text('Chọc')",
+        "[role='button']:has-text('Poke')",
+        "[role='button']:has-text('Chọc lại')",
+        "[role='button']:has-text('Poke back')",
+        "[role='button'][aria-label*='Chọc' i]",
+        "[role='button'][aria-label*='Poke' i]"
       ],
       "verifyXpaths": [
-        "//*[@role='main']"
-      ],
-      "verifySelectors": [
-        "div[role='main']"
+        "//*[contains(normalize-space(.),'Đã chọc')]",
+        "//*[contains(normalize-space(.),'Poked')]",
+        "//*[contains(normalize-space(.),'Đã gửi')]"
       ]
     },
-
     "BIRTHDAY_WISH": {
-      "selector": "",
-      "actionType": "INPUT_TEXT",
-      "actionName": "Chúc mừng sinh nhật",
       "displayName": "Chúc mừng sinh nhật",
-      "status": "LOW_LEVEL_CONFIG",
-      "requiresText": true,
-      "requiresFile": "none",
-      "requiresUrl": false,
-      "requiresCount": true,
-      "businessFields": ["message", "count"],
+      "status": "FULL_WORKFLOW",
+      "actionType": "CLICK",
+      "actionName": "Chúc mừng sinh nhật",
+      "requiresText": true, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["text", "repeatCount"],
       "openUrls": [
-        "https://www.facebook.com/events/birthdays/"
+        "https://www.facebook.com/events/birthdays/",
+        "https://www.facebook.com/birthdays/"
       ],
-      "fallbackUrls": [
-        "https://www.facebook.com/events/birthdays/"
+      "itemXpaths": [
+        "//div[@role='main']//div[@role='article']",
+        "//div[@role='main']//div[contains(@data-pagelet,'Birthdays')]"
+      ],
+      "itemSelectors": [
+        "div[role='main'] div[role='article']",
+        "div[role='main'] [data-pagelet*='Birthdays' i]"
       ],
       "inputXpaths": [
-        "//div[@role='textbox' and @contenteditable='true']",
-        "//textarea",
-        "//input[@type='text']"
+        "//div[@contenteditable='true' and @role='textbox' and (contains(@aria-label,'Chúc') or contains(@aria-label,'sinh nhật') or contains(@aria-label,'birthday') or contains(@aria-label,'wish'))]",
+        "//div[@contenteditable='true' and @role='textbox']"
       ],
       "inputSelectors": [
-        "div[role='textbox'][contenteditable='true']",
-        "div[contenteditable='true'][role='textbox']",
-        "textarea",
-        "input[type='text']"
+        "div[contenteditable='true'][role='textbox'][aria-label*='sinh nhật' i]",
+        "div[contenteditable='true'][role='textbox'][aria-label*='birthday' i]",
+        "div[contenteditable='true'][role='textbox'][aria-label*='wish' i]",
+        "div[contenteditable='true'][role='textbox']"
       ],
       "submitXpaths": [
         "//div[@role='button'][.//span[normalize-space()='Đăng']]",
         "//div[@role='button'][.//span[normalize-space()='Post']]",
-        "//button[@type='submit']"
+        "//div[@role='button'][.//span[normalize-space()='Gửi']]",
+        "//div[@role='button'][.//span[normalize-space()='Send']]"
       ],
       "submitSelectors": [
-        "div[role='button']:has-text('Đăng')",
-        "div[role='button']:has-text('Post')",
-        "button[type='submit']"
+        "[role='button']:has-text('Đăng')",
+        "[role='button']:has-text('Post')",
+        "[role='button']:has-text('Gửi')",
+        "[role='button']:has-text('Send')"
       ],
       "verifyXpaths": [
-        "//*[@role='main']"
-      ],
-      "verifySelectors": [
-        "div[role='main']"
+        "//*[contains(normalize-space(.),'Đã đăng')]",
+        "//*[contains(normalize-space(.),'Posted')]"
       ]
     },
-
-    "POST_REEL": {
-      "selector": "",
-      "actionType": "UPLOAD_FILE",
-      "actionName": "Đăng reel",
-      "displayName": "Đăng reel",
-      "status": "FULL_WORKFLOW",
-      "requiresText": false,
-      "requiresFile": "required",
-      "requiresUrl": false,
-      "requiresCount": false,
-      "businessFields": ["mediaFiles", "caption"],
-      "variants": {
-        "normalReelPage": {
-          "openUrls": [
-            "https://www.facebook.com/reel/"
-          ],
-          "createReelXpaths": [
-            "//span[normalize-space()='Tạo thước phim']/ancestor::div[@role='button'][1]",
-            "//span[normalize-space()='Create reel']/ancestor::div[@role='button'][1]",
-            "//span[normalize-space()='Create Reel']/ancestor::div[@role='button'][1]",
-            "//div[@role='button'][.//span[normalize-space()='Tạo thước phim']]",
-            "//div[@role='button'][.//span[normalize-space()='Create reel' or normalize-space()='Create Reel']]"
-          ],
-          "uploadXpaths": [
-            "//input[@type='file']",
-            "//input[@type='file' and contains(@accept,'video')]",
-            "//input[@type='file' and contains(@accept,'mp4')]",
-            "//input[@type='file' and contains(@accept,'image')]"
-          ],
-          "uploadSelectors": [
-            "input[type='file']",
-            "input[type='file'][accept*='video']",
-            "input[type='file'][accept*='mp4']",
-            "input[type='file'][accept*='image']"
-          ],
-          "captionXpaths": [
-            "//div[@role='textbox' and @contenteditable='true']"
-          ],
-          "captionSelectors": [
-            "div[role='textbox'][contenteditable='true']",
-            "div[contenteditable='true'][role='textbox']"
-          ],
-          "nextXpaths": [
-            "//div[@role='button'][.//span[normalize-space()='Tiếp']]",
-            "//div[@role='button'][.//span[normalize-space()='Next']]"
-          ],
-          "nextSelectors": [
-            "div[role='button']:has-text('Tiếp')",
-            "div[role='button']:has-text('Next')"
-          ],
-          "submitXpaths": [
-            "//div[@role='button'][.//span[normalize-space()='Đăng']]",
-            "//div[@role='button'][.//span[normalize-space()='Post']]",
-            "//div[@role='button'][.//span[normalize-space()='Chia sẻ']]",
-            "//div[@role='button'][.//span[normalize-space()='Share']]"
-          ],
-          "submitSelectors": [
-            "div[role='button']:has-text('Đăng')",
-            "div[role='button']:has-text('Post')",
-            "div[role='button']:has-text('Chia sẻ')",
-            "div[role='button']:has-text('Share')"
-          ],
-          "verifyXpaths": [
-            "//*[contains(normalize-space(.),'Đã đăng')]",
-            "//*[contains(normalize-space(.),'Posted')]",
-            "//*[contains(normalize-space(.),'Reel')]",
-            "//*[contains(normalize-space(.),'Thước phim')]"
-          ],
-          "verifySelectors": [
-            "video",
-            "[aria-label*='Reels']",
-            "[aria-label*='Thước phim']"
-          ]
-        },
-
-        "professionalProfileReelTab": {
-          "openUrls": [
-            "https://www.facebook.com/me"
-          ],
-          "reelTabXpaths": [
-            "//div[@aria-label='Thước phim']",
-            "//div[contains(@aria-label,'Thước phim')]",
-            "//div[@aria-label='Reels']",
-            "//div[contains(@aria-label,'Reels')]",
-            "//*[@aria-label='Reels']",
-            "//*[contains(@aria-label,'Reels')]"
-          ],
-          "reelTabSelectors": [
-            "div[aria-label='Thước phim']",
-            "div[aria-label*='Thước phim' i]",
-            "div[aria-label='Reels']",
-            "div[aria-label*='Reels' i]"
-          ],
-          "photoVideoXpaths": [
-            "//div[@aria-label='Ảnh/video']",
-            "//div[contains(@aria-label,'Ảnh/video')]",
-            "//div[@aria-label='Photo/video']",
-            "//div[contains(@aria-label,'Photo/video')]",
-            "//div[contains(@aria-label,'Photo')]"
-          ],
-          "photoVideoSelectors": [
-            "div[aria-label='Ảnh/video']",
-            "div[aria-label*='Ảnh/video' i]",
-            "div[aria-label='Photo/video']",
-            "div[aria-label*='Photo/video' i]",
-            "div[aria-label*='Photo' i]"
-          ],
-          "createReelXpaths": [
-            "//span[normalize-space()='Tạo thước phim']/ancestor::div[@role='button'][1]",
-            "//span[normalize-space()='Create reel']/ancestor::div[@role='button'][1]",
-            "//span[normalize-space()='Create Reel']/ancestor::div[@role='button'][1]"
-          ],
-          "uploadXpaths": [
-            "//input[@type='file']",
-            "//input[@type='file' and contains(@accept,'video')]",
-            "//input[@type='file' and contains(@accept,'mp4')]",
-            "//input[@type='file' and contains(@accept,'image')]"
-          ],
-          "uploadSelectors": [
-            "input[type='file']",
-            "input[type='file'][accept*='video']",
-            "input[type='file'][accept*='mp4']",
-            "input[type='file'][accept*='image']"
-          ],
-          "captionXpaths": [
-            "//div[@role='textbox' and @contenteditable='true']"
-          ],
-          "captionSelectors": [
-            "div[role='textbox'][contenteditable='true']",
-            "div[contenteditable='true'][role='textbox']"
-          ],
-          "nextXpaths": [
-            "//div[@role='button'][.//span[normalize-space()='Tiếp']]",
-            "//div[@role='button'][.//span[normalize-space()='Next']]"
-          ],
-          "nextSelectors": [
-            "div[role='button']:has-text('Tiếp')",
-            "div[role='button']:has-text('Next')"
-          ],
-          "submitXpaths": [
-            "//div[@role='button'][.//span[normalize-space()='Đăng']]",
-            "//div[@role='button'][.//span[normalize-space()='Post']]",
-            "//div[@role='button'][.//span[normalize-space()='Chia sẻ']]",
-            "//div[@role='button'][.//span[normalize-space()='Share']]"
-          ],
-          "submitSelectors": [
-            "div[role='button']:has-text('Đăng')",
-            "div[role='button']:has-text('Post')",
-            "div[role='button']:has-text('Chia sẻ')",
-            "div[role='button']:has-text('Share')"
-          ],
-          "verifyXpaths": [
-            "//*[contains(normalize-space(.),'Đã đăng')]",
-            "//*[contains(normalize-space(.),'Posted')]",
-            "//*[contains(normalize-space(.),'Reel')]",
-            "//*[contains(normalize-space(.),'Thước phim')]"
-          ],
-          "verifySelectors": [
-            "video",
-            "[aria-label*='Reels']",
-            "[aria-label*='Thước phim']"
-          ]
-        }
-      }
+    "POST_NEWSFEED": {
+      "displayName": "Bài viết Newsfeed", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["repeatCount"]
+    },
+    "BREAK_TIME": {
+      "displayName": "Nghỉ giải lao", "status": "LOW_LEVEL_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["repeatCount"]
+    },
+    "POST_FRIEND": {
+      "displayName": "Bài viết Bạn bè", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["repeatCount"]
+    },
+    "POST_GROUP": {
+      "displayName": "Bài viết Nhóm", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["repeatCount"]
+    },
+    "POST_FANPAGE": {
+      "displayName": "Bài viết Fanpage", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["repeatCount"]
+    },
+    "POST_TIMELINE": {
+      "displayName": "Bài viết trên tường", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["repeatCount"]
+    },
+    "POST_GROUP_WWW": {
+      "displayName": "Bài viết Nhóm (www)", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "required", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["filePath", "repeatCount"]
+    },
+    "SCRIPT_GENLOGIN": {
+      "displayName": "Script GenLogin", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "CONFIRM_FRIEND": {
+      "displayName": "Xác nhận kết bạn", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "CANCEL_SENT_REQUEST": {
+      "displayName": "Huỷ lời mời đã gửi", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "UNFRIEND": {
+      "displayName": "Huỷ kết bạn", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "LEAVE_GROUP": {
+      "displayName": "Rời nhóm", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "ADD_FRIEND_SUGGEST": {
+      "displayName": "Kết bạn theo gợi ý", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["repeatCount"]
+    },
+    "ADD_MUTUAL_FRIEND": {
+      "displayName": "Kết bạn với bạn của bạn", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["repeatCount"]
+    },
+    "JOIN_GROUP_SUGGEST": {
+      "displayName": "Tham gia nhóm theo gợi ý", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["repeatCount"]
+    },
+    "ADD_FRIEND_KEYWORD": {
+      "displayName": "Kết bạn theo từ khóa", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "required", "requiresUrl": false, "requiresCount": false,
+      "businessFields": ["filePath"]
+    },
+    "ADD_FRIEND_UID_FILE": {
+      "displayName": "Kết bạn theo tệp UID", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "required", "requiresUrl": false, "requiresCount": false,
+      "businessFields": ["filePath"]
+    },
+    "ADD_GROUP_MEMBER": {
+      "displayName": "Kết bạn thành viên nhóm", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "required", "requiresUrl": false, "requiresCount": false,
+      "businessFields": ["filePath"]
+    },
+    "JOIN_GROUP_KEYWORD": {
+      "displayName": "Tham gia nhóm từ khóa", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "required", "requiresUrl": false, "requiresCount": false,
+      "businessFields": ["filePath"]
+    },
+    "REMOVE_PHONE": {
+      "displayName": "Xoá số điện thoại", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "TOGGLE_2FA": {
+      "displayName": "Bật - Tắt 2FA", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "REMOVE_TRUST_DEVICE": {
+      "displayName": "Xoá thiết bị tin cậy", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "LOGOUT_OLD_DEVICE": {
+      "displayName": "Đăng xuất thiết bị cũ", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "ADD_MAIL": {
+      "displayName": "Add Mail", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "required", "requiresUrl": false, "requiresCount": false,
+      "businessFields": ["filePath"]
+    },
+    "CHANGE_PASSWORD": {
+      "displayName": "Đổi mật khẩu", "status": "TODO_CONFIG",
+      "requiresText": true, "requiresFile": "none", "requiresUrl": false, "requiresCount": false,
+      "businessFields": ["newPassword"]
+    },
+    "CHANGE_NAME": {
+      "displayName": "Đổi tên", "status": "TODO_CONFIG",
+      "requiresText": true, "requiresFile": "none", "requiresUrl": false, "requiresCount": false,
+      "businessFields": ["newName"]
+    },
+    "UPDATE_PROFILE": {
+      "displayName": "Cập nhật thông tin", "status": "TODO_CONFIG",
+      "requiresText": true, "requiresFile": "none", "requiresUrl": false, "requiresCount": false,
+      "businessFields": ["profileData"]
+    },
+    "UNLIKE_PAGE": {
+      "displayName": "Huỷ like page", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "UNLINK_INSTAGRAM": {
+      "displayName": "Huỷ liên kết Instagram", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "DELETE_TIMELINE_POST": {
+      "displayName": "Xoá bài trên tường", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
+      "businessFields": ["repeatCount"]
+    },
+    "ANTI_SPAM": {
+      "displayName": "Kháng spam", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "PRO_MODE": {
+      "displayName": "Chế độ chuyên nghiệp", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "UNLOCK_PROFILE": {
+      "displayName": "Unlock profile", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "CREATE_META": {
+      "displayName": "Tạo Meta", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": false
+    },
+    "CREATE_PAGE": {
+      "displayName": "Tạo page", "status": "TODO_CONFIG",
+      "requiresText": true, "requiresFile": "none", "requiresUrl": false, "requiresCount": false,
+      "businessFields": ["pageName"]
+    },
+    "RATE_PAGE": {
+      "displayName": "Đánh giá Page", "status": "TODO_CONFIG",
+      "requiresText": true, "requiresFile": "none", "requiresUrl": true, "requiresCount": false,
+      "businessFields": ["pageUrl", "text"]
+    },
+    "INVITE_FRIENDS_LIKE_PAGE": {
+      "displayName": "Mời bạn bè like page", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": true, "requiresCount": true,
+      "businessFields": ["pageUrl", "repeatCount"]
+    },
+    "INVITE_FRIENDS_GROUP": {
+      "displayName": "Mời bạn bè vào nhóm", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": true, "requiresCount": true,
+      "businessFields": ["groupUrl", "repeatCount"]
+    },
+    "INTERACT_LIVESTREAM": {
+      "displayName": "Tương tác Livestream", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": true, "requiresCount": true,
+      "businessFields": ["livestreamUrl", "watchSeconds"]
+    },
+    "SHARE_POST": {
+      "displayName": "Share bài", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "none", "requiresUrl": true, "requiresCount": false,
+      "businessFields": ["postUrl"]
+    },
+    "INTERACT_POST_KEYWORD": {
+      "displayName": "Tương tác bài viết từ khóa", "status": "TODO_CONFIG",
+      "requiresText": false, "requiresFile": "required", "requiresUrl": false, "requiresCount": false,
+      "businessFields": ["filePath"]
+    },
+    "SPAM_POST": {
+      "displayName": "Spam bài viết", "status": "TODO_CONFIG",
+      "requiresText": true, "requiresFile": "required", "requiresUrl": false, "requiresCount": false,
+      "businessFields": ["filePath", "text"]
     }
+  },
+  "rememberBrowser": {
+    "urlContains": [
+      "/two_factor/remember_browser/",
+      "remember_browser",
+      "save_device",
+      "remember_device"
+    ],
+    "clickXpaths": [
+      "(//*[@role='button' or self::button or @tabindex][not(@aria-disabled='true')])[1]",
+      "(//*[contains(normalize-space(.),'Trust') or contains(normalize-space(.),'Tin cậy')])[1]"
+    ],
+    "clickSelectors": [],
+    "primaryTexts": [
+      "Trust this device",
+      "Trust this browser",
+      "Remember browser",
+      "Remember this browser",
+      "Save browser",
+      "Save this browser",
+      "Tin cậy thiết bị này",
+      "Tin cậy trình duyệt này",
+      "Ghi nhớ trình duyệt",
+      "Ghi nhớ trình duyệt này",
+      "Lưu trình duyệt",
+      "Lưu trình duyệt này"
+    ],
+    "secondaryTexts": [
+      "Always confirm it's me",
+      "Don't save",
+      "Not now",
+      "Luôn xác nhận đó là tôi",
+      "Không phải bây giờ"
+    ],
+    "selectorTemplates": [
+      "button:has-text('{text}')",
+      "div[role='button']:has-text('{text}')",
+      "a[role='button']:has-text('{text}')",
+      "div[tabindex]:has-text('{text}')",
+      "[tabindex]:has-text('{text}')",
+      "[aria-label*='{text}']"
+    ],
+    "genericCandidates": [
+      "button",
+      "[role='button']",
+      "[tabindex]:not([tabindex='-1'])",
+      "[onclick]",
+      "a[href]",
+      "div[aria-label]",
+      "span[aria-label]",
+      "div[data-visualcompletion]",
+      "div[style*='cursor']"
+    ],
+    "negativeTexts": [
+      "Back", "Cancel", "Close", "Not now", "Learn more", "Help",
+      "Forgot", "Create", "Sign up", "Log out", "Logout",
+      "Quay lại", "Hủy", "Đóng", "Tìm hiểu thêm", "Quên",
+      "Tạo tài khoản", "Đăng ký", "Đăng xuất",
+      "Retour", "Annuler", "Fermer", "Pas maintenant", "En savoir plus",
+      "Oublié", "Créer", "Inscription", "Déconnexion",
+      "Atrás", "Cancelar", "Cerrar", "Ahora no", "Saber más",
+      "Olvidé", "Crear", "Registrarse",
+      "Voltar", "Fechar", "Agora não", "Saber mais", "Esqueci",
+      "Criar conta",
+      "ย้อนกลับ", "ยกเลิก", "ปิด", "สร้างบัญชี",
+      "Zurück", "Abbrechen", "Schließen", "Vergessen", "Registrieren"
+    ]
+  },
+  "rememberedAccount": {
+    "visibleIndicators": [
+      "text=Đăng nhập bằng",
+      "text=Log in as",
+      "div[role='dialog'] button:has-text('Hủy')",
+      "div[role='dialog'] button:has-text('Cancel')",
+      "div[role='dialog'] button:has-text('Đăng nhập')",
+      "div[role='dialog'] button:has-text('Log in')"
+    ],
+    "dismissSelectors": [
+      "div[role='dialog'] button:has-text('Hủy')",
+      "div[role='dialog'] button:has-text('Cancel')",
+      "text=Không phải bạn?",
+      "text=Not you?",
+      "text=Đăng nhập vào tài khoản khác",
+      "text=Log into another account",
+      "text=Use another account",
+      "text=Gỡ",
+      "text=Remove",
+      "text=Xóa"
+    ]
+  },
+  "captcha": {
+    "frameUrlHints": [
+      "recaptcha",
+      "google.com/recaptcha",
+      "recaptcha.net",
+      "hcaptcha.com"
+    ],
+    "checkboxSelectors": [
+      "#recaptcha-anchor",
+      ".recaptcha-checkbox-border",
+      "div[role='checkbox']",
+      "label input[type='checkbox']",
+      "input[type='checkbox']"
+    ],
+    "recaptchaScriptSelectors": [
+      "script[src*='recaptcha/api.js?render=']",
+      "script[src*='recaptcha/enterprise.js?render=']"
+    ],
+    "enterpriseScriptSelectors": [
+      "script[src*='recaptcha/enterprise']"
+    ],
+    "formSelectors": [
+      "form[method]",
+      "form"
+    ],
+    "submitSelectors": [
+      "button[type='submit']",
+      "input[type='submit']",
+      "button[name='login']"
+    ],
+    "sitekeySelectors": [
+      "[data-sitekey]",
+      ".g-recaptcha",
+      ".h-captcha",
+      "[class*='recaptcha']",
+      "[class*='hcaptcha']"
+    ],
+    "iframeSelectors": [
+      "iframe[src]"
+    ],
+    "recaptchaResponseSelectors": [
+      "textarea[name='g-recaptcha-response']",
+      "textarea#g-recaptcha-response"
+    ],
+    "hcaptchaResponseSelectors": [
+      "textarea[name='h-captcha-response']",
+      "textarea#h-captcha-response"
+    ],
+    "continueButtonSelectors": [
+      "button[type='submit']",
+      "input[type='submit']",
+      "[role='button'][name='continue']",
+      "[data-testid*='continue']"
+    ],
+    "imageChallengeSelectors": [
+      ".rc-imageselect",
+      ".rc-audiochallenge"
+    ],
+    "responseTextareaSelectors": [
+      "textarea[name='g-recaptcha-response']",
+      "textarea[name='h-captcha-response']",
+      "textarea[id^='g-recaptcha-response']"
+    ],
+    "submitAfterTokenSelectors": [
+      "button[type='submit']",
+      "input[type='submit']",
+      "[role='button'][name='continue']",
+      "[data-testid*='continue']"
+    ]
+  },
+  "otpDetection": {
+    "totpScreenKeywords": [
+      "two_step_verification",
+      "two-factor",
+      "two_factor",
+      "approvals_code",
+      "security_code",
+      "authentication/",
+      "2fa"
+    ],
+    "mailOtpScreenKeywords": [
+      "email_confirmation",
+      "email_code",
+      "confirm_email",
+      "email-code"
+    ],
+    "totpInputFallbacks": [
+      "input[name='approvals_code']",
+      "input[name='approvals_code_entry']",
+      "input[autocomplete='one-time-code']",
+      "input[name='code']",
+      "input[inputmode='numeric']",
+      "input[type='tel']",
+      "input[maxlength='6']",
+      "input[maxlength='8']",
+      "input[aria-label*='mã']",
+      "input[aria-label*='Mã']",
+      "input[placeholder*='mã']",
+      "input[placeholder*='Mã']",
+      "input[data-testid*='mfa']",
+      "input[aria-label*='xác thực']",
+      "input[aria-label*='Xác thực']",
+      "xpath=//*[@id='_r_3_']",
+      "xpath=//input[starts-with(@id,'_r_')]"
+    ],
+    "mailOtpInputFallbacks": [
+      "input[name='n']",
+      "input[autocomplete='one-time-code']",
+      "input[name='code']",
+      "input[inputmode='numeric']",
+      "input[type='tel']",
+      "input[maxlength='6']",
+      "input[maxlength='8']",
+      "input[aria-label*='mã']",
+      "input[aria-label*='Mã']",
+      "input[placeholder*='mã']",
+      "input[placeholder*='Mã']"
+    ],
+    "submitFallbacks": [
+      "button[name='submit']",
+      "button[type='submit']",
+      "button:has-text('Tiếp tục')",
+      "button:has-text('Xác nhận')",
+      "button:has-text('Continue')",
+      "button:has-text('Confirm')",
+      "button[data-testid*='mfa_submit']"
+    ],
+    "probeScopes": [
+      "div[role='dialog']",
+      "form[method='post']",
+      "div[role='main'] form",
+      "div[role='main']"
+    ],
+    "structuralPrimaryButtonSelector": "div[role='main'] button, div[role='dialog'] button, form button, [role='button']",
+    "checkpointFamilyUrlContains": [
+      "two_factor",
+      "checkpoint",
+      "login/approve",
+      "two_step_verification"
+    ],
+    "fallbackInputSelectors": [
+      "input:not([type='hidden']):not([disabled]):not([readonly])"
+    ]
+  },
+  "checkpoint": {
+    "urlContains": [
+      "/checkpoint/",
+      "/login/approve",
+      "/two_step_verification"
+    ],
+    "safeCheckpointSelectors": [
+      "button:has-text('Tiếp tục')",
+      "button:has-text('Xác nhận')",
+      "button:has-text('Continue')",
+      "button:has-text('Confirm')",
+      "[role='button']:has-text('Tiếp tục')",
+      "[role='button']:has-text('Xác nhận')",
+      "[role='button']:has-text('Continue')",
+      "[role='button']:has-text('Confirm')"
+    ],
+    "safeCheckpointXpaths": [
+      "//button[normalize-space()='Tiếp tục' or normalize-space()='Xác nhận' or normalize-space()='Continue' or normalize-space()='Confirm']",
+      "//*[@role='button'][normalize-space(.)='Tiếp tục' or normalize-space(.)='Xác nhận' or normalize-space(.)='Continue' or normalize-space(.)='Confirm']"
+    ],
+    "continueSelectors": [
+      "button:has-text('Tiếp tục')",
+      "button:has-text('Continue')",
+      "[role='button']:has-text('Tiếp tục')",
+      "[role='button']:has-text('Continue')"
+    ],
+    "continueXpaths": [
+      "//*[@role='button'][normalize-space(.)='Tiếp tục' or normalize-space(.)='Continue']"
+    ],
+    "confirmSelectors": [
+      "button:has-text('Xác nhận')",
+      "button:has-text('Confirm')"
+    ],
+    "confirmXpaths": [
+      "//*[@role='button'][normalize-space(.)='Xác nhận' or normalize-space(.)='Confirm']"
+    ],
+    "skipSelectors": [
+      "button:has-text('Bỏ qua')",
+      "button:has-text('Skip')",
+      "button:has-text('Không phải bây giờ')",
+      "button:has-text('Not now')",
+      "button:has-text('Để sau')",
+      "button:has-text('Later')"
+    ],
+    "skipXpaths": [
+      "//*[@role='button'][normalize-space(.)='Bỏ qua' or normalize-space(.)='Skip' or normalize-space(.)='Để sau' or normalize-space(.)='Later']"
+    ],
+    "verifySelectors": [
+      "div[role='feed']",
+      "a[aria-label='Trang chủ']",
+      "a[aria-label='Home']"
+    ],
+    "verifyXpaths": [
+      "//div[@role='feed']",
+      "//a[@aria-label='Trang chủ' or @aria-label='Home']"
+    ],
+    "stateLoginSelectors": [
+      "input[name='email']",
+      "input[name='pass']",
+      "input[type='password']"
+    ],
+    "stateFeedSelectors": [
+      "[role='feed']",
+      "[role='main'] [aria-label*='News Feed' i]",
+      "[role='main'] [aria-label*='Bảng tin' i]",
+      "[data-pagelet*='FeedUnit' i]"
+    ],
+    "stateDialogSelectors": [
+      "[role='dialog']",
+      "[aria-modal='true']"
+    ],
+    "genericButtonSelectors": [
+      "button",
+      "[role='button']",
+      "input[type='submit']"
+    ],
+    "genericTabindexSelectors": [
+      "[tabindex]:not([tabindex='-1'])",
+      "[role='button']"
+    ],
+    "stateFormSelectors": [
+      "form"
+    ]
+  },
+  "quickLive": {
+    "loginTitleNegativeTexts": [
+      "Log in",
+      "Đăng nhập",
+      "Log into Facebook",
+      "Đăng nhập vào Facebook"
+    ]
+  },
+  "popupHandlers": {
+    "dialogSelectors": [
+      "div[role='dialog']",
+      "[role='alertdialog']"
+    ],
+    "dialogXpaths": [
+      "//div[@role='dialog']",
+      "//*[@role='alertdialog']"
+    ],
+    "dismissSelectors": [
+      "div[role='dialog'] button[aria-label='Close']",
+      "div[role='dialog'] button[aria-label='Đóng']",
+      "[role='dialog'] [aria-label='Close']",
+      "[role='dialog'] [aria-label='Đóng']"
+    ],
+    "dismissXpaths": [
+      "//*[@role='dialog']//*[@aria-label='Close' or @aria-label='Đóng']"
+    ],
+    "cancelButtonSelectors": [
+      "div[role='dialog'] button:has-text('Hủy')",
+      "div[role='dialog'] button:has-text('Cancel')",
+      "[role='button']:has-text('Hủy')",
+      "[role='button']:has-text('Cancel')"
+    ],
+    "cancelButtonXpaths": [
+      "//*[@role='dialog']//*[@role='button' or self::button][normalize-space(.)='Hủy' or normalize-space(.)='Cancel']"
+    ],
+    "loginButtonSelectors": [
+      "div[role='dialog'] button:has-text('Đăng nhập')",
+      "div[role='dialog'] button:has-text('Log in')",
+      "[role='button']:has-text('Đăng nhập')",
+      "[role='button']:has-text('Log in')"
+    ],
+    "loginButtonXpaths": [
+      "//*[@role='dialog']//*[@role='button' or self::button][normalize-space(.)='Đăng nhập' or normalize-space(.)='Log in']"
+    ],
+    "notNowSelectors": [
+      "button:has-text('Không phải bây giờ')",
+      "button:has-text('Not now')",
+      "[role='button']:has-text('Không phải bây giờ')",
+      "[role='button']:has-text('Not now')"
+    ],
+    "notNowXpaths": [
+      "//*[@role='button' or self::button][normalize-space(.)='Không phải bây giờ' or normalize-space(.)='Not now']"
+    ],
+    "closeSelectors": [
+      "button[aria-label='Close']",
+      "button[aria-label='Đóng']",
+      "[role='button'][aria-label='Close']",
+      "[role='button'][aria-label='Đóng']"
+    ],
+    "closeXpaths": [
+      "//*[@role='button' or self::button][@aria-label='Close' or @aria-label='Đóng']"
+    ],
+    "rememberedAccountSelectors": [
+      "text=Đăng nhập bằng",
+      "text=Log in as",
+      "div[role='dialog'] button:has-text('Hủy')",
+      "div[role='dialog'] button:has-text('Cancel')",
+      "div[role='dialog'] button:has-text('Đăng nhập')",
+      "div[role='dialog'] button:has-text('Log in')"
+    ],
+    "rememberedAccountXpaths": [
+      "//*[contains(normalize-space(.),'Đăng nhập bằng') or contains(normalize-space(.),'Log in as')]"
+    ],
+    "forceRemoveDialogSelectors": [
+      "div[role='dialog']",
+      "div[aria-modal='true']",
+      "div[data-visualcompletion='ignore-dynamic'][role='dialog']"
+    ],
+    "rememberedAccountMatchTexts": [
+      "đăng nhập bằng",
+      "log in as",
+      "sign in as",
+      "tài khoản đã lưu",
+      "saved account"
+    ],
+    "rememberedAccountProfileImgSelector": "img[data-imgperflogname='profileCoverPhoto']",
+    "passwordInputSelectors": [
+      "input[type='password']"
+    ],
+    "imageSelectors": [
+      "img"
+    ]
+  },
+  "runtimeHints": {
+    "searchTypingHints": [
+      "search",
+      "keyword",
+      "từ khóa",
+      "tim kiếm",
+      "tìm kiếm",
+      "friend",
+      "bạn bè",
+      "add friend",
+      "kết bạn",
+      "people",
+      "query",
+      "aria-label='search",
+      "placeholder*='search",
+      "placeholder='tìm kiếm",
+      "role='searchbox",
+      "name='q'",
+      "name='query'"
+    ]
+  },
+  "warmup": {
+    "blockNotificationSelectors": [
+      "button:has-text('Block')",
+      "button:has-text('Không cho phép')",
+      "button:has-text('Chặn')",
+      "button:has-text('Deny')",
+      "button:has-text('No thanks')",
+      "button:has-text('Not now')",
+      "button:has-text('Để sau')",
+      "[role='button']:has-text('Block')",
+      "[role='button']:has-text('Không cho phép')"
+    ],
+    "blockNotificationXpaths": [
+      "//button[contains(normalize-space(.),'Block')]",
+      "//button[contains(normalize-space(.),'Không cho phép')]",
+      "//button[contains(normalize-space(.),'Chặn')]",
+      "//*[@role='button'][contains(normalize-space(.),'Block') or contains(normalize-space(.),'Deny')]"
+    ],
+    "closeAdPopupSelectors": [
+      "[role='dialog'] button[aria-label*='close' i]",
+      "[role='dialog'] button[aria-label*='đóng' i]",
+      ".modal button[aria-label*='close' i]",
+      ".popup button[aria-label*='close' i]",
+      ".newsletter-popup-close",
+      ".fancybox-close-small",
+      ".mfp-close",
+      "[data-dismiss='modal']",
+      "button:has-text('Đóng')",
+      "button:has-text('Tắt')",
+      "button:has-text('Bỏ qua')",
+      "button:has-text('Skip')",
+      "button:has-text('Close')",
+      "a:has-text('Đóng')",
+      "a:has-text('Close')"
+    ],
+    "closeAdPopupXpaths": [
+      "//*[@role='dialog']//button[contains(translate(@aria-label,'CLOSE','close'),'close') or contains(translate(@aria-label,'ĐÓNG','đóng'),'đóng')]"
+    ],
+    "closeFrameTextCandidates": [
+      "×", "✕", "Close", "Đóng", "Tắt", "Skip", "Bỏ qua"
+    ]
+  },
+  "languageNormalize": {
+    "enabled": true,
+    "timeoutMs": 25000,
+    "returnUrl": "https://www.facebook.com/",
+    "settingsUrls": [
+      "https://www.facebook.com/settings/?tab=language",
+      "https://www.facebook.com/settings/language",
+      "https://www.facebook.com/settings/language/"
+    ],
+    "openLanguageSettingsSelectors": [
+      "a[href*='settings/?tab=language']",
+      "a[href*='settings/language']",
+      "[role='link']:has-text('Ngôn ngữ')",
+      "[role='link']:has-text('Language')"
+    ],
+    "openLanguageSettingsXpaths": [
+      "//a[contains(@href,'settings') and contains(@href,'language')]",
+      "//*[@role='link' and (contains(normalize-space(.),'Ngôn ngữ') or contains(normalize-space(.),'Language'))]"
+    ],
+    "accountMenuXpaths": [
+      "//div[@aria-label='Tài khoản của bạn' and @role='button']",
+      "//div[@aria-label='Your profile' and @role='button']",
+      "//div[@aria-label='Trình đơn tài khoản' and @role='button']",
+      "//div[@aria-label='Account menu' and @role='button']",
+      "//*[@role='button'][contains(@aria-label,'Tài khoản') or contains(@aria-label,'Your profile') or contains(@aria-label,'Account')][.//image or .//svg or .//img]"
+    ],
+    "accountMenuSelectors": [
+      "div[aria-label='Tài khoản của bạn'][role='button']",
+      "div[aria-label='Your profile'][role='button']",
+      "div[aria-label='Account menu'][role='button']",
+      "div[role='banner'] [role='button'][aria-label*='Tài khoản' i]",
+      "div[role='banner'] [role='button'][aria-label*='Your profile' i]"
+    ],
+    "settingsPrivacyXpaths": [
+      "//*[@role='menuitem' or @role='button'][.//span[normalize-space(.)='Cài đặt và quyền riêng tư']]",
+      "//*[@role='menuitem' or @role='button'][.//span[normalize-space(.)='Settings & privacy']]",
+      "//span[contains(normalize-space(.),'Cài đặt và quyền riêng tư')]/ancestor::*[@role='button' or @role='menuitem'][1]",
+      "//span[contains(normalize-space(.),'Settings & privacy')]/ancestor::*[@role='button' or @role='menuitem'][1]"
+    ],
+    "settingsPrivacySelectors": [
+      "[role='menuitem']:has-text('Cài đặt và quyền riêng tư')",
+      "[role='menuitem']:has-text('Settings & privacy')",
+      "[role='button']:has-text('Cài đặt và quyền riêng tư')",
+      "[role='button']:has-text('Settings & privacy')"
+    ],
+    "languageMenuXpaths": [
+      "//*[@role='menuitem' or @role='button'][.//span[normalize-space(.)='Ngôn ngữ']]",
+      "//*[@role='menuitem' or @role='button'][.//span[normalize-space(.)='Language']]",
+      "//span[normalize-space(.)='Ngôn ngữ']/ancestor::*[@role='button' or @role='menuitem'][1]",
+      "//span[normalize-space(.)='Language']/ancestor::*[@role='button' or @role='menuitem'][1]"
+    ],
+    "languageMenuSelectors": [
+      "[role='menuitem']:has-text('Ngôn ngữ')",
+      "[role='menuitem']:has-text('Language')",
+      "[role='button']:has-text('Ngôn ngữ')",
+      "[role='button']:has-text('Language')"
+    ],
+    "facebookLanguageXpaths": [
+      "//*[@role='menuitem' or @role='button' or @role='link'][.//span[normalize-space(.)='Ngôn ngữ trên Facebook']]",
+      "//*[@role='menuitem' or @role='button' or @role='link'][.//span[normalize-space(.)='Facebook Language']]",
+      "//span[contains(normalize-space(.),'Ngôn ngữ trên Facebook')]/ancestor::*[@role='button' or @role='menuitem' or @role='link'][1]",
+      "//span[contains(normalize-space(.),'Facebook Language')]/ancestor::*[@role='button' or @role='menuitem' or @role='link'][1]",
+      "//a[contains(@href,'settings') and contains(@href,'language')]"
+    ],
+    "facebookLanguageSelectors": [
+      "[role='menuitem']:has-text('Ngôn ngữ trên Facebook')",
+      "[role='menuitem']:has-text('Facebook Language')",
+      "a[href*='settings'][href*='language']"
+    ],
+    "languageOptionXpathsByCode": {
+      "vi_VN": [
+        "//span[normalize-space()='Tiếng Việt']/ancestor::*[@role='button' or @role='radio' or @role='option'][1]",
+        "//*[@role='radio' or @role='option' or @role='button'][.//span[normalize-space()='Tiếng Việt']]"
+      ],
+      "en_US": [
+        "//span[contains(normalize-space(.),'English (US)')]/ancestor::*[@role='button' or @role='radio' or @role='option'][1]",
+        "//*[@role='radio' or @role='option' or @role='button'][.//span[contains(normalize-space(.),'English (US)')]]"
+      ],
+      "en_GB": [
+        "//span[contains(normalize-space(.),'English (UK)')]/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
+      ],
+      "id_ID": [
+        "//span[normalize-space()='Bahasa Indonesia']/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
+      ],
+      "th_TH": [
+        "//span[normalize-space()='ภาษาไทย']/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
+      ],
+      "pt_BR": [
+        "//span[contains(normalize-space(.),'Português (Brasil)')]/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
+      ],
+      "fr_FR": [
+        "//span[contains(normalize-space(.),'Français (France)')]/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
+      ],
+      "de_DE": [
+        "//span[normalize-space()='Deutsch']/ancestor::*[@role='button' or @role='radio' or @role='option'][1]"
+      ]
+    },
+    "countryToLanguage": {
+      "VN": "vi_VN",
+      "US": "en_US",
+      "GB": "en_GB",
+      "UK": "en_GB",
+      "CA": "en_US",
+      "AU": "en_US",
+      "SG": "en_US",
+      "BR": "pt_BR",
+      "PT": "pt_PT",
+      "ES": "es_ES",
+      "MX": "es_LA",
+      "TH": "th_TH",
+      "ID": "id_ID",
+      "PH": "fil_PH",
+      "MY": "ms_MY",
+      "DE": "de_DE",
+      "FR": "fr_FR",
+      "IT": "it_IT",
+      "NL": "nl_NL",
+      "PL": "pl_PL",
+      "RU": "ru_RU",
+      "TR": "tr_TR",
+      "JP": "ja_JP",
+      "KR": "ko_KR",
+      "CN": "zh_CN",
+      "TW": "zh_TW",
+      "HK": "zh_HK",
+      "IN": "hi_IN"
+    },
+    "languageLabels": {
+      "vi_VN": ["Tiếng Việt", "Vietnamese"],
+      "en_US": ["English (US)", "English (United States)", "English"],
+      "en_GB": ["English (UK)", "English (United Kingdom)"],
+      "th_TH": ["ภาษาไทย", "Thai"],
+      "id_ID": ["Bahasa Indonesia", "Indonesian"],
+      "pt_BR": ["Português (Brasil)", "Portuguese (Brazil)"],
+      "pt_PT": ["Português (Portugal)", "Portuguese (Portugal)"],
+      "es_ES": ["Español (España)", "Spanish (Spain)"],
+      "es_LA": ["Español", "Spanish"],
+      "fr_FR": ["Français (France)", "French (France)", "Français"],
+      "de_DE": ["Deutsch", "German"],
+      "it_IT": ["Italiano", "Italian"],
+      "nl_NL": ["Nederlands", "Dutch"],
+      "pl_PL": ["Polski", "Polish"],
+      "ru_RU": ["Русский", "Russian"],
+      "tr_TR": ["Türkçe", "Turkish"],
+      "ja_JP": ["日本語", "Japanese"],
+      "ko_KR": ["한국어", "Korean"],
+      "zh_CN": ["中文(简体)", "Chinese (Simplified)"],
+      "zh_TW": ["中文(繁體)", "Chinese (Traditional)"],
+      "zh_HK": ["中文(香港)", "Chinese (Hong Kong)"],
+      "fil_PH": ["Filipino"],
+      "ms_MY": ["Bahasa Melayu", "Malay"],
+      "hi_IN": ["हिन्दी", "Hindi"]
+    },
+    "currentLanguageSelectors": [
+      "div[role='main'] [aria-label*='Ngôn ngữ' i] [role='button']",
+      "div[role='main'] [aria-label*='Language' i] [role='button']",
+      "div[role='main'] a[href*='settings/language']"
+    ],
+    "currentLanguageXpaths": [
+      "//div[@role='main']//*[contains(@aria-label,'Ngôn ngữ') or contains(@aria-label,'Language')]"
+    ],
+    "languageOptionTemplates": [
+      "div[role='dialog'] [role='button']:has-text('{label}')",
+      "div[role='dialog'] [role='menuitem']:has-text('{label}')",
+      "div[role='dialog'] [role='radio']:has-text('{label}')",
+      "[role='listbox'] [role='option']:has-text('{label}')",
+      "[role='button']:has-text('{label}')",
+      "[role='radio']:has-text('{label}')"
+    ],
+    "languageOptionXpaths": [
+      "//div[@role='dialog']//*[@role='button' or @role='menuitem' or @role='radio'][contains(normalize-space(.),'{label}')]",
+      "//*[@role='option'][contains(normalize-space(.),'{label}')]",
+      "//*[@role='radio'][contains(normalize-space(.),'{label}')]"
+    ],
+    "saveSelectors": [
+      "div[role='dialog'] [role='button']:has-text('Lưu thay đổi')",
+      "div[role='dialog'] [role='button']:has-text('Save changes')",
+      "[role='button']:has-text('Lưu thay đổi')",
+      "[role='button']:has-text('Save changes')",
+      "[role='button']:has-text('Lưu')",
+      "[role='button']:has-text('Save')",
+      "[role='button']:has-text('Apply')",
+      "[role='button']:has-text('Áp dụng')"
+    ],
+    "saveXpaths": [
+      "//*[@role='button'][contains(normalize-space(.),'Lưu thay đổi') or contains(normalize-space(.),'Save changes')]",
+      "//*[@role='button'][normalize-space(.)='Lưu' or normalize-space(.)='Save']"
+    ],
+    "verifySelectors": [
+      "div[role='main']"
+    ],
+    "verifyXpaths": []
   }
 }
