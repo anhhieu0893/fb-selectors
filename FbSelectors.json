@@ -1397,6 +1397,47 @@
       "requiresCount": false,
       "businessFields": ["text", "filePath", "url"],
       "timeoutMs": 90000,
+      "targetUrlTemplates": [
+        "https://www.facebook.com/groups/{target}"
+      ],
+      "successPolicy": {
+        "mode": "atLeastOneSuccess",
+        "allSkippedIsSuccess": false,
+        "partialIsSuccess": true,
+        "minSuccessCount": 1
+      },
+      "retryPolicy": {
+        "enabled": true,
+        "count": 1,
+        "delayMs": 5000,
+        "retryOn": [
+          "navigation_timeout",
+          "workflow_timeout",
+          "transient_error"
+        ]
+      },
+      "validationPolicy": {
+        "requireTargetUrlTemplates": true,
+        "requirePrecheck": "canPostInGroup",
+        "requireWorkflowSteps": true
+      },
+      "precheck": {
+        "canPostInGroup": {
+          "required": true,
+          "timeoutMs": 5000,
+          "selectors": [
+            "div[role='main'] div[role='button']:has-text('Bạn viết gì')",
+            "div[role='main'] div[role='button']:has-text('Bạn viết gì đi')",
+            "div[role='main'] div[role='button']:has-text('Bạn đang nghĩ gì')",
+            "div[role='main'] div[role='button']:has-text('Viết bài viết')",
+            "div[role='main'] div[role='button']:has-text(\"What's on your mind\")",
+            "div[role='main'] div[role='button']:has-text('Write something')",
+            "div[role='main'] div[role='button'][aria-label*='Create a post' i]",
+            "div[role='main'] div[role='button'][aria-label*='Viết bài viết' i]"
+          ],
+          "xpaths": []
+        }
+      },
       "workflowSteps": [
         { "type": "openUrl", "url": "{url}" },
         { "type": "wait", "waitSelectors": [
@@ -1802,6 +1843,7 @@
     ],
     "totpInputFallbacks": [
       "xpath=//*[@id='_r_3_']",
+      "xpath=//input[starts-with(@id,'_r_')]",
       "input[name='approvals_code']",
       "input[name='approvals_code_entry']",
       "input[autocomplete='one-time-code']",
