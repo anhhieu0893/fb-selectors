@@ -495,7 +495,7 @@
           "captionXpaths": [
             "//div[@contenteditable='true' and @role='textbox' and contains(@aria-label,'chú thích')]",
             "//div[@contenteditable='true' and @role='textbox' and contains(@aria-label,'caption')]",
-            "//div[@contenteditable='true' and @role='textbox' and contains(@aria-label,'keterangan'
+            "//div[@contenteditable='true' and @role='textbox' and contains(@aria-label,'keterangan')]",
             "//div[@contenteditable='true' and @role='textbox' and contains(@aria-label,'kapsyen')]",
             "//div[@contenteditable='true' and @role='textbox']"
           ],
@@ -1388,6 +1388,62 @@
       "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
       "businessFields": ["repeatCount"]
     },
+    "POST_TO_GROUP": {
+      "displayName": "Đăng bài lên Nhóm",
+      "status": "FULL_WORKFLOW",
+      "requiresText": true,
+      "requiresFile": "optional",
+      "requiresUrl": true,
+      "requiresCount": false,
+      "businessFields": ["text", "filePath", "url"],
+      "timeoutMs": 90000,
+      "workflowSteps": [
+        { "type": "openUrl", "url": "{url}" },
+        { "type": "wait", "waitSelectors": [
+            "div[role='main'] div[role='feed']",
+            "div[role='main']"
+          ], "timeoutMs": 15000 },
+        { "type": "delay", "delayMs": 2500 },
+        { "type": "click", "clickSelectors": [
+            "div[role='main'] div[role='button']:has-text('Bạn viết gì đi')",
+            "div[role='main'] div[role='button']:has-text('Bạn đang nghĩ gì')",
+            "div[role='main'] div[role='button']:has-text('Viết bài viết')",
+            "div[role='main'] div[role='button']:has-text(\"What's on your mind\")",
+            "div[role='main'] div[role='button']:has-text('Write something')",
+            "div[role='main'] div[role='button'][aria-label*='Create a post' i]",
+            "div[role='main'] div[role='button'][aria-label*='Viết bài viết' i]"
+          ] },
+        { "type": "wait", "waitSelectors": [
+            "div[role='dialog'] div[contenteditable='true']",
+            "div[role='dialog'] [role='textbox']"
+          ], "timeoutMs": 10000 },
+        { "type": "input", "source": "text", "inputSelectors": [
+            "div[role='dialog'] div[contenteditable='true'][role='textbox']",
+            "div[role='dialog'] div[contenteditable='true']"
+          ] },
+        { "type": "delay", "delayMs": 1500 },
+        { "type": "upload", "source": "file", "optional": true,
+          "uploadSelectors": [
+            "div[role='dialog'] input[type='file'][accept*='image']",
+            "div[role='dialog'] input[type='file']"
+          ],
+          "uploadXpaths": [
+            "//div[@role='dialog']//input[@type='file']"
+          ] },
+        { "type": "delay", "delayMs": 4000 },
+        { "type": "submit", "submitSelectors": [
+            "div[role='dialog'] [role='button'][aria-label='Đăng']:not([aria-disabled='true'])",
+            "div[role='dialog'] [role='button'][aria-label='Post']:not([aria-disabled='true'])",
+            "div[role='dialog'] [role='button']:has-text('Đăng'):not([aria-disabled='true'])",
+            "div[role='dialog'] [role='button']:has-text('Post'):not([aria-disabled='true'])"
+          ] },
+        { "type": "delay", "delayMs": 3000 },
+        { "type": "verify", "verifySelectors": [
+            "div[role='feed']",
+            "div[role='main']"
+          ] }
+      ]
+    },
     "POST_GROUP": {
       "displayName": "Bài viết Nhóm", "status": "TODO_CONFIG",
       "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
@@ -1745,6 +1801,7 @@
       "email-code"
     ],
     "totpInputFallbacks": [
+      "xpath=//*[@id='_r_3_']",
       "input[name='approvals_code']",
       "input[name='approvals_code_entry']",
       "input[autocomplete='one-time-code']",
@@ -1760,7 +1817,6 @@
       "input[data-testid*='mfa']",
       "input[aria-label*='xác thực']",
       "input[aria-label*='Xác thực']",
-      "xpath=//*[@id='_r_3_']",
       "xpath=//input[starts-with(@id,'_r_')]"
     ],
     "mailOtpInputFallbacks": [
