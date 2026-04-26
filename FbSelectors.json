@@ -1689,6 +1689,7 @@
           "type": "click",
           "name": "openLanguageEditor",
           "clickXpaths": [
+            "//div[@role='main']//div[@role='button' or @role='link'][.//*[name()='svg']])[1]",
             "//a[contains(@href,'language') or contains(@href,'locale')]",
             "//*[@role='button' and .//*[contains(normalize-space(),'Account language')]]",
             "//*[@role='button' and .//*[contains(normalize-space(),'Ngôn ngữ của tài khoản')]]"
