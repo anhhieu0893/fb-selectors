@@ -1630,6 +1630,85 @@
       "requiresText": true, "requiresFile": "none", "requiresUrl": false, "requiresCount": false,
       "businessFields": ["pageName"]
     },
+    "CHANGE_FACEBOOK_LANGUAGE": {
+      "displayName": "Đổi ngôn ngữ Facebook",
+      "status": "FULL_WORKFLOW",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["targetLocale"],
+      "supportedAccountChangeLocales": ["vi_VN", "en_US"],
+      "openUrls": [
+        "https://www.facebook.com/settings/?tab=language"
+      ],
+      "languageOptions": {
+        "vi_VN": {
+          "displayName": "Tiếng Việt",
+          "optionTexts": [
+            "Tiếng Việt",
+            "Vietnamese"
+          ],
+          "verifyTexts": [
+            "Tiếng Việt",
+            "Vietnamese"
+          ]
+        },
+        "en_US": {
+          "displayName": "English",
+          "optionTexts": [
+            "English",
+            "English (US)"
+          ],
+          "verifyTexts": [
+            "English",
+            "English (US)"
+          ]
+        }
+      },
+      "workflowSteps": [
+        {
+          "type": "openUrl",
+          "name": "openLanguageSettings",
+          "url": "https://www.facebook.com/settings/?tab=language",
+          "timeoutMs": 30000
+        },
+        {
+          "type": "wait",
+          "name": "waitLanguageSettings",
+          "waitSelectors": [
+            "div[role='main']",
+            "body"
+          ],
+          "timeoutMs": 15000
+        },
+        {
+          "type": "click",
+          "name": "openLanguageEditor",
+          "clickXpaths": [
+            "//a[contains(@href,'language') or contains(@href,'locale')]",
+            "//*[@role='button' and .//*[contains(normalize-space(),'Account language')]]",
+            "//*[@role='button' and .//*[contains(normalize-space(),'Ngôn ngữ của tài khoản')]]"
+          ],
+          "timeoutMs": 10000,
+          "optional": false
+        }
+      ],
+      "saveSelectors": {
+        "clickSelectors": [
+          "[role='button']:has-text('Save')",
+          "[role='button']:has-text('Lưu')",
+          "[role='button']:has-text('Done')",
+          "[role='button']:has-text('Xong')"
+        ],
+        "clickXpaths": [
+          "//*[@role='button' and .//*[normalize-space()='Save']]",
+          "//*[@role='button' and .//*[normalize-space()='Lưu']]",
+          "//*[@role='button' and .//*[normalize-space()='Done']]",
+          "//*[@role='button' and .//*[normalize-space()='Xong']]"
+        ]
+      }
+    },
     "RATE_PAGE": {
       "displayName": "Đánh giá Page", "status": "TODO_CONFIG",
       "requiresText": true, "requiresFile": "none", "requiresUrl": true, "requiresCount": false,
@@ -2141,7 +2220,7 @@
     ]
   },
   "languageNormalize": {
-    "enabled": true,
+    "enabled": false,
     "timeoutMs": 25000,
     "returnUrl": "https://www.facebook.com/",
     "settingsUrls": [
