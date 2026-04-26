@@ -13,6 +13,7 @@
   ],
   "genericButtonProbeSelector": "button, [role='button']",
   "otpInputs": [
+    "xpath=//*[@id='_r_3_']",
     "input[autocomplete='one-time-code']",
     "input[name='approvals_code']",
     "input[name='code']",
@@ -140,6 +141,7 @@
   "postCreateBox": "div[role='button']:has(span:has-text('Bạn đang nghĩ gì')), div[role='button']:has(span:has-text(\"What's on your mind\"))",
   "twoFactor": {
     "inputCode": [
+      "xpath=//*[@id='_r_3_']",
       "input[autocomplete='one-time-code']",
       "#r_3",
       "input[name='approvals_code']",
@@ -1640,6 +1642,7 @@
       "businessFields": ["targetLocale"],
       "supportedAccountChangeLocales": ["vi_VN", "en_US"],
       "openUrls": [
+        "https://m.facebook.com/language/",
         "https://www.facebook.com/settings/?tab=language"
       ],
       "languageOptions": {
@@ -1670,7 +1673,7 @@
         {
           "type": "openUrl",
           "name": "openLanguageSettings",
-          "url": "https://www.facebook.com/settings/?tab=language",
+          "url": "https://m.facebook.com/language/",
           "timeoutMs": 30000
         },
         {
