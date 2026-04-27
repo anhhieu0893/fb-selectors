@@ -1167,10 +1167,18 @@
         "video[src]"
       ],
       "nextXpaths": [
+        "//div[@aria-label='Thẻ tiếp theo']//*[name()='svg']",
+        "//*[@aria-label='Thẻ tiếp theo']",
+        "//*[@role='button' and @aria-label='Thẻ tiếp theo']",
+        "//*[@role='button' and contains(@aria-label,'Thẻ tiếp theo')]",
         "//div[@role='button'][contains(@aria-label,'Video tiếp theo')]",
         "//div[@role='button'][contains(@aria-label,'Next video')]"
       ],
       "nextSelectors": [
+        "div[aria-label='Thẻ tiếp theo'] svg",
+        "[aria-label='Thẻ tiếp theo']",
+        "[role='button'][aria-label='Thẻ tiếp theo']",
+        "[role='button'][aria-label*='Thẻ tiếp theo' i]",
         "div[role='button'][aria-label*='Video tiếp theo' i]",
         "button[aria-label*='Video tiếp theo' i]",
         "div[role='button'][aria-label*='Next video' i]",
@@ -1252,6 +1260,128 @@
       "requiresUrl": false,
       "requiresCount": true,
       "businessFields": ["scrollMinPixels", "scrollMaxPixels"]
+    },
+    "SURF_FACEBOOK": {
+      "displayName": "Lướt Facebook",
+      "status": "FULL_WORKFLOW",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": true,
+      "businessFields": ["repeatCount"],
+      "entryXpaths": [
+        "//a[@aria-label='Facebook']",
+        "//*[@role='link' and @aria-label='Facebook']",
+        "//*[@role='link' and contains(@aria-label,'Facebook')]",
+        "//a[@aria-label='Trang chủ']",
+        "//a[@aria-label='Home']",
+        "//*[@role='link' and contains(@aria-label,'Trang chủ')]",
+        "//*[@role='link' and contains(@aria-label,'Home')]"
+      ],
+      "entrySelectors": [
+        "a[aria-label='Facebook']",
+        "[role='link'][aria-label='Facebook']",
+        "[role='link'][aria-label*='Facebook' i]",
+        "a[aria-label='Trang chủ']",
+        "a[aria-label='Home']",
+        "a[aria-label*='Trang chủ' i]",
+        "a[aria-label*='Home' i]"
+      ],
+      "openUrls": [
+        "https://www.facebook.com/",
+        "https://www.facebook.com/?sk=h_chr",
+        "https://m.facebook.com/home.php"
+      ],
+      "waitSelectors": [
+        "div[role='feed']",
+        "div[role='main']",
+        "body"
+      ],
+      "verifySelectors": [
+        "div[role='feed']",
+        "div[role='main']",
+        "body"
+      ],
+      "scrollPolicy": {
+        "minDistance": 450,
+        "maxDistance": 1200,
+        "minPauseMs": 2500,
+        "maxPauseMs": 7000,
+        "direction": "down",
+        "humanLike": true
+      }
+    },
+    "QUICK_GROUP_SCAN": {
+      "displayName": "Quét nhóm nhanh",
+      "status": "TODO_CONFIG",
+      "requiresText": true,
+      "requiresFile": "none",
+      "requiresUrl": true,
+      "requiresCount": true,
+      "businessFields": ["keywords", "seedUrls", "maxGroupsPerKeyword", "maxScrolls", "outputFolder"],
+      "entryUrls": [
+        "https://www.facebook.com/groups/feed"
+      ],
+      "searchInputXpaths": [
+        "//input[@placeholder='Search groups']",
+        "//input[@placeholder='Tìm kiếm nhóm']"
+      ],
+      "searchInputSelectors": [
+        "input[aria-label='Search groups']",
+        "input[aria-label='Tìm kiếm nhóm']",
+        "input[placeholder='Search groups']",
+        "input[placeholder='Tìm kiếm nhóm']"
+      ],
+      "targetUrlTemplates": [
+        "https://www.facebook.com/search/groups/?q={keyword}"
+      ],
+      "fallbackUrls": [
+        "https://www.facebook.com/groups/feed/"
+      ],
+      "waitSelectors": [
+        "div[role='feed']",
+        "div[role='main']",
+        "body"
+      ],
+      "verifySelectors": [
+        "div[role='feed']",
+        "div[role='main']",
+        "body"
+      ],
+      "groupScanSelectors": {
+        "itemSelectors": [
+          "div[role='feed'] div[role='article']",
+          "div[role='main'] a[href*='/groups/'][role='link']"
+        ],
+        "linkSelectors": [
+          "a[href*='/groups/'][role='link']"
+        ],
+        "nameSelectors": [
+          "a[href*='/groups/'][role='link'] span[dir='auto']",
+          "a[href*='/groups/'][role='link']"
+        ],
+        "metaSelectors": [
+          "span:has-text('thành viên')",
+          "span:has-text('members')",
+          "span:has-text('bài viết')",
+          "span:has-text('posts')",
+          "span:has-text('Công khai')",
+          "span:has-text('Public')",
+          "span:has-text('Riêng tư')",
+          "span:has-text('Private')"
+        ]
+      },
+      "scrollPolicy": {
+        "minDistance": 600,
+        "maxDistance": 1400,
+        "minPauseMs": 1000,
+        "maxPauseMs": 2500,
+        "direction": "down",
+        "humanLike": true,
+        "maxScrolls": 8,
+        "delayMs": 1200,
+        "stopWhenNoNewItems": true
+      }
     },
     "VIEW_STORY": {
       "displayName": "Xem Story",
@@ -1641,6 +1771,154 @@
       "requiresCount": false,
       "businessFields": ["targetLocale"],
       "supportedAccountChangeLocales": ["vi_VN", "en_US"],
+      "openLanguageEditorTextVariants": [
+        "Account language", "Facebook language", "App language", "Language", "Language and region",
+        "Ngôn ngữ của tài khoản", "Ngôn ngữ tài khoản", "Ngôn ngữ trên Facebook", "Ngôn ngữ ứng dụng", "Ngôn ngữ và khu vực",
+        "Idioma da conta", "Idioma do app", "Idioma do Facebook", "Idioma", "Idioma e região",
+        "Idioma de la cuenta", "Idioma de Facebook", "Idioma de la aplicación", "Idioma y región",
+        "Langue du compte", "Langue de Facebook", "Langue de l’application", "Langue", "Langue et région",
+        "Sprache des Kontos", "Facebook-Sprache", "App-Sprache", "Sprache", "Sprache und Region",
+        "Lingua dell’account", "Lingua di Facebook", "Lingua dell’app", "Lingua", "Lingua e area geografica",
+        "Taal van account", "Facebook-taal", "App-taal", "Taal", "Taal en regio",
+        "Bahasa akun", "Bahasa Facebook", "Bahasa aplikasi", "Bahasa", "Bahasa dan wilayah",
+        "Bahasa akaun", "Bahasa apl", "Bahasa dan rantau",
+        "ภาษาในบัญชี", "ภาษาของบัญชี", "ภาษา Facebook", "ภาษาแอพ", "ภาษา", "ภาษาและภูมิภาค",
+        "アカウントの言語", "Facebookの言語", "アプリの言語", "言語", "言語と地域",
+        "账户语言", "Facebook 语言", "应用语言", "语言", "语言和地区",
+        "帳號語言", "Facebook 語言", "應用程式語言", "語言", "語言和地區",
+        "계정 언어", "Facebook 언어", "앱 언어", "언어", "언어 및 지역",
+        "Язык аккаунта", "Язык Facebook", "Язык приложения", "Язык", "Язык и регион",
+        "Мова облікового запису", "Мова Facebook", "Мова застосунку", "Мова", "Мова й регіон",
+        "Język konta", "Język Facebooka", "Język aplikacji", "Język", "Język i region",
+        "Jazyk účtu", "Jazyk Facebooku", "Jazyk aplikace", "Jazyk", "Jazyk a region",
+        "Jazyk aplikácie", "Jazyk a región",
+        "Limba contului", "Limba Facebook", "Limba aplicației", "Limbă", "Limbă și regiune",
+        "Език на акаунта", "Език на Facebook", "Език на приложението", "Език", "Език и регион",
+        "Nyelv", "Fiók nyelve", "Facebook nyelve", "Alkalmazás nyelve", "Nyelv és régió",
+        "Dil", "Hesap dili", "Facebook dili", "Uygulama dili", "Dil ve bölge",
+        "Γλώσσα λογαριασμού", "Γλώσσα Facebook", "Γλώσσα εφαρμογής", "Γλώσσα", "Γλώσσα και περιοχή",
+        "שפת החשבון", "שפת פייסבוק", "שפת האפליקציה", "שפה", "שפה ואזור",
+        "لغة الحساب", "لغة فيسبوك", "لغة التطبيق", "اللغة", "اللغة والمنطقة",
+        "زبان حساب", "زبان فیس‌بوک", "زبان برنامه", "زبان", "زبان و منطقه",
+        "भाषा", "खाते की भाषा", "Facebook भाषा", "ऐप की भाषा", "भाषा और क्षेत्र",
+        "অ্যাকাউন্টের ভাষা", "Facebook ভাষা", "অ্যাপের ভাষা", "ভাষা", "ভাষা ও অঞ্চল"
+      ],
+      "targetLanguageTextVariantsByCode": {
+        "af_ZA": ["Afrikaans"],
+        "ar_AR": ["العربية", "Arabic"],
+        "az_AZ": ["Azərbaycanca", "Azerbaijani"],
+        "be_BY": ["Беларуская", "Belarusian"],
+        "bg_BG": ["Български", "Bulgarian"],
+        "bn_IN": ["বাংলা", "Bengali"],
+        "bs_BA": ["Bosanski", "Bosnian"],
+        "ca_ES": ["Català", "Catalan"],
+        "cs_CZ": ["Čeština", "Czech"],
+        "cy_GB": ["Cymraeg", "Welsh"],
+        "da_DK": ["Dansk", "Danish"],
+        "de_DE": ["Deutsch", "German"],
+        "el_GR": ["Ελληνικά", "Greek"],
+        "en_GB": ["English (UK)", "English (United Kingdom)", "British English"],
+        "en_US": ["English (US)", "English (United States)", "English"],
+        "eo_EO": ["Esperanto"],
+        "es_ES": ["Español (España)", "Spanish (Spain)", "Español"],
+        "es_LA": ["Español", "Español (Latinoamérica)", "Spanish"],
+        "et_EE": ["Eesti", "Estonian"],
+        "eu_ES": ["Euskara", "Basque"],
+        "fa_IR": ["فارسی", "Persian", "Farsi"],
+        "fi_FI": ["Suomi", "Finnish"],
+        "fo_FO": ["Føroyskt", "Faroese"],
+        "fr_CA": ["Français (Canada)", "French (Canada)"],
+        "fr_FR": ["Français (France)", "Français", "French"],
+        "fy_NL": ["Frysk", "Frisian"],
+        "ga_IE": ["Gaeilge", "Irish"],
+        "gl_ES": ["Galego", "Galician"],
+        "he_IL": ["עברית", "Hebrew"],
+        "hi_IN": ["हिन्दी", "Hindi"],
+        "hr_HR": ["Hrvatski", "Croatian"],
+        "hu_HU": ["Magyar", "Hungarian"],
+        "hy_AM": ["Հայերեն", "Armenian"],
+        "id_ID": ["Bahasa Indonesia", "Indonesian"],
+        "is_IS": ["Íslenska", "Icelandic"],
+        "it_IT": ["Italiano", "Italian"],
+        "ja_JP": ["日本語", "Japanese"],
+        "ka_GE": ["ქართული", "Georgian"],
+        "km_KH": ["ភាសាខ្មែរ", "Khmer"],
+        "ko_KR": ["한국어", "Korean"],
+        "ku_TR": ["Kurdî", "Kurdish"],
+        "la_VA": ["Latin", "Latina"],
+        "lt_LT": ["Lietuvių", "Lithuanian"],
+        "lv_LV": ["Latviešu", "Latvian"],
+        "mk_MK": ["Македонски", "Macedonian"],
+        "ml_IN": ["മലയാളം", "Malayalam"],
+        "ms_MY": ["Bahasa Melayu", "Malay"],
+        "nb_NO": ["Norsk (bokmål)", "Norsk bokmål", "Norwegian Bokmål"],
+        "ne_NP": ["नेपाली", "Nepali"],
+        "nl_NL": ["Nederlands", "Dutch"],
+        "nn_NO": ["Norsk (nynorsk)", "Norsk nynorsk", "Norwegian Nynorsk"],
+        "pa_IN": ["ਪੰਜਾਬੀ", "Punjabi"],
+        "pl_PL": ["Polski", "Polish"],
+        "ps_AF": ["پښتو", "Pashto"],
+        "pt_BR": ["Português (Brasil)", "Portuguese (Brazil)", "Português"],
+        "pt_PT": ["Português (Portugal)", "Portuguese (Portugal)"],
+        "ro_RO": ["Română", "Romanian"],
+        "ru_RU": ["Русский", "Russian"],
+        "sk_SK": ["Slovenčina", "Slovak"],
+        "sl_SI": ["Slovenščina", "Slovenian"],
+        "sq_AL": ["Shqip", "Albanian"],
+        "sr_RS": ["Српски", "Srpski", "Serbian"],
+        "sv_SE": ["Svenska", "Swedish"],
+        "sw_KE": ["Kiswahili", "Swahili"],
+        "ta_IN": ["தமிழ்", "Tamil"],
+        "te_IN": ["తెలుగు", "Telugu"],
+        "th_TH": ["ภาษาไทย", "ไทย", "Thai"],
+        "tl_PH": ["Filipino", "Tagalog"],
+        "tr_TR": ["Türkçe", "Turkish"],
+        "uk_UA": ["Українська", "Ukrainian"],
+        "ur_PK": ["اردو", "Urdu"],
+        "vi_VN": ["Tiếng Việt", "Vietnamese", "Vietnamita", "Vietnamien", "Vietnamesisch", "Vietnamés", "Вьетнамский", "ベトナム語", "越南语", "越南語", "베트남어", "فيتنامية", "वियतनामी"],
+        "zh_CN": ["中文(简体)", "简体中文", "Chinese (Simplified)", "Simplified Chinese"],
+        "zh_HK": ["中文(香港)", "繁體中文(香港)", "Chinese (Hong Kong)"],
+        "zh_TW": ["中文(台灣)", "繁體中文", "Chinese (Traditional)", "Traditional Chinese"],
+        "am_ET": ["አማርኛ", "Amharic"],
+        "as_IN": ["অসমীয়া", "Assamese"],
+        "br_FR": ["Brezhoneg", "Breton"],
+        "cb_IQ": ["کوردیی ناوەندی", "Central Kurdish", "Sorani"],
+        "cx_PH": ["Cebuano", "Bisaya"],
+        "el_CY": ["Ελληνικά (Κύπρος)", "Greek (Cyprus)"],
+        "en_IN": ["English (India)", "Indian English"],
+        "en_PI": ["English (Pirate)", "Pirate English"],
+        "en_UD": ["English (Upside Down)", "Upside Down English"],
+        "es_CL": ["Español (Chile)", "Spanish (Chile)"],
+        "es_CO": ["Español (Colombia)", "Spanish (Colombia)"],
+        "es_MX": ["Español (México)", "Spanish (Mexico)"],
+        "es_VE": ["Español (Venezuela)", "Spanish (Venezuela)"],
+        "fb_LT": ["Leet Speak", "1337"],
+        "ff_NG": ["Fulah", "Fulfulde"],
+        "gn_PY": ["Avañe'ẽ", "Guaraní", "Guarani"],
+        "gu_IN": ["ગુજરાતી", "Gujarati"],
+        "ha_NG": ["Hausa"],
+        "ja_KS": ["関西弁", "Japanese (Kansai)"],
+        "jv_ID": ["Basa Jawa", "Javanese"],
+        "kk_KZ": ["Қазақша", "Kazakh"],
+        "kn_IN": ["ಕನ್ನಡ", "Kannada"],
+        "lo_LA": ["ລາວ", "Lao"],
+        "mg_MG": ["Malagasy"],
+        "mi_NZ": ["Māori", "Maori"],
+        "mr_IN": ["मराठी", "Marathi"],
+        "mt_MT": ["Malti", "Maltese"],
+        "my_MM": ["မြန်မာ", "Burmese", "Myanmar"],
+        "or_IN": ["ଓଡ଼ିଆ", "Odia", "Oriya"],
+        "qz_MM": ["Zawgyi", "Burmese (Zawgyi)"],
+        "si_LK": ["සිංහල", "Sinhala"],
+        "so_SO": ["Soomaali", "Somali"],
+        "su_ID": ["Basa Sunda", "Sundanese"],
+        "tg_TJ": ["Тоҷикӣ", "Tajik"],
+        "tz_MA": ["Tamazight", "ⵜⴰⵎⴰⵣⵉⵖⵜ"],
+        "uz_UZ": ["O‘zbek", "Uzbek"],
+        "xh_ZA": ["isiXhosa", "Xhosa"],
+        "yo_NG": ["Yorùbá", "Yoruba"],
+        "zu_ZA": ["isiZulu", "Zulu"]
+      },
       "openUrls": [
         "https://m.facebook.com/language/",
         "https://www.facebook.com/settings/?tab=language"
@@ -1689,10 +1967,31 @@
           "type": "click",
           "name": "openLanguageEditor",
           "clickXpaths": [
-            "//div[@role='main']//div[@role='button' or @role='link'][.//*[name()='svg']])[1]",
-            "//a[contains(@href,'language') or contains(@href,'locale')]",
+            "//*[contains(normalize-space(.),'Account language')]/ancestor::*[@role='button' or @role='link' or @role='menuitem'][1]",
+            "//*[@role='button' or @role='link' or @role='menuitem'][.//*[contains(normalize-space(.),'Account language')]]",
+            "//*[contains(normalize-space(.),'Ngôn ngữ của tài khoản')]/ancestor::*[@role='button' or @role='link' or @role='menuitem'][1]",
+            "//*[@role='button' or @role='link' or @role='menuitem'][.//*[contains(normalize-space(.),'Ngôn ngữ của tài khoản')]]",
+            "//*[contains(normalize-space(.),'Idioma da conta')]/ancestor::*[@role='button' or @role='link' or @role='menuitem'][1]",
+            "//*[@role='button' or @role='link' or @role='menuitem'][.//*[contains(normalize-space(.),'Idioma da conta')]]",
+            "//*[contains(normalize-space(.),'Idioma do app')]/ancestor::*[@role='button' or @role='link' or @role='menuitem'][1]",
+            "//*[@role='button' or @role='link' or @role='menuitem'][.//*[contains(normalize-space(.),'Idioma do app')]]",
             "//*[@role='button' and .//*[contains(normalize-space(),'Account language')]]",
-            "//*[@role='button' and .//*[contains(normalize-space(),'Ngôn ngữ của tài khoản')]]"
+            "//*[@role='button' and .//*[contains(normalize-space(),'Ngôn ngữ của tài khoản')]]",
+            "//a[contains(@href,'language') or contains(@href,'locale')]"
+          ],
+          "clickSelectors": [
+            "[role='button']:has-text('Account language')",
+            "[role='link']:has-text('Account language')",
+            "[role='menuitem']:has-text('Account language')",
+            "[role='button']:has-text('Ngôn ngữ của tài khoản')",
+            "[role='link']:has-text('Ngôn ngữ của tài khoản')",
+            "[role='menuitem']:has-text('Ngôn ngữ của tài khoản')",
+            "[role='button']:has-text('Idioma da conta')",
+            "[role='link']:has-text('Idioma da conta')",
+            "[role='menuitem']:has-text('Idioma da conta')",
+            "[role='button']:has-text('Idioma do app')",
+            "[role='link']:has-text('Idioma do app')",
+            "[role='menuitem']:has-text('Idioma do app')"
           ],
           "timeoutMs": 10000,
           "optional": false
@@ -2258,7 +2557,7 @@
       "div[role='banner'] [role='button'][aria-label*='Your profile' i]",
       "div[role='banner'] [role='button'][aria-label*='Account' i]"
     ],
-    "settingsPrivacyXpaths": [
+    "settingsPrivacyXpaths": [ 
       "//*[@role='menuitem' or @role='button'][.//span[normalize-space(.)='Cài đặt và quyền riêng tư']]",
       "//*[@role='menuitem' or @role='button'][.//span[normalize-space(.)='Settings & privacy']]",
       "//span[contains(normalize-space(.),'Cài đặt và quyền riêng tư')]/ancestor::*[@role='button' or @role='menuitem'][1]",
@@ -2283,6 +2582,10 @@
       "[role='button']:has-text('Language')"
     ],
     "facebookLanguageXpaths": [
+      "//*[@role='menuitem' or @role='button' or @role='link'][.//span[contains(normalize-space(.),'Idioma da conta')]]",
+      "//span[contains(normalize-space(.),'Idioma da conta')]/ancestor::*[@role='button' or @role='menuitem' or @role='link'][1]",
+      "//*[@role='menuitem' or @role='button' or @role='link'][.//span[contains(normalize-space(.),'Idioma')]]",
+      "//span[contains(normalize-space(.),'Idioma')]/ancestor::*[@role='button' or @role='menuitem' or @role='link'][1]",
       "//*[@role='menuitem' or @role='button' or @role='link'][.//span[normalize-space(.)='Ngôn ngữ trên Facebook']]",
       "//*[@role='menuitem' or @role='button' or @role='link'][.//span[normalize-space(.)='Facebook Language']]",
       "//span[contains(normalize-space(.),'Ngôn ngữ trên Facebook')]/ancestor::*[@role='button' or @role='menuitem' or @role='link'][1]",
@@ -2290,6 +2593,11 @@
       "//a[contains(@href,'settings') and contains(@href,'language')]"
     ],
     "facebookLanguageSelectors": [
+      "[role='menuitem']:has-text('Idioma da conta')",
+      "[role='button']:has-text('Idioma da conta')",
+      "[role='link']:has-text('Idioma da conta')",
+      "[role='menuitem']:has-text('Idioma')",
+      "[role='button']:has-text('Idioma')",
       "[role='menuitem']:has-text('Ngôn ngữ trên Facebook')",
       "[role='menuitem']:has-text('Facebook Language')",
       "a[href*='settings'][href*='language']"
