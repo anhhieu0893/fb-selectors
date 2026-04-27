@@ -456,8 +456,147 @@
       "requiresFile": "required",
       "requiresUrl": false,
       "requiresCount": false,
-      "businessFields": ["videoPath", "caption"],
+      "businessFields": ["videoPath", "title", "hashtags"],
       "variants": [
+        {
+          "variantName": "profilePhotoVideoReelFlow",
+          "openUrls": [
+            "https://www.facebook.com/me",
+            "https://www.facebook.com/profile.php"
+          ],
+          "photoVideoXpaths": [
+            "//div[@aria-label='Ảnh/video']",
+            "//div[@aria-label='Photo/video']",
+            "//*[@role='button' and @aria-label='Ảnh/video']",
+            "//*[@role='button' and @aria-label='Photo/video']",
+            "//*[@role='button' and contains(@aria-label,'Ảnh/video')]",
+            "//*[@role='button' and contains(@aria-label,'Photo/video')]",
+            "//div[@role='button'][.//span[normalize-space()='Ảnh/video']]",
+            "//div[@role='button'][.//span[normalize-space()='Photo/video']]"
+          ],
+          "photoVideoSelectors": [
+            "div[aria-label='Ảnh/video']",
+            "div[aria-label='Photo/video']",
+            "[role='button'][aria-label='Ảnh/video']",
+            "[role='button'][aria-label='Photo/video']",
+            "[role='button'][aria-label*='Ảnh/video' i]",
+            "[role='button'][aria-label*='Photo/video' i]",
+            "[role='button']:has-text('Ảnh/video')",
+            "[role='button']:has-text('Photo/video')"
+          ],
+          "uploadXpaths": [
+            "//input[@type='file' and contains(@accept,'video/mp4')]",
+            "//input[@type='file' and contains(@accept,'video')]",
+            "//input[@type='file' and contains(@accept,'mp4')]",
+            "//div[@role='dialog']//input[@type='file']",
+            "//form//input[@type='file']",
+            "//input[@type='file']"
+          ],
+          "uploadSelectors": [
+            "input[type='file'][accept*='video/mp4']",
+            "input[type='file'][accept*='video']",
+            "input[type='file'][accept*='mp4']",
+            "div[role='dialog'] input[type='file']",
+            "form input[type='file']",
+            "input[type='file']"
+          ],
+          "nextXpaths": [
+            "//div[@aria-label='Next']",
+            "//div[@aria-label='Tiếp']",
+            "//*[@role='button' and @aria-label='Next']",
+            "//*[@role='button' and @aria-label='Tiếp']",
+            "//*[@role='button' and contains(@aria-label,'Next')]",
+            "//*[@role='button' and contains(@aria-label,'Tiếp')]",
+            "//div[@role='button'][.//span[normalize-space()='Next']]",
+            "//div[@role='button'][.//span[normalize-space()='Tiếp']]"
+          ],
+          "nextSelectors": [
+            "div[aria-label='Next']",
+            "div[aria-label='Tiếp']",
+            "[role='button'][aria-label='Next']",
+            "[role='button'][aria-label='Tiếp']",
+            "[role='button'][aria-label*='Next' i]",
+            "[role='button'][aria-label*='Tiếp' i]",
+            "[role='button']:has-text('Next')",
+            "[role='button']:has-text('Tiếp')"
+          ],
+          "titleInputXpaths": [
+            "//input[@id='_r_8h_']",
+            "//input[@id='_r_lb_']",
+            "//input[contains(@aria-label,'title') or contains(@aria-label,'Title')]",
+            "//input[contains(@aria-label,'tiêu đề') or contains(@aria-label,'Tiêu đề')]",
+            "//textarea[contains(@aria-label,'title') or contains(@aria-label,'Title')]",
+            "//textarea[contains(@aria-label,'tiêu đề') or contains(@aria-label,'Tiêu đề')]",
+            "//*[@contenteditable='true' and (contains(@aria-label,'title') or contains(@aria-label,'Title') or contains(@aria-label,'tiêu đề') or contains(@aria-label,'Tiêu đề'))]"
+          ],
+          "titleInputSelectors": [
+            "input#_r_8h_",
+            "input#_r_lb_",
+            "input[aria-label*='title' i]",
+            "input[aria-label*='tiêu đề' i]",
+            "textarea[aria-label*='title' i]",
+            "textarea[aria-label*='tiêu đề' i]",
+            "[contenteditable='true'][aria-label*='title' i]",
+            "[contenteditable='true'][aria-label*='tiêu đề' i]"
+          ],
+          "hashtagInputXpaths": [
+            "//input[@id='_r_lh_']",
+            "//input[@id='_r_d8_']",
+            "//input[contains(@aria-label,'hashtag') or contains(@aria-label,'Hashtag')]",
+            "//input[contains(@aria-label,'hash tag') or contains(@aria-label,'Hash tag')]",
+            "//input[contains(@aria-label,'thẻ') or contains(@aria-label,'Thẻ')]",
+            "//textarea[contains(@aria-label,'hashtag') or contains(@aria-label,'Hashtag')]",
+            "//textarea[contains(@aria-label,'hash tag') or contains(@aria-label,'Hash tag')]",
+            "//textarea[contains(@aria-label,'thẻ') or contains(@aria-label,'Thẻ')]",
+            "//*[@contenteditable='true' and (contains(@aria-label,'hashtag') or contains(@aria-label,'Hashtag') or contains(@aria-label,'thẻ') or contains(@aria-label,'Thẻ'))]"
+          ],
+          "hashtagInputSelectors": [
+            "input#_r_lh_",
+            "input#_r_d8_",
+            "input[aria-label*='hashtag' i]",
+            "input[aria-label*='hash tag' i]",
+            "input[aria-label*='thẻ' i]",
+            "textarea[aria-label*='hashtag' i]",
+            "textarea[aria-label*='hash tag' i]",
+            "textarea[aria-label*='thẻ' i]",
+            "[contenteditable='true'][aria-label*='hashtag' i]",
+            "[contenteditable='true'][aria-label*='thẻ' i]"
+          ],
+          "submitXpaths": [
+            "//div[@aria-label='Post']",
+            "//div[@aria-label='Đăng']",
+            "//*[@role='button' and @aria-label='Post']",
+            "//*[@role='button' and @aria-label='Đăng']",
+            "//*[@role='button' and contains(@aria-label,'Post')]",
+            "//*[@role='button' and contains(@aria-label,'Đăng')]",
+            "//div[@role='button'][.//span[normalize-space()='Post']]",
+            "//div[@role='button'][.//span[normalize-space()='Đăng']]",
+            "//div[@role='button'][.//span[normalize-space()='Publish']]",
+            "//div[@role='button'][.//span[normalize-space()='Chia sẻ']]",
+            "//div[@role='button'][.//span[normalize-space()='Share']]"
+          ],
+          "submitSelectors": [
+            "div[aria-label='Post']",
+            "div[aria-label='Đăng']",
+            "[role='button'][aria-label='Post']",
+            "[role='button'][aria-label='Đăng']",
+            "[role='button'][aria-label*='Post' i]",
+            "[role='button'][aria-label*='Đăng' i]",
+            "[role='button']:has-text('Post')",
+            "[role='button']:has-text('Đăng')",
+            "[role='button']:has-text('Publish')",
+            "[role='button']:has-text('Chia sẻ')",
+            "[role='button']:has-text('Share')"
+          ],
+          "verifyXpaths": [
+            "//*[contains(normalize-space(.),'Đã đăng')]",
+            "//*[contains(normalize-space(.),'Posted')]",
+            "//*[contains(normalize-space(.),'Your reel has been posted')]",
+            "//*[contains(normalize-space(.),'Reel của bạn đã được đăng')]",
+            "//*[contains(normalize-space(.),'Đã chia sẻ')]",
+            "//*[contains(normalize-space(.),'Shared')]"
+          ]
+        },
         {
           "variantName": "normalReelPage",
           "openUrls": [
