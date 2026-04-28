@@ -562,6 +562,99 @@
             "[contenteditable='true'][aria-label*='hashtag' i]",
             "[contenteditable='true'][aria-label*='thẻ' i]"
           ],
+          "composerDetectXpaths": [
+            "//div[@role='dialog']//*[contains(normalize-space(.),'Bạn đang nghĩ gì')]",
+            "//div[@role='dialog']//*[contains(normalize-space(.),\"What's on your mind\")]",
+            "//div[@role='dialog']//*[contains(@aria-label,'Bạn đang nghĩ gì')]",
+            "//div[@role='dialog']//*[contains(@aria-label,\"What's on your mind\")]",
+            "//div[@role='dialog']//*[@contenteditable='true']",
+            "//div[@role='dialog']//*[@role='textbox' and @contenteditable='true']"
+          ],
+          "composerDetectSelectors": [
+            "div[role='dialog'] [aria-label*='Bạn đang nghĩ gì' i]",
+            "div[role='dialog'] [aria-label*=\"What's on your mind\" i]",
+            "div[role='dialog'] [contenteditable='true']",
+            "div[role='dialog'] [role='textbox'][contenteditable='true']"
+          ],
+          "composerTextInputXpaths": [
+            "//div[@role='dialog']//*[@role='textbox' and @contenteditable='true']",
+            "//div[@role='dialog']//*[@contenteditable='true' and @role='textbox']",
+            "//div[@role='dialog']//*[@contenteditable='true' and not(self::p)]",
+            "//div[@role='dialog']//*[contains(normalize-space(.),'Bạn đang nghĩ gì')]/ancestor::*[@contenteditable='true'][1]",
+            "//div[@role='dialog']//*[contains(normalize-space(.),\"What's on your mind\")]/ancestor::*[@contenteditable='true'][1]",
+            "//div[@role='dialog']//*[contains(@aria-label,'Bạn đang nghĩ gì')]/ancestor::*[@contenteditable='true'][1]",
+            "//div[@role='dialog']//*[contains(@aria-label,\"What's on your mind\")]/ancestor::*[@contenteditable='true'][1]",
+            "//div[@role='dialog']//p[@class='xdj266r x14z9mp xat24cr x1lziwak x16tdsg8']/ancestor::*[@contenteditable='true'][1]",
+            "//div[@role='dialog']//p[contains(@class,'xdj266r') and contains(@class,'x14z9mp') and contains(@class,'xat24cr') and contains(@class,'x1lziwak') and contains(@class,'x16tdsg8')]/ancestor::*[@contenteditable='true'][1]"
+          ],
+          "composerTextInputSelectors": [
+            "div[role='dialog'] [role='textbox'][contenteditable='true']",
+            "div[role='dialog'] [contenteditable='true'][role='textbox']",
+            "div[role='dialog'] [contenteditable='true']",
+            "div[role='dialog'] [aria-label*='Bạn đang nghĩ gì' i]",
+            "div[role='dialog'] [aria-label*=\"What's on your mind\" i]"
+          ],
+          "composerSubmitXpaths": [
+            "//div[@role='dialog']//div[@aria-label='Đăng']",
+            "//div[@role='dialog']//div[@aria-label='Post']",
+            "//div[@role='dialog']//*[@role='button' and @aria-label='Đăng']",
+            "//div[@role='dialog']//*[@role='button' and @aria-label='Post']",
+            "//div[@role='dialog']//span[normalize-space()='Đăng']/ancestor::*[@role='button'][1]",
+            "//div[@role='dialog']//span[normalize-space()='Post']/ancestor::*[@role='button'][1]"
+          ],
+          "composerSubmitSelectors": [
+            "div[role='dialog'] div[aria-label='Đăng']",
+            "div[role='dialog'] div[aria-label='Post']",
+            "div[role='dialog'] [role='button'][aria-label='Đăng']",
+            "div[role='dialog'] [role='button'][aria-label='Post']",
+            "div[role='dialog'] [role='button']:has-text('Đăng')",
+            "div[role='dialog'] [role='button']:has-text('Post')"
+          ],
+          "postPendingXpaths": [
+            "//*[contains(normalize-space(.),'Đang đăng')]",
+            "//*[contains(normalize-space(.),'Đang tải lên')]",
+            "//*[contains(normalize-space(.),'Đang xử lý')]",
+            "//*[contains(normalize-space(.),'Posting')]",
+            "//*[contains(normalize-space(.),'Uploading')]",
+            "//*[contains(normalize-space(.),'Processing')]",
+            "//*[contains(normalize-space(.),'Processing video')]",
+            "//*[contains(normalize-space(.),'Video của bạn đang được xử lý')]",
+            "//*[contains(normalize-space(.),'Your post is being processed')]",
+            "//div[@role='dialog']//*[@role='progressbar']"
+          ],
+          "postPendingSelectors": [
+            "div[role='dialog'] [role='progressbar']",
+            "[aria-label='Đang tải lên']",
+            "[aria-label='Uploading']"
+          ],
+          "composerStillOpenXpaths": [
+            "//div[@role='dialog']//div[@aria-label='Đăng']",
+            "//div[@role='dialog']//div[@aria-label='Post']",
+            "//div[@role='dialog']//*[@role='button' and @aria-label='Đăng']",
+            "//div[@role='dialog']//*[@role='button' and @aria-label='Post']",
+            "//div[@role='dialog']//*[contains(normalize-space(.),'Tạo bài viết')]",
+            "//div[@role='dialog']//*[contains(normalize-space(.),'Create post')]",
+            "//div[@role='dialog']//*[contains(normalize-space(.),'Bạn đang nghĩ gì?')]",
+            "//div[@role='dialog']//*[contains(normalize-space(.),\"What's on your mind?\")]"
+          ],
+          "composerStillOpenSelectors": [
+            "div[role='dialog'] div[aria-label='Đăng']",
+            "div[role='dialog'] div[aria-label='Post']",
+            "div[role='dialog'] [role='button'][aria-label='Đăng']",
+            "div[role='dialog'] [role='button'][aria-label='Post']"
+          ],
+          "postSuccessXpaths": [
+            "//a[@aria-label='Facebook']//*[name()='svg']",
+            "//a[@aria-label='Facebook']",
+            "//*[@role='link' and @aria-label='Facebook']",
+            "//*[@aria-label='Facebook']//*[name()='svg']"
+          ],
+          "postSuccessSelectors": [
+            "a[aria-label='Facebook'] svg",
+            "a[aria-label='Facebook']",
+            "[role='link'][aria-label='Facebook']",
+            "[aria-label='Facebook'] svg"
+          ],
           "submitXpaths": [
             "//div[@aria-label='Post']",
             "//div[@aria-label='Đăng']",
@@ -2511,7 +2604,44 @@
       "Đăng nhập",
       "Log into Facebook",
       "Đăng nhập vào Facebook"
-    ]
+    ],
+    "urlCheckpointFragments": [
+      "/checkpoint",
+      "checkpoint/"
+    ],
+    "urlDisabledFragments": [
+      "/disabled",
+      "account_disabled"
+    ],
+    "urlLoginFragments": [
+      "/login",
+      "login.php",
+      "recover"
+    ],
+    "disabledBodyTexts": [
+      "account has been disabled",
+      "your account has been disabled",
+      "tài khoản của bạn đã bị vô hiệu hóa"
+    ],
+    "sessionExpiredBodyTexts": [
+      "session expired",
+      "phiên đăng nhập đã hết hạn"
+    ],
+    "profileNotFoundBodyTexts": [
+      "this content isn't available right now",
+      "this content isn't available",
+      "nội dung này hiện không khả dụng",
+      "content not found"
+    ],
+    "loginWallBodyTexts": [
+      "log into facebook",
+      "đăng nhập vào facebook"
+    ],
+    "titleNeutralTexts": [
+      "Facebook",
+      "Content Not Found"
+    ],
+    "liveBodyLengthThreshold": 5000
   },
   "popupHandlers": {
     "dialogSelectors": [
