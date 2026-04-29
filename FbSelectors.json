@@ -2996,13 +2996,19 @@
     "verifyXpaths": []
   },
   "loginError": {
-    "_note": "LOGIN ERROR = detect wrong-password / login-fail inline trên login form. Language-agnostic: DOM signals (role/aria/data-testid attributes) + URL markers. KHONG dung text contains().",
+    "_note": "LOGIN ERROR = detect wrong-password / login-fail inline tren login form. Language-agnostic: DOM signals (role/aria/data-testid attributes) + URL markers. KHONG dung text contains().",
     "_strategy": "Sau N lan submit van o login form + session khong match item: check DOM signals + URL markers. Neu match -> ket luan WRONG_PASSWORD -> route account error.",
     "wrongPasswordDomSignals": [
       "form input[name='pass'][aria-invalid='true']",
       "form input[type='password'][aria-invalid='true']",
-      "form[action*='login'] [role='alert']",
+      "input[name='pass'][aria-invalid='true']",
+      "input[name='pass'][aria-describedby]",
+      "form [role='alert']",
+      "form [aria-live='assertive']",
+      "form [aria-live='polite']",
       "form[id='login_form'] [role='alert']",
+      "form[id='login_form'] [aria-live]",
+      "form[action*='login'] [role='alert']",
       "div[role='alert'][data-visualcompletion='ignore-dynamic']",
       "[data-testid*='login_error' i]",
       "[data-testid*='password_error' i]"
@@ -3013,6 +3019,9 @@
       "&login_failed=",
       "&login_attempt="
     ],
+    "requireStillLoginForm": true,
+    "requireSessionMismatch": true,
+    "passwordFieldErrorNearBy": true,
     "_avoidText": true,
     "_note_disabled_account": "Account disabled co URL khac (/checkpoint/828281277713671). Detect rieng qua existing checkpoint flow, KHONG nham voi wrong password."
   },
