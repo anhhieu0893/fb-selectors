@@ -2994,5 +2994,241 @@
       "div[role='main']"
     ],
     "verifyXpaths": []
+  },
+  "loginError": {
+    "_note": "LOGIN ERROR = detect wrong-password / login-fail inline trên login form. Language-agnostic: DOM signals (role/aria/data-testid attributes) + URL markers. KHONG dung text contains().",
+    "_strategy": "Sau N lan submit van o login form + session khong match item: check DOM signals + URL markers. Neu match -> ket luan WRONG_PASSWORD -> route account error.",
+    "wrongPasswordDomSignals": [
+      "form input[name='pass'][aria-invalid='true']",
+      "form input[type='password'][aria-invalid='true']",
+      "form[action*='login'] [role='alert']",
+      "form[id='login_form'] [role='alert']",
+      "div[role='alert'][data-visualcompletion='ignore-dynamic']",
+      "[data-testid*='login_error' i]",
+      "[data-testid*='password_error' i]"
+    ],
+    "wrongPasswordUrlMarkers": [
+      "?login_failed=",
+      "?login_attempt=",
+      "&login_failed=",
+      "&login_attempt="
+    ],
+    "_avoidText": true,
+    "_note_disabled_account": "Account disabled co URL khac (/checkpoint/828281277713671). Detect rieng qua existing checkpoint flow, KHONG nham voi wrong password."
+  },
+  "accountRecovery": {
+    "_note": "ACCOUNT_RECOVERY = Forgot Password recovery flow (recover login via email OTP). KHONG phai Change Password. Selector PHAI language-agnostic: uu tien URL pattern + stable attribute (input[name], type, role) + structural (form > input visible). KHONG dung text contains() vi Facebook hien thi nhieu ngon ngu.",
+    "_strategy": "Resolver thu selectors theo thu tu, filter visible+enabled, prefer cung form chinh. Neu khong match -> tra CONFIG_MISSING/SELECTOR_NOT_FOUND, KHONG click bua.",
+    "forgotPasswordEntry": {
+      "urlPatterns": ["/login", "/login/?"],
+      "selectors": [
+        "a[href*='/login/identify']",
+        "a[href*='/recover']",
+        "a[href*='forgot']",
+        "form a[role='link']"
+      ],
+      "avoidText": true
+    },
+    "identifyScreen": {
+      "urlPatterns": ["/login/identify", "/recover/initiate"]
+    },
+    "identifierInput": {
+      "selectors": [
+        "form input[name='email']",
+        "form input[name='identify_email']",
+        "form input[type='email']",
+        "form input[type='tel']",
+        "form input[type='text']:not([type='hidden'])",
+        "input[autocomplete='username']",
+        "input[autocomplete='email']"
+      ],
+      "preferVisible": true,
+      "avoidText": true
+    },
+    "identifierContinueButton": {
+      "selectors": [
+        "form button[type='submit']",
+        "form [role='button'][tabindex='0']",
+        "form input[type='submit']"
+      ],
+      "preferPrimary": true,
+      "avoidText": true
+    },
+    "recoveryMethodScreen": {
+      "urlPatterns": ["/recover/initiate"]
+    },
+    "emailCodeOption": {
+      "selectors": [
+        "form input[type='radio'][value*='email' i]",
+        "form input[type='radio'][name*='email' i]",
+        "form input[type='radio']",
+        "form [role='radio']"
+      ],
+      "structuralStrategy": "prefer_first_radio_in_form",
+      "avoidText": true
+    },
+    "methodContinueButton": {
+      "selectors": [
+        "form button[type='submit']",
+        "form [role='button'][tabindex='0']"
+      ],
+      "preferPrimary": true,
+      "avoidText": true
+    },
+    "codeScreen": {
+      "urlPatterns": ["/recover/code", "/recover/checkpoint"]
+    },
+    "codeInput": {
+      "selectors": [
+        "form input[name='n']",
+        "form input[inputmode='numeric']",
+        "form input[autocomplete='one-time-code']",
+        "form input[type='text']:not([type='hidden'])",
+        "form input[type='tel']"
+      ],
+      "preferVisible": true,
+      "avoidText": true
+    },
+    "codeContinueButton": {
+      "selectors": [
+        "form button[type='submit']",
+        "form [role='button'][tabindex='0']"
+      ],
+      "preferPrimary": true,
+      "avoidText": true
+    },
+    "resendCodeButton": {
+      "selectors": [
+        "form button[name*='resend' i]",
+        "form a[href*='resend']",
+        "form [role='button'][data-testid*='resend' i]"
+      ],
+      "avoidText": true,
+      "_note": "Optional. Click khi OTP not arrived sau N phut. Selector chua co stable attribute tren Facebook hien tai - placeholder."
+    },
+    "twoFactorScreen": {
+      "urlPatterns": ["/two_step_verification", "/checkpoint"]
+    },
+    "twoFactorCodeInput": {
+      "selectors": [
+        "form input[name='approvals_code']",
+        "form input[inputmode='numeric']",
+        "form input[autocomplete='one-time-code']",
+        "form input[type='text']:not([type='hidden'])"
+      ],
+      "preferVisible": true,
+      "avoidText": true
+    },
+    "twoFactorContinueButton": {
+      "selectors": [
+        "form button[type='submit']",
+        "form [role='button'][tabindex='0']"
+      ],
+      "preferPrimary": true,
+      "avoidText": true
+    },
+    "twoFactorVerify": {
+      "urlPatterns": ["/two_step_verification"]
+    },
+    "automatedBehaviorVerify": {
+      "urlPatterns": ["/checkpoint"],
+      "domSignals": [
+        "form[action*='checkpoint']",
+        "[data-testid*='checkpoint' i]"
+      ],
+      "_note": "Facebook checkpoint 'automated behavior' (Phap: 'comportement automatise'). KHONG dung text - chi URL + form action."
+    },
+    "automatedBehaviorIgnoreButton": {
+      "selectors": [
+        "form button[type='submit'][name='submit[Ignore]']",
+        "form button[name*='ignore' i]",
+        "form button[type='submit']:nth-of-type(2)"
+      ],
+      "avoidText": true,
+      "_note": "Facebook checkpoint thuong co 2 button: Continue (verify) + Ignore (skip). Selector chinh dua name attr; neu Facebook doi attr -> resolver fallback structural (button thu 2 trong form)."
+    },
+    "recoverySuccessVerify": {
+      "urlPatterns": ["/", "/home.php"],
+      "domSignals": [
+        "[role='banner'] [aria-label]",
+        "div[role='navigation']"
+      ],
+      "_note": "Verify session recovered = da ve newsfeed/home. Caller verify them c_user cookie + identity match UID."
+    },
+    "identityVerify": {
+      "_note": "Caller dung Page.Context.CookiesAsync('https://www.facebook.com') + filter c_user. KHONG can selector DOM."
+    },
+    "errorVerify": {
+      "domSignals": [
+        "[role='alert']",
+        "form [aria-invalid='true']"
+      ],
+      "avoidText": true,
+      "_note": "Detect loi inline trong form (sai OTP, sai 2FA). KHONG dung text."
+    }
+  },
+  "changePassword": {
+    "_note": "CHANGE_PASSWORD = action dat mat khau moi SAU KHI da login OK. Tach HOAN TOAN khoi accountRecovery. Chi chay khi session alive. Sau success -> update account.Password trong DB. Selector language-agnostic: URL pattern + stable attribute.",
+    "settingsPasswordRoute": {
+      "urlPatterns": [
+        "/settings/?tab=password",
+        "/settings_and_privacy/security_login",
+        "/settings/security"
+      ],
+      "_note": "Caller goto direct URL thay vi navigate qua menu (tranh phu thuoc text label menu)."
+    },
+    "currentPasswordInput": {
+      "selectors": [
+        "form input[name='password_old']",
+        "form input[autocomplete='current-password']",
+        "form input[type='password']:nth-of-type(1)"
+      ],
+      "preferVisible": true,
+      "avoidText": true
+    },
+    "newPasswordInput": {
+      "selectors": [
+        "form input[name='password_new']",
+        "form input[autocomplete='new-password']:nth-of-type(1)",
+        "form input[type='password']:nth-of-type(2)"
+      ],
+      "preferVisible": true,
+      "avoidText": true
+    },
+    "confirmPasswordInput": {
+      "selectors": [
+        "form input[name='password_confirm']",
+        "form input[autocomplete='new-password']:nth-of-type(2)",
+        "form input[type='password']:nth-of-type(3)"
+      ],
+      "preferVisible": true,
+      "avoidText": true
+    },
+    "submitButton": {
+      "selectors": [
+        "form button[type='submit']",
+        "form [role='button'][tabindex='0']"
+      ],
+      "preferPrimary": true,
+      "avoidText": true
+    },
+    "successVerify": {
+      "urlPatterns": [
+        "/settings/?tab=password",
+        "/settings_and_privacy/security_login"
+      ],
+      "domSignals": [
+        "[role='alert'][aria-live='polite']",
+        "[data-testid*='success' i]"
+      ],
+      "_note": "Verify success = URL khong doi sang error + co toast/alert positive. Caller verify them bang cach thu login lai voi password moi."
+    },
+    "errorVerify": {
+      "domSignals": [
+        "[role='alert']",
+        "form [aria-invalid='true']"
+      ],
+      "avoidText": true
+    }
   }
 }
