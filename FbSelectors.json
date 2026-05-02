@@ -1,5 +1,5 @@
 {
-  "version": "2026.04.16",
+  "version": "2026.05.03.3",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -335,6 +335,11 @@
       "workflowSteps": [
         { "name": "waitMain", "type": "wait",
           "waitSelectors": ["div[role='main']"] },
+        { "name": "clickAvatar", "type": "click",
+          "clickXpaths": [
+            "//div[contains(@aria-label,'Hành động với ảnh đại diện')]",
+            "//div[@aria-label='Profile picture actions']"
+          ] },
         { "name": "openMenu", "type": "click",
           "clickXpaths": [
             "//span[contains(text(),'Chọn ảnh đại diện')]",
