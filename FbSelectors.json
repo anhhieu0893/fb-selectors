@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.03.13",
+  "version": "2026.05.03.14",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -1975,7 +1975,9 @@
         { "name": "openAccountCenter", "type": "click",
           "clickXpaths": [
             "//span[contains(text(),'Mật khẩu, bảo mật, thông tin cá nhân, trải nghiệm')]",
-            "//span[contains(text(),'Password, security, personal details, connected ex')]"
+            "//span[contains(text(),'Password, security, personal details, connected ex')]",
+            "//span[contains(text(),'Quản lý phần cài đặt tài khoản và trải nghiệm kết')]",
+            "//span[contains(text(),'Manage your account settings and connected experien')]"
           ] },
         { "name": "selectFbProfile", "type": "click",
           "clickXpaths": [
