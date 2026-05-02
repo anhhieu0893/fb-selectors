@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.03.11",
+  "version": "2026.05.03.12",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -406,16 +406,12 @@
           "uploadXpaths": ["//input[@type='file']"] },
         { "name": "save", "type": "submit",
           "submitXpaths": [
-            "//div[@aria-label=\"Lưu thay đổi\"]",
-            "//div[@aria-label=\"Save changes\"]",
-            "//*[@aria-label=\"Lưu thay đổi\"]",
-            "//*[@aria-label=\"Save changes\"]",
-            "//*[contains(@aria-label,'Lưu thay đổi')]",
-            "//*[contains(@aria-label,'Save changes')]",
-            "//div[@role=\"button\"][.//*[contains(text(),'Lưu thay đổi')]]",
-            "//div[@role=\"button\"][.//*[contains(text(),'Save changes')]]",
-            "//*[contains(text(),'Lưu thay đổi')]",
-            "//*[contains(text(),'Save changes')]"
+            "//div[@role=\"button\" and @aria-label=\"Lưu thay đổi\"]",
+            "//div[@role=\"button\" and @aria-label=\"Save changes\"]",
+            "//div[@aria-label=\"Lưu thay đổi\" and @tabindex=\"0\"]",
+            "//div[@aria-label=\"Save changes\" and @tabindex=\"0\"]",
+            "//div[@role=\"button\"][.//span[text()=\"Lưu thay đổi\"]]",
+            "//div[@role=\"button\"][.//span[text()=\"Save changes\"]]"
           ] }
       ]
     },
