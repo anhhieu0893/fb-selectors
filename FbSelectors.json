@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.03.19",
+  "version": "2026.05.03.20",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -1998,17 +1998,23 @@
           ] },
         { "name": "lastNameInput", "type": "input",
           "inputXpaths": [
+            "//input[@aria-label='Họ']",
+            "//input[@aria-label='Last name']",
+            "//input[@aria-label='Surname']",
+            "//input[@placeholder='Họ']",
+            "//input[@placeholder='Last name']",
             "//div[normalize-space()='Họ']/following::input[1]",
-            "//div[normalize-space()='Last name']/following::input[1]",
-            "//label[normalize-space()='Họ']/following::input[1]",
-            "//label[normalize-space()='Last name']/following::input[1]"
+            "//div[normalize-space()='Last name']/following::input[1]"
           ] },
         { "name": "firstNameInput", "type": "input",
           "inputXpaths": [
+            "//input[@aria-label='Tên']",
+            "//input[@aria-label='First name']",
+            "//input[@aria-label='Given name']",
+            "//input[@placeholder='Tên']",
+            "//input[@placeholder='First name']",
             "//div[normalize-space()='Tên']/following::input[1]",
-            "//div[normalize-space()='Name']/following::input[1]",
-            "//label[normalize-space()='Tên']/following::input[1]",
-            "//label[normalize-space()='Name']/following::input[1]"
+            "//div[normalize-space()='First name']/following::input[1]"
           ] }
       ]
     },
