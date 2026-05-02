@@ -1,5 +1,5 @@
 {
-  "version": "2026.04.16",
+  "version": "2026.05.03.2",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
