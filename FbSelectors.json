@@ -322,87 +322,72 @@
     },
     "UPLOAD_AVATAR": {
       "displayName": "Up Avatar",
-      "status": "FULL_WORKFLOW",
+      "status": "DEDICATED_HANDLER",
       "requiresText": false,
       "requiresFile": "required",
       "requiresUrl": false,
       "requiresCount": false,
       "businessFields": ["imagePath"],
-      "timeoutMs": 45000,
+      "timeoutMs": 60000,
+      "openUrls": [
+        "https://www.facebook.com/profile.php?id={uid}"
+      ],
       "workflowSteps": [
-        { "type": "openUrl", "url": "https://www.facebook.com/me",
-          "fallbackUrls": ["https://www.facebook.com/profile.php"] },
-        { "type": "wait", "waitSelectors": ["div[role='main']"] },
-        { "type": "click", "clickSelectors": [
-            "div[aria-label*='ảnh đại diện' i]",
-            "div[aria-label*='profile picture' i]",
-            "[role='button'][aria-label*='Cập nhật ảnh đại diện' i]",
-            "[role='button'][aria-label*='Update profile picture' i]"
+        { "name": "waitMain", "type": "wait",
+          "waitSelectors": ["div[role='main']"] },
+        { "name": "openMenu", "type": "click",
+          "clickXpaths": [
+            "//span[contains(text(),'Chọn ảnh đại diện')]",
+            "//span[contains(text(),'Choose profile picture')]"
           ] },
-        { "type": "click", "clickSelectors": [
-            "[role='menuitem']:has-text('Tải ảnh lên')",
-            "[role='menuitem']:has-text('Upload photo')",
-            "div[role='button']:has-text('Tải ảnh lên')",
-            "div[role='button']:has-text('Upload photo')"
+        { "name": "openUploadOption", "type": "click",
+          "clickXpaths": [
+            "//div[@aria-label='Tải ảnh lên']",
+            "//div[@aria-label='Upload photo']"
           ] },
-        { "type": "upload", "uploadSelectors": [
+        { "name": "upload", "type": "upload",
+          "uploadSelectors": [
             "input[type='file'][accept*='image']",
             "input[type='file']"
-          ], "uploadXpaths": ["//input[@type='file']"] },
-        { "type": "delay", "delayMs": 2500 },
-        { "type": "submit", "submitSelectors": [
-            "div[role='dialog'] [role='button']:has-text('Lưu')",
-            "div[role='dialog'] [role='button']:has-text('Save')",
-            "[role='button']:has-text('Lưu')",
-            "[role='button']:has-text('Save')"
-          ] },
-        { "type": "verify", "verifySelectors": [
-            "div[role='main'] img[alt*='ảnh đại diện' i]",
-            "div[role='main'] img[alt*='profile picture' i]"
-          ] }
+          ],
+          "uploadXpaths": ["//input[@type='file']"] }
       ]
     },
     "UPLOAD_COVER": {
       "displayName": "Up Cover",
-      "status": "FULL_WORKFLOW",
+      "status": "DEDICATED_HANDLER",
       "requiresText": false,
       "requiresFile": "required",
       "requiresUrl": false,
       "requiresCount": false,
       "businessFields": ["imagePath"],
-      "timeoutMs": 45000,
+      "timeoutMs": 60000,
+      "openUrls": [
+        "https://www.facebook.com/profile.php?id={uid}"
+      ],
       "workflowSteps": [
-        { "type": "openUrl", "url": "https://www.facebook.com/me",
-          "fallbackUrls": ["https://www.facebook.com/profile.php"] },
-        { "type": "wait", "waitSelectors": ["div[role='main']"] },
-        { "type": "click", "clickSelectors": [
-            "[role='button'][aria-label*='Thêm ảnh bìa' i]",
-            "[role='button'][aria-label*='Add cover photo' i]",
-            "[role='button'][aria-label*='Edit cover photo' i]",
-            "[role='button'][aria-label*='Cập nhật ảnh bìa' i]",
-            "div[aria-label*='ảnh bìa' i][role='button']",
-            "div[aria-label*='cover photo' i][role='button']"
+        { "name": "waitMain", "type": "wait",
+          "waitSelectors": ["div[role='main']"] },
+        { "name": "openMenu", "type": "click",
+          "clickXpaths": [
+            "//div[contains(@aria-label,'Chỉnh sửa ảnh bìa')]",
+            "//div[contains(@aria-label,'Add cover photo')]"
           ] },
-        { "type": "click", "clickSelectors": [
-            "[role='menuitem']:has-text('Tải ảnh lên')",
-            "[role='menuitem']:has-text('Upload photo')"
+        { "name": "openUploadOption", "type": "click",
+          "clickXpaths": [
+            "//span[contains(text(),'Tải ảnh lên')]",
+            "//span[contains(text(),'Upload photo')]"
           ] },
-        { "type": "upload", "uploadSelectors": [
+        { "name": "upload", "type": "upload",
+          "uploadSelectors": [
             "input[type='file'][accept*='image']",
             "input[type='file']"
-          ] },
-        { "type": "delay", "delayMs": 2500 },
-        { "type": "submit", "submitSelectors": [
-            "div[role='dialog'] [role='button']:has-text('Lưu thay đổi')",
-            "div[role='dialog'] [role='button']:has-text('Save changes')",
-            "[role='button']:has-text('Lưu thay đổi')",
-            "[role='button']:has-text('Save changes')",
-            "[role='button']:has-text('Lưu')",
-            "[role='button']:has-text('Save')"
-          ] },
-        { "type": "verify", "verifySelectors": [
-            "div[role='main'] img[alt*='ảnh bìa' i]",
-            "div[role='main'] img[alt*='cover photo' i]"
+          ],
+          "uploadXpaths": ["//input[@type='file']"] },
+        { "name": "save", "type": "submit",
+          "submitXpaths": [
+            "//span[contains(text(),'Lưu thay đổi')]",
+            "//span[contains(text(),'Save changes')]"
           ] }
       ]
     },
@@ -1951,9 +1936,129 @@
       "businessFields": ["newPassword"]
     },
     "CHANGE_NAME": {
-      "displayName": "Đổi tên", "status": "TODO_CONFIG",
-      "requiresText": true, "requiresFile": "none", "requiresUrl": false, "requiresCount": false,
-      "businessFields": ["newName"]
+      "displayName": "Đổi tên",
+      "status": "DEDICATED_HANDLER",
+      "requiresText": true,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": ["firstName", "middleName", "lastName", "password"],
+      "timeoutMs": 60000,
+      "openUrls": [
+        "https://www.facebook.com/settings?tab=account&section=name",
+        "https://www.facebook.com/settings/?tab=account&section=name",
+        "https://accountscenter.facebook.com/profiles/name"
+      ],
+      "workflowSteps": [
+        { "name": "waitMain", "type": "wait",
+          "waitSelectors": ["div[role='main']"] },
+        { "name": "openEditDialog", "type": "click",
+          "clickSelectors": [
+            "div[role='main'] [role='button']:has-text('Chỉnh sửa')",
+            "div[role='main'] [role='button']:has-text('Edit')",
+            "[role='link']:has-text('Chỉnh sửa tên')",
+            "[role='link']:has-text('Edit name')",
+            "[aria-label='Chỉnh sửa']",
+            "[aria-label='Edit']"
+          ],
+          "textVariants": [
+            "Chỉnh sửa tên",
+            "Edit name",
+            "Chỉnh sửa",
+            "Edit"
+          ] },
+        { "name": "firstNameInput", "type": "input",
+          "inputSelectors": [
+            "input[name='first_name']",
+            "input[aria-label='Tên']",
+            "input[aria-label='First name']",
+            "input[placeholder='Tên']",
+            "input[placeholder='First name']"
+          ],
+          "inputXpaths": [
+            "//label[contains(.,'Tên') or contains(.,'First name')]/following::input[1]"
+          ] },
+        { "name": "middleNameInput", "type": "input",
+          "optional": true,
+          "inputSelectors": [
+            "input[name='middle_name']",
+            "input[aria-label='Tên đệm']",
+            "input[aria-label='Middle name']",
+            "input[placeholder='Tên đệm']",
+            "input[placeholder='Middle name']"
+          ] },
+        { "name": "lastNameInput", "type": "input",
+          "inputSelectors": [
+            "input[name='last_name']",
+            "input[aria-label='Họ']",
+            "input[aria-label='Last name']",
+            "input[aria-label='Surname']",
+            "input[placeholder='Họ']",
+            "input[placeholder='Last name']"
+          ],
+          "inputXpaths": [
+            "//label[contains(.,'Họ') or contains(.,'Last name') or contains(.,'Surname')]/following::input[1]"
+          ] },
+        { "name": "reviewChanges", "type": "click",
+          "optional": true,
+          "clickSelectors": [
+            "div[role='dialog'] [role='button']:has-text('Xem lại thay đổi')",
+            "div[role='dialog'] [role='button']:has-text('Review change')",
+            "[role='button']:has-text('Xem lại thay đổi')",
+            "[role='button']:has-text('Review change')"
+          ],
+          "textVariants": [
+            "Xem lại thay đổi",
+            "Review change",
+            "Tiếp",
+            "Continue"
+          ] },
+        { "name": "save", "type": "submit",
+          "submitSelectors": [
+            "div[role='dialog'] [role='button']:has-text('Lưu thay đổi')",
+            "div[role='dialog'] [role='button']:has-text('Save changes')",
+            "div[role='dialog'] [role='button']:has-text('Lưu')",
+            "div[role='dialog'] [role='button']:has-text('Save')",
+            "[role='button']:has-text('Lưu thay đổi')",
+            "[role='button']:has-text('Save changes')"
+          ],
+          "textVariants": [
+            "Lưu thay đổi",
+            "Save changes",
+            "Lưu",
+            "Save"
+          ] },
+        { "name": "passwordInput", "type": "input",
+          "optional": true,
+          "inputSelectors": [
+            "input[type='password'][name='password']",
+            "input[type='password'][aria-label='Mật khẩu']",
+            "input[type='password'][aria-label='Password']",
+            "input[type='password']"
+          ] },
+        { "name": "passwordSubmit", "type": "submit",
+          "optional": true,
+          "submitSelectors": [
+            "div[role='dialog'] [role='button']:has-text('Xác nhận')",
+            "div[role='dialog'] [role='button']:has-text('Confirm')",
+            "div[role='dialog'] [role='button']:has-text('Tiếp')",
+            "div[role='dialog'] [role='button']:has-text('Continue')",
+            "div[role='dialog'] [role='button']:has-text('Lưu')",
+            "div[role='dialog'] [role='button']:has-text('Save')"
+          ],
+          "textVariants": [
+            "Xác nhận",
+            "Confirm",
+            "Tiếp",
+            "Continue"
+          ] },
+        { "name": "verify", "type": "verify",
+          "verifySelectors": [
+            "div[role='main']:has-text('Đã thay đổi')",
+            "div[role='main']:has-text('Name updated')",
+            "[role='status']"
+          ] }
+      ]
     },
     "UPDATE_PROFILE": {
       "displayName": "Cập nhật thông tin", "status": "TODO_CONFIG",
