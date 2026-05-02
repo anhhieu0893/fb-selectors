@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.03.20",
+  "version": "2026.05.03.21",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -2004,7 +2004,9 @@
             "//input[@placeholder='Họ']",
             "//input[@placeholder='Last name']",
             "//div[normalize-space()='Họ']/following::input[1]",
-            "//div[normalize-space()='Last name']/following::input[1]"
+            "//div[normalize-space()='Last name']/following::input[1]",
+            "//label[normalize-space()='Họ']/following::input[1]",
+            "//label[normalize-space()='Last name']/following::input[1]"
           ] },
         { "name": "firstNameInput", "type": "input",
           "inputXpaths": [
@@ -2014,7 +2016,9 @@
             "//input[@placeholder='Tên']",
             "//input[@placeholder='First name']",
             "//div[normalize-space()='Tên']/following::input[1]",
-            "//div[normalize-space()='First name']/following::input[1]"
+            "//div[normalize-space()='First name']/following::input[1]",
+            "//label[normalize-space()='Tên']/following::input[1]",
+            "//label[normalize-space()='First name']/following::input[1]"
           ] }
       ]
     },
