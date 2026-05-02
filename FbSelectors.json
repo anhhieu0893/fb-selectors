@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.03.4",
+  "version": "2026.05.03.5",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -357,7 +357,6 @@
           ],
           "uploadXpaths": ["//input[@type='file']"] },
         { "name": "save", "type": "submit",
-          "delayMs": 4000,
           "submitXpaths": [
             "//span[contains(text(),'Save')]",
             "//span[contains(text(),'Lưu')]"
