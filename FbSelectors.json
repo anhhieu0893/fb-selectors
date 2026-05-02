@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.03.18",
+  "version": "2026.05.03.19",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -1984,11 +1984,11 @@
             "//div[normalize-space()='Trang cá nhân và thông tin cá nhân']",
             "//div[normalize-space()='Profiles and personal details']",
             "//div[starts-with(normalize-space(.), 'Trang cá nhân ')]",
-            "//div[starts-with(normalize-space(.), 'Profile ')]",
-            "//div[normalize-space()='Facebook']"
+            "//div[starts-with(normalize-space(.), 'Profile ')]"
           ] },
         { "name": "clickProfileCard", "type": "click",
           "clickXpaths": [
+            "//div[normalize-space()='Facebook']",
             "//a[@role='link']//div[@role='presentation']"
           ] },
         { "name": "openNameDialog", "type": "click",
