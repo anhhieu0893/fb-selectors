@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.03.12",
+  "version": "2026.05.03.13",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -1966,121 +1966,39 @@
       "requiresFile": "none",
       "requiresUrl": false,
       "requiresCount": false,
-      "businessFields": ["firstName", "middleName", "lastName", "password"],
+      "businessFields": ["lastName", "firstName"],
       "timeoutMs": 60000,
       "openUrls": [
-        "https://www.facebook.com/settings?tab=account&section=name",
-        "https://www.facebook.com/settings/?tab=account&section=name",
-        "https://accountscenter.facebook.com/profiles/name"
+        "https://www.facebook.com/settings"
       ],
       "workflowSteps": [
-        { "name": "waitMain", "type": "wait",
-          "waitSelectors": ["div[role='main']"] },
-        { "name": "openEditDialog", "type": "click",
-          "clickSelectors": [
-            "div[role='main'] [role='button']:has-text('Chỉnh sửa')",
-            "div[role='main'] [role='button']:has-text('Edit')",
-            "[role='link']:has-text('Chỉnh sửa tên')",
-            "[role='link']:has-text('Edit name')",
-            "[aria-label='Chỉnh sửa']",
-            "[aria-label='Edit']"
-          ],
-          "textVariants": [
-            "Chỉnh sửa tên",
-            "Edit name",
-            "Chỉnh sửa",
-            "Edit"
+        { "name": "openAccountCenter", "type": "click",
+          "clickXpaths": [
+            "//span[contains(text(),'Mật khẩu, bảo mật, thông tin cá nhân, trải nghiệm')]",
+            "//span[contains(text(),'Password, security, personal details, connected ex')]"
           ] },
-        { "name": "firstNameInput", "type": "input",
-          "inputSelectors": [
-            "input[name='first_name']",
-            "input[aria-label='Tên']",
-            "input[aria-label='First name']",
-            "input[placeholder='Tên']",
-            "input[placeholder='First name']"
-          ],
-          "inputXpaths": [
-            "//label[contains(.,'Tên') or contains(.,'First name')]/following::input[1]"
+        { "name": "selectFbProfile", "type": "click",
+          "clickXpaths": [
+            "//div[normalize-space()='Facebook']"
           ] },
-        { "name": "middleNameInput", "type": "input",
-          "optional": true,
-          "inputSelectors": [
-            "input[name='middle_name']",
-            "input[aria-label='Tên đệm']",
-            "input[aria-label='Middle name']",
-            "input[placeholder='Tên đệm']",
-            "input[placeholder='Middle name']"
+        { "name": "openNameDialog", "type": "click",
+          "clickXpaths": [
+            "//a[@aria-label='Tên']",
+            "//a[@aria-label='Name']"
           ] },
         { "name": "lastNameInput", "type": "input",
-          "inputSelectors": [
-            "input[name='last_name']",
-            "input[aria-label='Họ']",
-            "input[aria-label='Last name']",
-            "input[aria-label='Surname']",
-            "input[placeholder='Họ']",
-            "input[placeholder='Last name']"
-          ],
           "inputXpaths": [
-            "//label[contains(.,'Họ') or contains(.,'Last name') or contains(.,'Surname')]/following::input[1]"
+            "//div[normalize-space()='Họ']/following::input[1]",
+            "//div[normalize-space()='Last name']/following::input[1]",
+            "//label[normalize-space()='Họ']/following::input[1]",
+            "//label[normalize-space()='Last name']/following::input[1]"
           ] },
-        { "name": "reviewChanges", "type": "click",
-          "optional": true,
-          "clickSelectors": [
-            "div[role='dialog'] [role='button']:has-text('Xem lại thay đổi')",
-            "div[role='dialog'] [role='button']:has-text('Review change')",
-            "[role='button']:has-text('Xem lại thay đổi')",
-            "[role='button']:has-text('Review change')"
-          ],
-          "textVariants": [
-            "Xem lại thay đổi",
-            "Review change",
-            "Tiếp",
-            "Continue"
-          ] },
-        { "name": "save", "type": "submit",
-          "submitSelectors": [
-            "div[role='dialog'] [role='button']:has-text('Lưu thay đổi')",
-            "div[role='dialog'] [role='button']:has-text('Save changes')",
-            "div[role='dialog'] [role='button']:has-text('Lưu')",
-            "div[role='dialog'] [role='button']:has-text('Save')",
-            "[role='button']:has-text('Lưu thay đổi')",
-            "[role='button']:has-text('Save changes')"
-          ],
-          "textVariants": [
-            "Lưu thay đổi",
-            "Save changes",
-            "Lưu",
-            "Save"
-          ] },
-        { "name": "passwordInput", "type": "input",
-          "optional": true,
-          "inputSelectors": [
-            "input[type='password'][name='password']",
-            "input[type='password'][aria-label='Mật khẩu']",
-            "input[type='password'][aria-label='Password']",
-            "input[type='password']"
-          ] },
-        { "name": "passwordSubmit", "type": "submit",
-          "optional": true,
-          "submitSelectors": [
-            "div[role='dialog'] [role='button']:has-text('Xác nhận')",
-            "div[role='dialog'] [role='button']:has-text('Confirm')",
-            "div[role='dialog'] [role='button']:has-text('Tiếp')",
-            "div[role='dialog'] [role='button']:has-text('Continue')",
-            "div[role='dialog'] [role='button']:has-text('Lưu')",
-            "div[role='dialog'] [role='button']:has-text('Save')"
-          ],
-          "textVariants": [
-            "Xác nhận",
-            "Confirm",
-            "Tiếp",
-            "Continue"
-          ] },
-        { "name": "verify", "type": "verify",
-          "verifySelectors": [
-            "div[role='main']:has-text('Đã thay đổi')",
-            "div[role='main']:has-text('Name updated')",
-            "[role='status']"
+        { "name": "firstNameInput", "type": "input",
+          "inputXpaths": [
+            "//div[normalize-space()='Tên']/following::input[1]",
+            "//div[normalize-space()='Name']/following::input[1]",
+            "//label[normalize-space()='Tên']/following::input[1]",
+            "//label[normalize-space()='Name']/following::input[1]"
           ] }
       ]
     },
