@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.03.8",
+  "version": "2026.05.03.9",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -406,12 +406,10 @@
           "uploadXpaths": ["//input[@type='file']"] },
         { "name": "save", "type": "submit",
           "submitXpaths": [
+            "//div[@aria-label=\"Lưu thay đổi\"]",
+            "//div[@aria-label=\"Save changes\"]",
             "//div[@role='button' and @aria-label='Lưu thay đổi']",
             "//div[@role='button' and @aria-label='Save changes']",
-            "//div[@role='button'][.//span[text()='Lưu thay đổi']]",
-            "//div[@role='button'][.//span[text()='Save changes']]",
-            "//span[text()='Lưu thay đổi']/ancestor::div[@role='button'][1]",
-            "//span[text()='Save changes']/ancestor::div[@role='button'][1]",
             "//span[contains(text(),'Lưu thay đổi')]",
             "//span[contains(text(),'Save changes')]"
           ] }
