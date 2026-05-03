@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.03.22",
+  "version": "2026.05.04.1",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -2711,6 +2711,21 @@
       "Content Not Found"
     ],
     "liveBodyLengthThreshold": 5000
+  },
+  "loginContinue": {
+    "continueXpaths": [
+      "//span[normalize-space()='Continue']",
+      "//span[normalize-space()='Tiếp tục']",
+      "//span[contains(text(),'Continue')]",
+      "//span[contains(text(),'Tiếp tục')]"
+    ],
+    "passwordLabelXpaths": [
+      "//label[normalize-space()='Password']",
+      "//label[normalize-space()='Mật khẩu']"
+    ],
+    "passwordInputXpaths": [
+      "//input[@type='password']"
+    ]
   },
   "popupHandlers": {
     "dialogSelectors": [
