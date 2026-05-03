@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.04.2",
+  "version": "2026.05.04.3",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -2671,16 +2671,24 @@
       "video selfie",
       "xác nhận bạn là người thật",
       "xác nhận bạn là người dùng thật",
+      "xác nhận danh tính của bạn",
+      "Bắt đầu quay video selfie",
       "Take a video selfie",
       "video selfie to confirm",
       "confirm you're a real person",
-      "confirm you are a real person"
+      "confirm you are a real person",
+      "Confirm your identity",
+      "Start video selfie"
     ],
     "selfieDetectXpaths": [
       "//*[contains(text(),'Quay video selfie')]",
       "//*[contains(text(),'video selfie')]",
       "//*[contains(text(),'xác nhận bạn là người thật')]",
+      "//*[contains(text(),'Xác nhận danh tính')]",
+      "//*[contains(text(),'Bắt đầu quay video selfie')]",
       "//*[contains(text(),'Take a video selfie')]",
+      "//*[contains(text(),'Start video selfie')]",
+      "//*[contains(text(),'Confirm your identity')]",
       "//*[contains(text(),'confirm you')]"
     ]
   },
