@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.04.4",
+  "version": "2026.05.04.5",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -1969,7 +1969,7 @@
       "businessFields": ["lastName", "firstName"],
       "timeoutMs": 60000,
       "openUrls": [
-        "https://www.facebook.com/settings"
+        "https://accountscenter.facebook.com/?entry_point=app_settings"
       ],
       "workflowSteps": [
         { "name": "openAccountCenter", "type": "click",
