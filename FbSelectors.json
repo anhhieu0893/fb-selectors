@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.04.5",
+  "version": "2026.05.05.1",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -1634,11 +1634,14 @@
       "businessFields": ["repeatCount"],
       "urlPathHint": "stories",
       "fallbackUrl": "https://www.facebook.com/stories/",
+      "urlExcludePatterns": [
+        "/stories/create"
+      ],
       "entry": [
-        "div[data-pagelet*='Stories' i] a[href*='/stories/'][role='link']",
-        "div[data-pagelet*='Stories' i] div[role='button']",
-        "[aria-label*='Stories' i] a[href*='/stories/'][role='link']",
-        "[aria-label*='Tin' i] a[href*='/stories/'][role='link']",
+        "div[data-pagelet*='Stories' i] a[href*='/stories/'][role='link']:not([href*='create'])",
+        "div[data-pagelet*='Stories' i] div[role='button']:not([aria-label*='Create' i]):not([aria-label*='Tạo' i])",
+        "[aria-label*='Stories' i] a[href*='/stories/'][role='link']:not([href*='create'])",
+        "[aria-label*='Tin' i] a[href*='/stories/'][role='link']:not([href*='create'])",
         "a[href*='/stories/'][role='link']:not([href*='create'])",
         "a[href^='/stories/'][role='link']:not([href*='create'])"
       ],
