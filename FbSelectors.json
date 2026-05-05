@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.05.9",
+  "version": "2026.05.05.10",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -2026,6 +2026,10 @@
         "[role='button'][aria-label*='Like' i]:not([aria-label*='Liked' i])"
       ],
       "shareXpaths": [
+        ".//div[@aria-label='Gửi nội dung này cho bạn bè hoặc đăng lên trang cá nhân của bạn.']",
+        ".//div[@aria-label='Send this to friends or post it on your profile.']",
+        "//div[@aria-label='Gửi nội dung này cho bạn bè hoặc đăng lên trang cá nhân của bạn.']",
+        "//div[@aria-label='Send this to friends or post it on your profile.']",
         ".//div[@role='button' and (@aria-label='Chia sẻ' or @aria-label='Share')]",
         ".//div[@role='button' and (contains(@aria-label,'Chia sẻ') or contains(@aria-label,'Share'))]"
       ],
@@ -2125,6 +2129,10 @@
         "[role='button'][aria-label*='Like' i]:not([aria-label*='Liked' i])"
       ],
       "shareXpaths": [
+        ".//div[@aria-label='Gửi nội dung này cho bạn bè hoặc đăng lên trang cá nhân của bạn.']",
+        ".//div[@aria-label='Send this to friends or post it on your profile.']",
+        "//div[@aria-label='Gửi nội dung này cho bạn bè hoặc đăng lên trang cá nhân của bạn.']",
+        "//div[@aria-label='Send this to friends or post it on your profile.']",
         ".//div[@role='button' and (@aria-label='Chia sẻ' or @aria-label='Share')]",
         ".//div[@role='button' and (contains(@aria-label,'Chia sẻ') or contains(@aria-label,'Share'))]"
       ],
