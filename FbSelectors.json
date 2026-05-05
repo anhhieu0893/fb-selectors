@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.05.1",
+  "version": "2026.05.05.2",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -428,7 +428,12 @@
         { "type": "openUrl", "url": "https://www.facebook.com/stories/create/",
           "fallbackUrls": ["https://www.facebook.com/stories/create/photo/"] },
         { "type": "wait", "waitSelectors": ["div[role='main']", "input[type='file']"] },
-        { "type": "click", "clickSelectors": [
+        { "type": "click",
+          "clickXpaths": [
+            "//div[@aria-label='Tạo tin dạng ảnh']",
+            "//div[@aria-label='Create a photo story']"
+          ],
+          "clickSelectors": [
             "[role='button']:has-text('Tạo tin ảnh')",
             "[role='button']:has-text('Create a photo story')",
             "[role='button']:has-text('Tạo tin')",
@@ -442,7 +447,12 @@
             "input[type='file']"
           ] },
         { "type": "delay", "delayMs": 3000 },
-        { "type": "submit", "submitSelectors": [
+        { "type": "submit",
+          "submitXpaths": [
+            "//span[contains(text(),'Share to story')]",
+            "//div[@aria-label='Chia sẻ lên tin']"
+          ],
+          "submitSelectors": [
             "[role='button']:has-text('Chia sẻ vào tin')",
             "[role='button']:has-text('Share to story')",
             "[role='button']:has-text('Share to Story')",
