@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.05.4",
+  "version": "2026.05.05.5",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -1287,7 +1287,7 @@
       "requiresText": false,
       "requiresFile": "required",
       "requiresUrl": false,
-      "requiresCount": true,
+      "requiresCount": false,
       "businessFields": ["reelUrls"],
       "timeoutMs": 25000,
       "waitSelectors": [
@@ -1309,10 +1309,29 @@
         "[aria-label*='Next reel' i][role='button']",
         "[aria-label='Next' i][role='button']"
       ],
+      "panelXpaths": [
+        "(//div[@role='button' and @aria-label='Bình luận'])[1]",
+        "(//div[@role='button' and @aria-label='Comment'])[1]",
+        "(//div[@aria-label='Bình luận'])[1]",
+        "(//div[@aria-label='Comment'])[1]"
+      ],
+      "panelSelectors": [
+        "div[role='button'][aria-label='Bình luận']",
+        "div[role='button'][aria-label='Comment']",
+        "div[aria-label='Bình luận']",
+        "div[aria-label='Comment']"
+      ],
       "inputXpaths": [
-        "//div[@contenteditable='true' and @role='textbox' and (contains(@aria-label,'Bình luận') or contains(@aria-label,'Comment') or contains(@aria-label,'Viết bình luận') or contains(@aria-label,'Write a comment'))]"
+        "//form[@role='presentation']//div[@contenteditable='true']",
+        "//form[@role='presentation']//div[@role='textbox']",
+        "//form[@role='presentation']//textarea",
+        "//div[@contenteditable='true' and @role='textbox' and (contains(@aria-label,'Bình luận') or contains(@aria-label,'Comment') or contains(@aria-label,'Viết bình luận') or contains(@aria-label,'Write a comment'))]",
+        "//form[@role='presentation']"
       ],
       "inputSelectors": [
+        "form[role='presentation'] div[contenteditable='true']",
+        "form[role='presentation'] div[role='textbox']",
+        "form[role='presentation'] textarea",
         "div[contenteditable='true'][role='textbox'][aria-label*='Bình luận' i]",
         "div[contenteditable='true'][role='textbox'][aria-label*='Comment' i]",
         "div[contenteditable='true'][role='textbox'][aria-label*='Viết bình luận' i]",
