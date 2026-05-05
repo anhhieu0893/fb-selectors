@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.05.3",
+  "version": "2026.05.05.4",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -1308,6 +1308,27 @@
         "[aria-label*='Reel tiếp theo' i][role='button']",
         "[aria-label*='Next reel' i][role='button']",
         "[aria-label='Next' i][role='button']"
+      ],
+      "inputXpaths": [
+        "//div[@contenteditable='true' and @role='textbox' and (contains(@aria-label,'Bình luận') or contains(@aria-label,'Comment') or contains(@aria-label,'Viết bình luận') or contains(@aria-label,'Write a comment'))]"
+      ],
+      "inputSelectors": [
+        "div[contenteditable='true'][role='textbox'][aria-label*='Bình luận' i]",
+        "div[contenteditable='true'][role='textbox'][aria-label*='Comment' i]",
+        "div[contenteditable='true'][role='textbox'][aria-label*='Viết bình luận' i]",
+        "div[contenteditable='true'][role='textbox'][aria-label*='Write a comment' i]"
+      ],
+      "submitXpaths": [
+        "//div[@role='button'][.//span[normalize-space()='Đăng']]",
+        "//div[@role='button'][.//span[normalize-space()='Post']]",
+        "//div[@role='button'][.//span[normalize-space()='Bình luận']]",
+        "//div[@role='button'][.//span[normalize-space()='Comment']]"
+      ],
+      "submitSelectors": [
+        "[role='button']:has-text('Đăng')",
+        "[role='button']:has-text('Post')",
+        "[role='button']:has-text('Bình luận')",
+        "[role='button']:has-text('Comment')"
       ]
     },
     "LINK_INSTAGRAM": {
