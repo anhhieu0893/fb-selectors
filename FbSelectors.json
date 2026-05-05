@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.05.8",
+  "version": "2026.05.05.9",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -2063,9 +2063,103 @@
       "endSelectors": []
     },
     "POST_FANPAGE": {
-      "displayName": "Bài viết Fanpage", "status": "TODO_CONFIG",
-      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
-      "businessFields": ["repeatCount"]
+      "displayName": "Bài viết Fanpage",
+      "status": "DEDICATED_HANDLER",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": true,
+      "businessFields": ["repeatCount"],
+      "timeoutMs": 45000,
+      "openUrls": [
+        "https://www.facebook.com/?filter=pages&sk=h_chr"
+      ],
+      "fallbackUrls": [
+        "https://www.facebook.com/?filter=all&sk=h_chr",
+        "https://www.facebook.com/"
+      ],
+      "panelXpaths": [
+        "//a[.//span[normalize-space()='Trang'] and (contains(@href,'sk=h_chr') or contains(@href,'filter=pages'))]",
+        "//a[.//span[normalize-space()='Pages'] and (contains(@href,'sk=h_chr') or contains(@href,'filter=pages'))]",
+        "//a[contains(@href,'filter=pages') and contains(@href,'sk=h_chr')]",
+        "//div[@role='tab' and .//span[normalize-space()='Trang']]",
+        "//div[@role='tab' and .//span[normalize-space()='Pages']]",
+        "//a[.//span[normalize-space()='Trang']]",
+        "//a[.//span[normalize-space()='Pages']]",
+        "//*[@role='button' and .//span[normalize-space()='Trang']]",
+        "//*[@role='button' and .//span[normalize-space()='Pages']]"
+      ],
+      "panelSelectors": [
+        "a[href*='filter=pages']",
+        "div[role='tab']:has-text('Trang')",
+        "div[role='tab']:has-text('Pages')",
+        "a:has-text('Trang')",
+        "a:has-text('Pages')"
+      ],
+      "panelReadySelectors": [
+        "div[role='main']",
+        "div[role='feed']",
+        "[data-pagelet*='FeedUnit' i]"
+      ],
+      "itemXpaths": [
+        "//div[@role='main']//div[@aria-posinset]",
+        "//div[@role='main']//div[@role='article']",
+        "//div[@role='feed']//div[@role='article']",
+        "//div[@role='article'][.//div[@role='button' and (contains(@aria-label,'Thích') or contains(@aria-label,'Like'))]]"
+      ],
+      "itemSelectors": [
+        "div[role='main'] div[aria-posinset]",
+        "div[role='main'] div[role='article']",
+        "div[role='feed'] div[role='article']",
+        "[data-pagelet*='FeedUnit' i]",
+        "div[role='article']"
+      ],
+      "clickXpaths": [
+        ".//div[@role='button' and (@aria-label='Thích' or @aria-label='Like')]",
+        ".//div[@role='button' and (contains(@aria-label,'Thích') or contains(@aria-label,'Like')) and not(contains(@aria-label,'Đã thích')) and not(contains(@aria-label,'Liked'))]"
+      ],
+      "clickSelectors": [
+        "div[role='button'][aria-label='Thích']:not([aria-label*='Đã thích'])",
+        "div[role='button'][aria-label='Like']:not([aria-label*='Liked'])",
+        "[role='button'][aria-label*='Thích' i]:not([aria-label*='Đã' i])",
+        "[role='button'][aria-label*='Like' i]:not([aria-label*='Liked' i])"
+      ],
+      "shareXpaths": [
+        ".//div[@role='button' and (@aria-label='Chia sẻ' or @aria-label='Share')]",
+        ".//div[@role='button' and (contains(@aria-label,'Chia sẻ') or contains(@aria-label,'Share'))]"
+      ],
+      "shareSelectors": [
+        "div[role='button'][aria-label='Chia sẻ']",
+        "div[role='button'][aria-label='Share']",
+        "[role='button'][aria-label*='Chia sẻ' i]",
+        "[role='button'][aria-label*='Share' i]"
+      ],
+      "shareOptionXpaths": [
+        "//div[@aria-label='Chia sẻ ngay']",
+        "//div[@aria-label='Share now']",
+        "//span[normalize-space()='Chia sẻ ngay']",
+        "//span[normalize-space()='Share now']",
+        "//div[@role='button' and (@aria-label='Chia sẻ ngay' or @aria-label='Share now')]",
+        "//div[@role='menuitem' and (.//span[normalize-space()='Chia sẻ ngay'] or .//span[normalize-space()='Share now'])]"
+      ],
+      "shareOptionSelectors": [
+        "div[aria-label='Chia sẻ ngay']",
+        "div[aria-label='Share now']",
+        "[aria-label='Chia sẻ ngay']",
+        "[aria-label='Share now']",
+        "div[role='menuitem']:has-text('Chia sẻ ngay')",
+        "div[role='menuitem']:has-text('Share now')"
+      ],
+      "endXpaths": [
+        "//*[contains(normalize-space(.),'Bạn đã đọc hết các Bài viết mới đây nhất rồi')]",
+        "//*[contains(normalize-space(.),'Hãy quay lại sau để xem thêm thông tin mới')]",
+        "//*[contains(normalize-space(.),'Bạn đã đọc hết') and contains(normalize-space(.),'Bài viết')]",
+        "//*[contains(normalize-space(.),'You have seen all recent posts')]",
+        "//*[contains(normalize-space(.),'You’re all caught up')]",
+        "//*[contains(normalize-space(.),'You are all caught up')]",
+        "//*[contains(normalize-space(.),'Check back later for new posts')]"
+      ],
+      "endSelectors": []
     },
     "POST_TIMELINE": {
       "displayName": "Bài viết trên tường", "status": "TODO_CONFIG",
