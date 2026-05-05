@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.05.2",
+  "version": "2026.05.05.3",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -1283,12 +1283,12 @@
     },
     "TARGET_REEL": {
       "displayName": "Tương tác reel chỉ định",
-      "status": "LOW_LEVEL_CONFIG",
+      "status": "DEDICATED_HANDLER",
       "requiresText": false,
-      "requiresFile": "none",
-      "requiresUrl": true,
-      "requiresCount": false,
-      "businessFields": ["reelUrl"],
+      "requiresFile": "required",
+      "requiresUrl": false,
+      "requiresCount": true,
+      "businessFields": ["reelUrls"],
       "timeoutMs": 25000,
       "waitSelectors": [
         "video",
