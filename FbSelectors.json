@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.05.5",
+  "version": "2026.05.05.6",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -1810,9 +1810,61 @@
       "businessFields": ["repeatCount"]
     },
     "POST_FRIEND": {
-      "displayName": "Bài viết Bạn bè", "status": "TODO_CONFIG",
-      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
-      "businessFields": ["repeatCount"]
+      "displayName": "Bài viết Bạn bè",
+      "status": "DEDICATED_HANDLER",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": true,
+      "businessFields": ["repeatCount"],
+      "timeoutMs": 45000,
+      "openUrls": [
+        "https://www.facebook.com/?filter=all&sk=h_chr"
+      ],
+      "fallbackUrls": [
+        "https://www.facebook.com/"
+      ],
+      "panelXpaths": [
+        "//a[.//span[normalize-space()='Bạn bè'] and (contains(@href,'sk=h_chr') or contains(@href,'filter=friends'))]",
+        "//a[contains(@href,'filter=friends') and contains(@href,'sk=h_chr')]",
+        "//div[@role='tab' and .//span[normalize-space()='Bạn bè']]",
+        "//div[@role='tab' and .//span[normalize-space()='Friends']]",
+        "//a[.//span[normalize-space()='Bạn bè']]",
+        "//a[.//span[normalize-space()='Friends']]",
+        "//*[@role='button' and .//span[normalize-space()='Bạn bè']]",
+        "//*[@role='button' and .//span[normalize-space()='Friends']]"
+      ],
+      "panelSelectors": [
+        "a[href*='filter=friends']",
+        "div[role='tab']:has-text('Bạn bè')",
+        "div[role='tab']:has-text('Friends')",
+        "a:has-text('Bạn bè')",
+        "a:has-text('Friends')"
+      ],
+      "panelReadySelectors": [
+        "div[role='main']",
+        "div[role='feed']",
+        "[data-pagelet*='FeedUnit' i]"
+      ],
+      "itemXpaths": [
+        "//div[@role='feed']//div[@role='article']",
+        "//div[@role='article'][.//div[@role='button' and (contains(@aria-label,'Thích') or contains(@aria-label,'Like'))]]"
+      ],
+      "itemSelectors": [
+        "div[role='feed'] div[role='article']",
+        "[data-pagelet*='FeedUnit' i]",
+        "div[role='article']"
+      ],
+      "clickXpaths": [
+        ".//div[@role='button' and (@aria-label='Thích' or @aria-label='Like')]",
+        ".//div[@role='button' and (contains(@aria-label,'Thích') or contains(@aria-label,'Like')) and not(contains(@aria-label,'Đã thích')) and not(contains(@aria-label,'Liked'))]"
+      ],
+      "clickSelectors": [
+        "div[role='button'][aria-label='Thích']:not([aria-label*='Đã thích'])",
+        "div[role='button'][aria-label='Like']:not([aria-label*='Liked'])",
+        "[role='button'][aria-label*='Thích' i]:not([aria-label*='Đã' i])",
+        "[role='button'][aria-label*='Like' i]:not([aria-label*='Liked' i])"
+      ]
     },
     "POST_TO_GROUP": {
       "displayName": "Đăng bài lên Nhóm",
