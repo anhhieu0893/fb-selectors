@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.05.7",
+  "version": "2026.05.05.8",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -2024,7 +2024,43 @@
         "div[role='button'][aria-label='Like']:not([aria-label*='Liked'])",
         "[role='button'][aria-label*='Thích' i]:not([aria-label*='Đã' i])",
         "[role='button'][aria-label*='Like' i]:not([aria-label*='Liked' i])"
-      ]
+      ],
+      "shareXpaths": [
+        ".//div[@role='button' and (@aria-label='Chia sẻ' or @aria-label='Share')]",
+        ".//div[@role='button' and (contains(@aria-label,'Chia sẻ') or contains(@aria-label,'Share'))]"
+      ],
+      "shareSelectors": [
+        "div[role='button'][aria-label='Chia sẻ']",
+        "div[role='button'][aria-label='Share']",
+        "[role='button'][aria-label*='Chia sẻ' i]",
+        "[role='button'][aria-label*='Share' i]"
+      ],
+      "shareOptionXpaths": [
+        "//div[@aria-label='Chia sẻ ngay']",
+        "//div[@aria-label='Share now']",
+        "//span[normalize-space()='Chia sẻ ngay']",
+        "//span[normalize-space()='Share now']",
+        "//div[@role='button' and (@aria-label='Chia sẻ ngay' or @aria-label='Share now')]",
+        "//div[@role='menuitem' and (.//span[normalize-space()='Chia sẻ ngay'] or .//span[normalize-space()='Share now'])]"
+      ],
+      "shareOptionSelectors": [
+        "div[aria-label='Chia sẻ ngay']",
+        "div[aria-label='Share now']",
+        "[aria-label='Chia sẻ ngay']",
+        "[aria-label='Share now']",
+        "div[role='menuitem']:has-text('Chia sẻ ngay')",
+        "div[role='menuitem']:has-text('Share now')"
+      ],
+      "endXpaths": [
+        "//*[contains(normalize-space(.),'Bạn đã đọc hết các Bài viết mới đây nhất rồi')]",
+        "//*[contains(normalize-space(.),'Hãy quay lại sau để xem thêm thông tin mới')]",
+        "//*[contains(normalize-space(.),'Bạn đã đọc hết') and contains(normalize-space(.),'Bài viết')]",
+        "//*[contains(normalize-space(.),'You have seen all recent posts')]",
+        "//*[contains(normalize-space(.),'You’re all caught up')]",
+        "//*[contains(normalize-space(.),'You are all caught up')]",
+        "//*[contains(normalize-space(.),'Check back later for new posts')]"
+      ],
+      "endSelectors": []
     },
     "POST_FANPAGE": {
       "displayName": "Bài viết Fanpage", "status": "TODO_CONFIG",
