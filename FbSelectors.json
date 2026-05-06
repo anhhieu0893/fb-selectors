@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.05.11",
+  "version": "2026.05.05.12",
   "note": "Updated full - tách map auth detect/login/captcha/OTP 2026. Có thể override bằng GitHub raw.",
   "login": {
     "emailInput": "input[name='email'], input[type='email'], input[autocomplete='username']",
@@ -2170,9 +2170,76 @@
       "endSelectors": []
     },
     "POST_TIMELINE": {
-      "displayName": "Bài viết trên tường", "status": "TODO_CONFIG",
-      "requiresText": false, "requiresFile": "none", "requiresUrl": false, "requiresCount": true,
-      "businessFields": ["repeatCount"]
+      "displayName": "Bài viết trên tường",
+      "status": "DEDICATED_HANDLER",
+      "requiresText": false,
+      "requiresFile": "none",
+      "requiresUrl": false,
+      "requiresCount": false,
+      "businessFields": [],
+      "timeoutMs": 45000,
+      "openUrls": [
+        "https://www.facebook.com/me"
+      ],
+      "fallbackUrls": [
+        "https://www.facebook.com/profile.php",
+        "https://www.facebook.com/"
+      ],
+      "panelReadySelectors": [
+        "div[role='main']",
+        "div[role='feed']"
+      ],
+      "itemXpaths": [
+        "//div[@role='main']//div[@aria-posinset]",
+        "//div[@role='main']//div[@role='article']",
+        "//div[@role='feed']//div[@role='article']",
+        "//div[@role='article'][.//div[@role='button' and (contains(@aria-label,'Chia sẻ') or contains(@aria-label,'Share'))]]"
+      ],
+      "itemSelectors": [
+        "div[role='main'] div[aria-posinset]",
+        "div[role='main'] div[role='article']",
+        "div[role='feed'] div[role='article']",
+        "div[role='article']"
+      ],
+      "shareXpaths": [
+        ".//div[@aria-label='Gửi nội dung này cho bạn bè hoặc đăng lên trang cá nhân của bạn.']",
+        ".//div[@aria-label='Send this to friends or post it on your profile.']",
+        "//div[@aria-label='Gửi nội dung này cho bạn bè hoặc đăng lên trang cá nhân của bạn.']",
+        "//div[@aria-label='Send this to friends or post it on your profile.']",
+        ".//div[@role='button' and (@aria-label='Chia sẻ' or @aria-label='Share')]",
+        ".//div[@role='button' and (contains(@aria-label,'Chia sẻ') or contains(@aria-label,'Share'))]"
+      ],
+      "shareSelectors": [
+        "div[role='button'][aria-label='Chia sẻ']",
+        "div[role='button'][aria-label='Share']",
+        "[role='button'][aria-label*='Chia sẻ' i]",
+        "[role='button'][aria-label*='Share' i]"
+      ],
+      "shareOptionXpaths": [
+        "//div[@aria-label='Chia sẻ ngay']",
+        "//div[@aria-label='Share now']",
+        "//span[normalize-space()='Chia sẻ ngay']",
+        "//span[normalize-space()='Share now']",
+        "//div[@role='button' and (@aria-label='Chia sẻ ngay' or @aria-label='Share now')]",
+        "//div[@role='menuitem' and (.//span[normalize-space()='Chia sẻ ngay'] or .//span[normalize-space()='Share now'])]"
+      ],
+      "shareOptionSelectors": [
+        "div[aria-label='Chia sẻ ngay']",
+        "div[aria-label='Share now']",
+        "[aria-label='Chia sẻ ngay']",
+        "[aria-label='Share now']",
+        "div[role='menuitem']:has-text('Chia sẻ ngay')",
+        "div[role='menuitem']:has-text('Share now')"
+      ],
+      "endXpaths": [
+        "//*[contains(normalize-space(.),'Không có bài viết')]",
+        "//*[contains(normalize-space(.),'No posts to show')]",
+        "//*[contains(normalize-space(.),'No posts')]",
+        "//*[contains(normalize-space(.),'Bạn đã đọc hết')]",
+        "//*[contains(normalize-space(.),'You’re all caught up')]",
+        "//*[contains(normalize-space(.),'You are all caught up')]"
+      ],
+      "endSelectors": []
     },
     "POST_FRIEND_WALL": {
       "displayName": "Bài viết trên tường bạn bè",
